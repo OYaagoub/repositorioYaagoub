@@ -1,0 +1,1 @@
+Contains the main spring boot based application and a '@Configuration' file must be created here with Beans to inject repositories to services using Spring conventions.
