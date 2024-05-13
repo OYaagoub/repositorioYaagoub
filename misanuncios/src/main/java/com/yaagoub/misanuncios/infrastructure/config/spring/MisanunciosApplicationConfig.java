@@ -1,11 +1,7 @@
 package com.yaagoub.misanuncios.infrastructure.config.spring;
 
-import com.yaagoub.misanuncios.application.repository.PermissionRepository;
-import com.yaagoub.misanuncios.application.repository.RoleRepository;
-import com.yaagoub.misanuncios.application.repository.UserRepository;
-import com.yaagoub.misanuncios.application.service.PermissionService;
-import com.yaagoub.misanuncios.application.service.RoleService;
-import com.yaagoub.misanuncios.application.service.UserService;
+import com.yaagoub.misanuncios.application.repository.*;
+import com.yaagoub.misanuncios.application.service.*;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.context.annotation.Bean;
@@ -19,6 +15,9 @@ public class MisanunciosApplicationConfig {
      private final RoleRepository roleRepository;
      private final PermissionRepository permissionRepository;
      private final UserRepository userRepository;
+     private final UserHasRoleRepository userHasRoleRepository;
+     private final CategoryRepository categoryRepository;
+     private final ProductRepository productRepository;
      @Bean
      RoleService roleService(){
          return new RoleService(roleRepository);
@@ -33,5 +32,20 @@ public class MisanunciosApplicationConfig {
      UserService userService(){
          return new UserService(userRepository);
      }
+    @Bean
+    UserHasRoleService userHasRoleService(){
+        return new UserHasRoleService(userHasRoleRepository);
+    }
+
+    @Bean
+    CategoryService categoryService(){
+         return new CategoryService(categoryRepository);
+    }
+
+    @Bean
+    ProductService productService(){
+        return new ProductService(productRepository);
+    }
+
 
 }

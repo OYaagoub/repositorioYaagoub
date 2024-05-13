@@ -16,7 +16,7 @@ public class ProductDto {
     private long id;
     private String title;
     private String description;
+    private String price;
     private UserDto userDto;
-    private Set<ConversationDto> conversationDtos = new LinkedHashSet<>();
-    private Set<ImageDto> imageDtos = new LinkedHashSet<>();
+
 }

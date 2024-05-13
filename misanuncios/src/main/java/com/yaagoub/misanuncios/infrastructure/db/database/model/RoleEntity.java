@@ -27,7 +27,5 @@ public class RoleEntity {
 
 
 
-    @OneToMany(mappedBy = "role" , fetch = FetchType.EAGER,
-            cascade = {CascadeType.MERGE, CascadeType.REFRESH},  orphanRemoval = true)
-    private Set<RoleHasPermissionEntity> permissions = new LinkedHashSet<>();
+
 }

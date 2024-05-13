@@ -15,7 +15,5 @@ public class PermissionDto {
     private long id;
     private String name;
 
-    private Set<UserHasPermissionDto> users =new LinkedHashSet<>();
 
-    private Set<RoleHasPermissionDto> roles = new LinkedHashSet<>();
 }

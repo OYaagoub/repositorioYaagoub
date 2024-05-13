@@ -11,7 +11,6 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 @Getter
 @Setter
-@ToString
 @RequiredArgsConstructor
 @Entity
 @Table(name = "users")
@@ -32,16 +31,14 @@ public class UserEntity {
     private  String email_verified_at;
 
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER,
-            cascade = {CascadeType.MERGE, CascadeType.REFRESH},  orphanRemoval = true)
-    private  Set<ProductEntity> products = new LinkedHashSet<>();
-
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER,
-            cascade = {CascadeType.MERGE, CascadeType.REFRESH},  orphanRemoval = true)
-    private Set<NotificationEntity> notifications = new LinkedHashSet<>();
-
-
-
-
-
+    @Override
+    public String toString() {
+        return "UserEntity{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", image='" + image + '\'' +
+                ", email='" + email + '\'' +
+                ", birth=" + birth +
+                '}';
+    }
 }

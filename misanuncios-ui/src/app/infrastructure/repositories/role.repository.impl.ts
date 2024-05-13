@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { RoleRepository } from '../../domain/repositories/role.repository';
 import { Role } from '../../domain/model/role.model';
 import { RoleService } from '../services/role.service';
+import { RoleDto } from '../dto/role.dto';
 
 @Injectable({
  providedIn: 'root',
@@ -13,8 +14,8 @@ export class RoleRepositoryImpl implements RoleRepository {
 
  constructor(private roleService: RoleService) {}
 
-  getRoles(): Observable<Role[]> {
-    return this.roleService.getRoles(); //.pipe(map(res => res.map(role => new Role(role))));
+ getRolesByUser(): Observable<Role[]> {
+    return this.roleService.getRolesByUser(); //.pipe(map(res => res.map(role => new Role(role))));
   }
   getRole(id: number): Observable<Role> {
     return this.roleService.getRole(id);

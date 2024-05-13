@@ -19,5 +19,5 @@ public class ConversationDto {
 
     private ProductDto productDto;
 
-    private Set<MessageDto> messageDtos =new LinkedHashSet<>();
+
 }

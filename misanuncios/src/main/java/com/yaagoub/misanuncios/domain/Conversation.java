@@ -23,5 +23,5 @@ public class Conversation {
 
     private Product product;
 
-    private Set<Message> messages=new LinkedHashSet<>();
+
 }

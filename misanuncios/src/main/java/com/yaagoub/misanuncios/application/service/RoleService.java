@@ -2,6 +2,7 @@ package com.yaagoub.misanuncios.application.service;
 
 import com.yaagoub.misanuncios.application.repository.RoleRepository;
 import com.yaagoub.misanuncios.domain.Role;
+import com.yaagoub.misanuncios.domain.User;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -16,4 +17,6 @@ public class RoleService {
     public List<Role> getRoles(){
         return (List<Role>) repository.getRoles();
     }
+
+
 }

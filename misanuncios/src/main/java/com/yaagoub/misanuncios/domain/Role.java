@@ -18,5 +18,4 @@ public class Role {
     private long id;
     private String name;
 
-    private Set<RoleHasPermission> permissions = new LinkedHashSet<>();
 }

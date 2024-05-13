@@ -21,7 +21,7 @@ export class ListRolesComponent implements OnInit {
     this.loadRoles();
   }
   loadRoles(): void {
-    this.roleRepository.getRoles().subscribe({
+    this.roleRepository.getRolesByUser().subscribe({
       next: (roles: Role[]) => {
         this.roles = roles;
       },

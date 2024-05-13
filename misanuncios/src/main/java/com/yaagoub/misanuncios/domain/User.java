@@ -28,15 +28,7 @@ public class User implements UserDetails {
     private  String remember_token;
     private  String email_verified_at;
 
-    private  Set<Product> products = new LinkedHashSet<>();
 
-    private Set<Notification> notifications = new LinkedHashSet<>();
-
-    private Set<UserHasRole> roles = new LinkedHashSet<>();
-
-    private Set<UserHasPermission> permissions = new LinkedHashSet<>();
-
-    private Set<Conversation> conversations= new LinkedHashSet<>();
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of();

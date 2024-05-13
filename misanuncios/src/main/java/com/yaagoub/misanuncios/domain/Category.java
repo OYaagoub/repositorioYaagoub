@@ -2,6 +2,7 @@ package com.yaagoub.misanuncios.domain;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.yaagoub.misanuncios.infrastructure.db.database.model.ProductEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -22,6 +23,5 @@ public class Category {
 
     private String name;
 
-
-    private Set<Product> products=new LinkedHashSet<>();
+    Set<Product> products = new LinkedHashSet<>();
 }

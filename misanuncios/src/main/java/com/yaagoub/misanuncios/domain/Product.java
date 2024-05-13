@@ -20,8 +20,8 @@ public class Product {
     private long id;
     private String title;
     private String description;
+    private String price;
     private User user;
     private Category category;
-    private Set<Conversation> conversations = new LinkedHashSet<>();
-    private Set<Image> images= new LinkedHashSet<>();
+
 }

@@ -24,70 +24,30 @@
   </div>
 </section>
 
-<section class="bg-white dark:bg-gray-900">
-  <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
-    <div class="mx-auto max-w-screen-sm text-center">
-      <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Explore our tools</h2>
-      <p class="mb-8 font-light text-gray-500 lg:mb-16 sm:text-xl dark:text-gray-400">Start working with Tailwind CSS
-        that can provide everything you need to generate awareness, drive traffic, connect.</p>
-    </div>
-    <div class="grid gap-8 row-gap-5 sm:grid-cols-2 lg:grid-cols-3">
+@for(categoryProducts of categoriesWithProducts; track categoryProducts ){
 
-      <app-card></app-card>
-      <app-card></app-card>
-      <app-card></app-card>
-      <app-card></app-card>
-      <app-card></app-card>
-      <app-card></app-card>
-    </div>
+  <section class="bg-white dark:bg-gray-900">
+    <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+      <div class="mx-auto max-w-screen-sm text-center">
+        <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">{{ categoryProducts.name }}</h2>
+        <p class="mb-8 font-light text-gray-500 lg:mb-16 sm:text-xl dark:text-gray-400">Start working with Tailwind CSS
+          that can provide everything you need to generate awareness, drive traffic, connect.</p>
+      </div>
+      <div class="grid gap-8 row-gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        @for(product of categoryProducts.products; track product ){
 
-  </div>
+          <app-card [product]="product"></app-card>
+        }
 
+      </div>
 
-</section>
-
-
-<section class="bg-white dark:bg-gray-900">
-  <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
-    <div class="mx-auto max-w-screen-sm text-center">
-      <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Explore our tools</h2>
-      <p class="mb-8 font-light text-gray-500 lg:mb-16 sm:text-xl dark:text-gray-400">Start working with Tailwind CSS
-        that can provide everything you need to generate awareness, drive traffic, connect.</p>
-    </div>
-    <div class="grid gap-8 row-gap-5 sm:grid-cols-2 lg:grid-cols-3">
-
-      <app-card></app-card>
-      <app-card></app-card>
-      <app-card></app-card>
-      <app-card></app-card>
-      <app-card></app-card>
-      <app-card></app-card>
     </div>
 
-  </div>
+
+  </section>
+}
 
 
-</section>
 
 
-<section class="bg-white dark:bg-gray-900">
-  <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
-    <div class="mx-auto max-w-screen-sm text-center">
-      <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Explore our tools</h2>
-      <p class="mb-8 font-light text-gray-500 lg:mb-16 sm:text-xl dark:text-gray-400">Start working with Tailwind CSS
-        that can provide everything you need to generate awareness, drive traffic, connect.</p>
-    </div>
-    <div class="grid gap-8 row-gap-5 sm:grid-cols-2 lg:grid-cols-3">
 
-      <app-card></app-card>
-      <app-card></app-card>
-      <app-card></app-card>
-      <app-card></app-card>
-      <app-card></app-card>
-      <app-card></app-card>
-    </div>
-
-  </div>
-
-
-</section>

@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { Product } from '../../../../domain/model/product.model';
 
 @Component({
   selector: 'app-card',
@@ -9,5 +10,5 @@ import { RouterLink } from '@angular/router';
   styleUrl: './card.component.scss'
 })
 export class CardComponent {
-
+  @Input() product!: Product;
 }

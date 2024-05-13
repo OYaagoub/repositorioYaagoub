@@ -98,15 +98,36 @@
       <p class="mb-8 font-light text-gray-500 lg:mb-16 sm:text-xl dark:text-gray-400"></p>
     </div>
     <div class="grid gap-8 row-gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      @for(product of products; track product){
 
-      <app-card></app-card>
-      <app-card></app-card>
-      <app-card></app-card>
-      <app-card></app-card>
-      <app-card></app-card>
-      <app-card></app-card>
+        <app-card [product]="product"></app-card>
+      }
+
     </div>
 
+  </div>
+  <div class="mx-auto flex flex-row justify-center items-center">
+
+    <nav aria-label="Page navigation example ">
+      <ul class="inline-flex -space-x-px text-base h-10 mx-auto">
+        <li>
+          <button  data-number="0"  (click)="pageIndexFunction($event)" class="flex items-center justify-center px-4 h-10 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</button>
+        </li>
+        <li>
+          <button  data-number="1" (click)="pageIndexFunction($event)" class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</button>
+        </li>
+        <li>
+          <button data-number="2" (click)="pageIndexFunction($event)" class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">2</button>
+        </li>
+
+        <li>
+          <button  data-number="3" (click)="pageIndexFunction($event)" class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">3</button>
+        </li>
+        <li>
+          <button  data-number="4" (click)="pageIndexFunction($event)" class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</button>
+        </li>
+      </ul>
+    </nav>
   </div>
 
 

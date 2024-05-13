@@ -18,6 +18,5 @@ public class RoleDto {
     private long id;
     @JsonView({Views.RoleComplete.class,Views.RoleSample.class})
     private String name;
-    private Set<UserHasRoleDto> users=new LinkedHashSet<>();
-    private Set<RoleHasPermissionDto> permissions = new LinkedHashSet<>();
+
 }

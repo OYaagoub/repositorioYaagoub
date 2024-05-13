@@ -3,6 +3,7 @@ package com.yaagoub.misanuncios.infrastructure.rest.spring.dto;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.yaagoub.misanuncios.domain.Product;
+import com.yaagoub.misanuncios.infrastructure.db.database.model.ProductEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -14,7 +15,7 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @ToString(exclude = {})
-@EqualsAndHashCode(exclude =  {})
+@EqualsAndHashCode(exclude =  {"products"})
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
@@ -23,6 +24,5 @@ public class CategoryDto {
 
     private String name;
 
-
-    private Set<Product> products=new LinkedHashSet<>();
+    Set<ProductDto> products = new LinkedHashSet<>();
 }
