@@ -17,6 +17,9 @@ export class CategoryRepositoryImpl implements CategoryRepository {
 
 
  constructor(private categoryService: CategoryService) {}
+ getAllCategoriesByName(): Observable<string[]> {
+    return this.categoryService.getAllCategoriesByName();
+  }
 
   getAllWithProducts(): Observable<Category[]> {
       return this.categoryService.getCategories();

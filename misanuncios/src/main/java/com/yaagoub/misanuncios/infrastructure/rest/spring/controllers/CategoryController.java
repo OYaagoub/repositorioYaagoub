@@ -35,6 +35,12 @@ public ResponseEntity<Object> getCategories() throws JsonProcessingException {
         response.forEach(System.out::println);
     return ResponseEntity.ok().body(response);
   }
+    @GetMapping("/categories/name")
+    public ResponseEntity<Object> getCategoriesByName() throws JsonProcessingException {
+        var response = categoryService.getAllCategoriesByName();
+        return ResponseEntity.ok().body(response);
+    }
+
 
 
 

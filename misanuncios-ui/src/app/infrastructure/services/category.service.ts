@@ -17,4 +17,8 @@ export class CategoryService {
     const url = `${config['contentUrl']}/categories`;
     return this.http.get<CategoryDto[]>(url).pipe();
   }
+  getAllCategoriesByName(): Observable<string[]> {
+    const url = `${config['contentUrl']}/categories/name`;
+    return this.http.get<string[]>(url).pipe();
+  }
 }

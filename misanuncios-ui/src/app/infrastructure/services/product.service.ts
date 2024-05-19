@@ -22,4 +22,17 @@ export class ProductService {
       map(productsDto => productsDto.map(ProductMapper.toDomain))
     );
   }
+  getAllProductsBySearch(search:string): Observable<Product[]> {
+    const url = `${config['contentUrl']}/products/search?query=${search}`;
+    return this.http.get<ProductDto[]>(url).pipe(
+      map(productsDto => productsDto.map(ProductMapper.toDomain))
+    );
+  }
+  getAllProductsByCategories(categoriesName:string[]): Observable<Product[]> {
+    const url = `${config['contentUrl']}/products/search/categories?query=${categoriesName.join(',')}`;
+    return this.http.get<ProductDto[]>(url).pipe(
+      map(productsDto => productsDto.map(ProductMapper.toDomain))
+    );
+  }
+
 }

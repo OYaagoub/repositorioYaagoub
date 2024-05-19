@@ -18,5 +18,10 @@ public class ProductService {
     public List<Product> getAllProducts(Pageable pageable){
         return (List<Product>) productRepository.getAllProducts(pageable);
     };
-
+    public List<Product> getProductsBySearch(String search){
+        return (List<Product>) productRepository.getProductsBySearch(search);
+    };
+    public  List<Product> getProductsByCategoryName(String name){
+        return (List<Product>) productRepository.getProductsByCategoryName(name);
+    }
 }

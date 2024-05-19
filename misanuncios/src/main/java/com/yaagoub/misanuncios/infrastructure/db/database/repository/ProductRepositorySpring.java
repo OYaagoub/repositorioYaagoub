@@ -27,4 +27,20 @@ public class ProductRepositorySpring implements ProductRepository {
                 }
         ).collect(Collectors.toList());
     }
+
+    @Override
+    public Iterable<Product> getProductsBySearch(String search) {
+        return springDataProductRepository.findAllBySearch(search).stream().map(
+                productEntity -> {
+                    return productEntityMapper.toDomain(productEntity,context);
+                }
+        ).collect(Collectors.toList());
+    }
+
+    @Override
+    public Iterable<Product> getProductsByCategoryName(String name) {
+        return springDataProductRepository.getProductsByCategoryName(name).stream()
+                .map(productEntity -> productEntityMapper.toDomain(productEntity,context))
+                .collect(Collectors.toList());
+    }
 }

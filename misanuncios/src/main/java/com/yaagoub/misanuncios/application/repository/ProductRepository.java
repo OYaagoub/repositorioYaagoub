@@ -6,4 +6,7 @@ import org.springframework.data.domain.Pageable;
 
 public interface ProductRepository {
     Iterable<Product> getAllProducts(Pageable pageable);
+    Iterable<Product> getProductsBySearch(String search);
+
+    Iterable<Product> getProductsByCategoryName(String name);
 }

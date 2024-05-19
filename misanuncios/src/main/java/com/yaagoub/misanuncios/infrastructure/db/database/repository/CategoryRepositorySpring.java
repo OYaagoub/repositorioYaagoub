@@ -24,4 +24,9 @@ public class CategoryRepositorySpring implements CategoryRepository {
         return springDataCategoryRepository.findAll().stream().map(categoryEntity ->
                 categoryEntityMapper.toDomain(categoryEntity,context)).collect(Collectors.toList());
     }
+
+    @Override
+    public Iterable<String> getAllCategoriesByName() {
+        return springDataCategoryRepository.getAllCategoriesByName();
+    }
 }

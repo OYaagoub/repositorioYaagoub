@@ -4,4 +4,6 @@ import com.yaagoub.misanuncios.domain.Category;
 
 public interface CategoryRepository {
     Iterable<Category> getAllCategories();
+    Iterable<String> getAllCategoriesByName();
+
 }

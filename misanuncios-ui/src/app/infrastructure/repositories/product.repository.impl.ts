@@ -20,6 +20,13 @@ export class ProductRepositoryImpl implements ProductRepository {
 
 
  constructor(private productService: ProductService) {}
+  getAllProductsByCategories(categoriesName: string[]): Observable<Product[]> {
+    return this.productService.getAllProductsByCategories(categoriesName);
+  }
+
+  getAllProductsBySearch(search: string): Observable<Product[]> {
+    return this.productService.getAllProductsBySearch(search);
+  }
   getAllProducts(pageIndex:number ,pageSize:number): Observable<Product[]> {
     return this.productService.getProducts(pageIndex,pageSize);
   }

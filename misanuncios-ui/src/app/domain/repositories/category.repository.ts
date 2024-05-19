@@ -10,6 +10,8 @@ import { Category } from "../model/category.model";
 export abstract class CategoryRepository {
 
   abstract getAllWithProducts(): Observable<Category[]>;
+  abstract getAllCategoriesByName(): Observable<string[]>;
+  
 
 
 
