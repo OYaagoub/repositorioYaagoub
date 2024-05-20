@@ -7,6 +7,8 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.util.Date;
+
 @Data
 @NoArgsConstructor
 @ToString(exclude = {"user"})
@@ -19,5 +21,6 @@ public class Notification {
     private String message;
 
     private User user;
+    private Date sendAt;
 
 }

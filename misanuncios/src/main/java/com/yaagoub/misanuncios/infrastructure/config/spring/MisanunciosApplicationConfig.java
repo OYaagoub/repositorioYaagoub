@@ -18,6 +18,7 @@ public class MisanunciosApplicationConfig {
      private final UserHasRoleRepository userHasRoleRepository;
      private final CategoryRepository categoryRepository;
      private final ProductRepository productRepository;
+     private final NotificationRepository notificationRepository;
      @Bean
      RoleService roleService(){
          return new RoleService(roleRepository);
@@ -46,6 +47,9 @@ public class MisanunciosApplicationConfig {
     ProductService productService(){
         return new ProductService(productRepository);
     }
-
+    @Bean
+    NotificationService notificationService(){
+         return new NotificationService(notificationRepository);
+    }
 
 }

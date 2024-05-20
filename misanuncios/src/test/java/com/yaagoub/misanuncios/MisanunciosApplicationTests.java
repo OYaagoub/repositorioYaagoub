@@ -11,14 +11,16 @@ import com.yaagoub.misanuncios.infrastructure.db.database.model.RoleEntity;
 import com.yaagoub.misanuncios.infrastructure.db.database.model.UserEntity;
 import com.yaagoub.misanuncios.infrastructure.db.database.repository.*;
 
-import com.yaagoub.misanuncios.infrastructure.rest.spring.dto.CategoryDto;
 import com.yaagoub.misanuncios.infrastructure.rest.spring.mapper.CategoryDtoMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 
@@ -27,6 +29,8 @@ import java.util.stream.Collectors;
 class MisanunciosApplicationTests {
 	@Autowired
 	private   SpringDataRoleRepository springDataRoleRepository;
+	@Autowired
+	private  SpringDataNotificationRepository springDataNotificationRepository;
 	@Autowired
 	private RoleEntityMapper roleEntityMapper;
 
@@ -64,6 +68,27 @@ class MisanunciosApplicationTests {
 
 
 
+	}
+	@Test
+	void setDateToNotification(){
+		AtomicInteger id= new AtomicInteger(50);
+		springDataNotificationRepository.findAll().stream().forEach(
+				notificationEntity -> {
+					System.out.println("----------antes---------");
+					System.out.println(notificationEntity);
+
+                    try {
+                        notificationEntity.setSendAt(new SimpleDateFormat("yyyy-MM-dd HH:mm").parse("2017-12-15 10:"+ (id.decrementAndGet())));
+                    } catch (ParseException e) {
+                        throw new RuntimeException(e);
+                    }
+					springDataNotificationRepository.save(notificationEntity);
+					System.out.println("----------despues---------");
+					System.out.println(notificationEntity);
+
+
+                }
+		);
 	}
 	@Test
 	void ShowCategoryEntity(){

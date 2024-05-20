@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.Date;
+
 @Getter
 @Setter
 @ToString
@@ -19,6 +21,9 @@ public class NotificationEntity {
 
 
     private String message;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date sendAt;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
