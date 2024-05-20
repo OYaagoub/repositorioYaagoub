@@ -1,7 +1,7 @@
-import { CategoryDto } from "../../infrastructure/dto/category.dto";
-import { ImageDto } from "../../infrastructure/dto/image.dto";
-import { Category } from "../model/category.model";
-import { Image } from "../model/image.model";
+import { CategoryDto } from "../dto/category.dto";
+import { ImageDto } from "../dto/image.dto";
+import { Category } from "../../domain/model/category.model";
+import { Image } from "../../domain/model/image.model";
 import { ProductMapper } from "./product.mapper";
 export class CategoryMapper {
   static toDomain(dto: CategoryDto): Category {

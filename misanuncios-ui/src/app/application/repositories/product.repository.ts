@@ -1,10 +1,10 @@
 import { Observable } from "rxjs";
-import { Role } from "../model/role.model";
-import { User } from "../model/user.model";
+import { Role } from "../../domain/model/role.model";
+import { User } from "../../domain/model/user.model";
 import { LoginResponse } from "../../infrastructure/dto/loginResponse.dto";
 import { UserDto } from "../../infrastructure/dto/user.dto";
-import { Category } from "../model/category.model";
-import { Product } from "../model/product.model";
+import { Category } from "../../domain/model/category.model";
+import { Product } from "../../domain/model/product.model";
 
 
 

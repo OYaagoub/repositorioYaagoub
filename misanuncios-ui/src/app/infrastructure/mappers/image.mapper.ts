@@ -1,5 +1,5 @@
-import { ImageDto } from "../../infrastructure/dto/image.dto";
-import { Image } from "../model/image.model";
+import { ImageDto } from "../dto/image.dto";
+import { Image } from "../../domain/model/image.model";
 import { ProductMapper } from "./product.mapper";
 export class ImageMapper {
   static toDomain(dto: ImageDto): Image {

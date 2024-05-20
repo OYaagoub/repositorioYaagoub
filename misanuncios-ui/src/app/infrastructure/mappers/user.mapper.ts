@@ -1,9 +1,9 @@
-import { ProductDto } from "../../infrastructure/dto/product.dto";
-import { RoleDto } from "../../infrastructure/dto/role.dto";
-import { UserDto } from "../../infrastructure/dto/user.dto";
-import { Product } from "../model/product.model";
-import { Role } from "../model/role.model";
-import { User } from "../model/user.model";
+import { ProductDto } from "../dto/product.dto";
+import { RoleDto } from "../dto/role.dto";
+import { UserDto } from "../dto/user.dto";
+import { Product } from "../../domain/model/product.model";
+import { Role } from "../../domain/model/role.model";
+import { User } from "../../domain/model/user.model";
 import { ConversationMapper } from "./conversation.mapper";
 import { NotificationMapper } from "./notification.mapper";
 import { ProductMapper } from "./product.mapper";
@@ -40,7 +40,7 @@ export class UserMapper {
     password:domain.password,
     remember_token:domain.remember_token,
     email_verified_at:domain.email_verified_at,
-    
+
 
   };
  }

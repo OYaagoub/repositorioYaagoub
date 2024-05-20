@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CardComponent } from '../../../products/components/card-product/card.component';
-import { CategoryRepository } from '../../../../domain/repositories/category.repository';
+import { CategoryRepository } from '../../../../application/repositories/category.repository';
 import { CategoryRepositoryImpl } from '../../../../infrastructure/repositories/category.repository.impl';
 import { Category } from '../../../../domain/model/category.model';
 

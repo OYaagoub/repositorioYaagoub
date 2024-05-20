@@ -1,5 +1,5 @@
 import { Observable } from "rxjs";
-import { Role } from "../model/role.model";
+import { Role } from "../../domain/model/role.model";
 import { RoleDto } from "../../infrastructure/dto/role.dto";
 
 

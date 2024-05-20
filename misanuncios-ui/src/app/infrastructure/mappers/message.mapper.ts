@@ -1,9 +1,9 @@
-import { CategoryDto } from "../../infrastructure/dto/category.dto";
-import { ImageDto } from "../../infrastructure/dto/image.dto";
-import { MessageDto } from "../../infrastructure/dto/message.dto";
-import { Category } from "../model/category.model";
-import { Image } from "../model/image.model";
-import { Message } from "../model/message.model";
+import { CategoryDto } from "../dto/category.dto";
+import { ImageDto } from "../dto/image.dto";
+import { MessageDto } from "../dto/message.dto";
+import { Category } from "../../domain/model/category.model";
+import { Image } from "../../domain/model/image.model";
+import { Message } from "../../domain/model/message.model";
 import { ConversationMapper } from "./conversation.mapper";
 import { ProductMapper } from "./product.mapper";
 import { UserMapper } from "./user.mapper";

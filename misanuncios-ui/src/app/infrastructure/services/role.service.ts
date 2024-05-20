@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 
 import { Observable, map } from 'rxjs';
 import { Role } from '../../domain/model/role.model';
-import { RoleMapper } from '../../domain/mappers/role.mapper';
+import { RoleMapper } from '../mappers/role.mapper';
 import { RoleDto } from '../dto/role.dto';
 import { config } from '../config/config';
 

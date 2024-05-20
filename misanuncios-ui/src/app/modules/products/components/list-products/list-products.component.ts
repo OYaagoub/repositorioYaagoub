@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { CardComponent } from '../card-product/card.component';
 import { ProductService } from '../../../../infrastructure/services/product.service';
 import { Product } from '../../../../domain/model/product.model';
-import { CategoryRepository } from '../../../../domain/repositories/category.repository';
+import { CategoryRepository } from '../../../../application/repositories/category.repository';
 import { CategoryRepositoryImpl } from '../../../../infrastructure/repositories/category.repository.impl';
-import { ProductRepository } from '../../../../domain/repositories/product.repository';
+import { ProductRepository } from '../../../../application/repositories/product.repository';
 import { ProductRepositoryImpl } from '../../../../infrastructure/repositories/product.repository.impl';
 
 @Component({

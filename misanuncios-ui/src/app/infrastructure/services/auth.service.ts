@@ -4,7 +4,7 @@ import { BehaviorSubject, Observable, catchError, map, of, shareReplay, tap, thr
 import { User } from '../../domain/model/user.model';
 import { UserDto } from '../dto/user.dto';
 import { LoginResponse } from '../dto/loginResponse.dto';
-import { UserMapper } from '../../domain/mappers/user.mapper';
+import { UserMapper } from '../mappers/user.mapper';
 import { config } from '../config/config';
 import moment from "moment";
 import { CookieService } from 'ngx-cookie-service';

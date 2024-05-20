@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthRepository } from '../../../../domain/repositories/auth.repository';
+import { AuthRepository } from '../../../../application/repositories/auth.repository';
 import { AuthRepositoryImpl } from '../../../../infrastructure/repositories/auth.repository.impl';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -17,7 +17,9 @@ export class LoginComponent {
   loginForm!: FormGroup;
 
   constructor(private formBuilder: FormBuilder,private authRepository: AuthRepository,private router: Router) {}
+
   ngOnInit(): void {
+
     this.loginForm = this.formBuilder.group({
       password: ['',[Validators.min(3),Validators.required]],
       email: ['', [Validators.required, Validators.email]],

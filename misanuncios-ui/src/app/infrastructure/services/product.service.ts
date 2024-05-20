@@ -3,13 +3,13 @@ import { Injectable } from '@angular/core';
 import { Observable, catchError, map, of } from 'rxjs';
 import { User } from '../../domain/model/user.model';
 import { UserDto } from '../dto/user.dto';
-import { UserMapper } from '../../domain/mappers/user.mapper';
+import { UserMapper } from '../mappers/user.mapper';
 import { config } from '../config/config';
 import { Category } from '../../domain/model/category.model';
 import { CategoryDto } from '../dto/category.dto';
 import { Product } from '../../domain/model/product.model';
 import { ProductDto } from '../dto/product.dto';
-import { ProductMapper } from '../../domain/mappers/product.mapper';
+import { ProductMapper } from '../mappers/product.mapper';
 
 @Injectable({
   providedIn: 'root',

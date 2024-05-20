@@ -1,6 +1,6 @@
-import { ProductDto } from "../../infrastructure/dto/product.dto";
-import { Product } from "../model/product.model";
-import { User } from "../model/user.model";
+import { ProductDto } from "../dto/product.dto";
+import { Product } from "../../domain/model/product.model";
+import { User } from "../../domain/model/user.model";
 import { CategoryMapper } from "./category.mapper";
 import { ConversationMapper } from "./conversation.mapper";
 import { ImageMapper } from "./image.mapper";

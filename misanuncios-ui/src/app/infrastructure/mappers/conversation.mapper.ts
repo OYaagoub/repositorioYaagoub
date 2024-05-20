@@ -1,9 +1,9 @@
-import { CategoryDto } from "../../infrastructure/dto/category.dto";
-import { ConversationDto } from "../../infrastructure/dto/conversation.dto";
-import { ImageDto } from "../../infrastructure/dto/image.dto";
-import { Category } from "../model/category.model";
-import { Conversation } from "../model/conversation.model";
-import { Image } from "../model/image.model";
+import { CategoryDto } from "../dto/category.dto";
+import { ConversationDto } from "../dto/conversation.dto";
+import { ImageDto } from "../dto/image.dto";
+import { Category } from "../../domain/model/category.model";
+import { Conversation } from "../../domain/model/conversation.model";
+import { Image } from "../../domain/model/image.model";
 import { MessageMapper } from "./message.mapper";
 import { ProductMapper } from "./product.mapper";
 import { UserMapper } from "./user.mapper";
@@ -21,7 +21,7 @@ export class ConversationMapper {
   static toDto(domain: Conversation): ConversationDto {
     return {
       id: domain.id,
-     
+
       product:ProductMapper.toDto(domain.product),
       sender:UserMapper.toDto(domain.sender)
 
