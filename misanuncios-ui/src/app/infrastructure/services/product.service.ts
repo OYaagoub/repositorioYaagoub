@@ -35,4 +35,21 @@ export class ProductService {
     );
   }
 
+  getProductsByUser() :Observable<Product[]> {
+    const url = `${config['contentUrl']}/products/mine`;
+    return this.http.get<ProductDto[]>(url).pipe(
+      map(productsDto => productsDto.map(ProductMapper.toDomain))
+    )
+
+  }
+  save(product:Product):Observable<Product> {
+    const url = `${config['contentUrl']}/products/new`;
+    return this.http.post<ProductDto>(url,ProductMapper.toDto(product)).pipe(
+      map(productDto => ProductMapper.toDomain(productDto))
+    );
+  }
+  delete(productId:number):Observable<void> {
+    const url = `${config['contentUrl']}/products/delete/${productId}`;
+    return this.http.delete<void>(url);
+  }
 }

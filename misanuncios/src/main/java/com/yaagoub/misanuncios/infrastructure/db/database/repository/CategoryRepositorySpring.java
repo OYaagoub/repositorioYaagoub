@@ -29,4 +29,9 @@ public class CategoryRepositorySpring implements CategoryRepository {
     public Iterable<String> getAllCategoriesByName() {
         return springDataCategoryRepository.getAllCategoriesByName();
     }
+
+    @Override
+    public Category findByName(String name) {
+        return categoryEntityMapper.toDomain(springDataCategoryRepository.getByName(name),context);
+    }
 }

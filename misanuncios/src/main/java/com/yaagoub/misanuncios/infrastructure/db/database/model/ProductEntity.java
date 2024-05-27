@@ -1,6 +1,7 @@
 package com.yaagoub.misanuncios.infrastructure.db.database.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.yaagoub.misanuncios.domain.Image;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -32,6 +33,8 @@ public class ProductEntity {
     @JoinColumn(name = "category_id")
     private CategoryEntity category;
 
+    @OneToMany(fetch = FetchType.EAGER ,cascade = CascadeType.ALL,mappedBy = "product",orphanRemoval = true)
+    private Set<ImageEntity> images = new LinkedHashSet<>();
     @Override
     public String toString() {
         return "ProductEntity{" +

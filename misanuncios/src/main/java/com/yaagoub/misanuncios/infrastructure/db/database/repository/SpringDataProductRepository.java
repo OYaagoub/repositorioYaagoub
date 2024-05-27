@@ -15,6 +15,8 @@ public interface SpringDataProductRepository extends JpaRepository<ProductEntity
     @Query("SELECT p FROM ProductEntity p WHERE p.title  LIKE %:search%")
     List<ProductEntity> findAllBySearch(@Param("search") String search);
 
+    @Query("SELECT p FROM ProductEntity p WHERE  p.user.id= :idUser ")
+    List<ProductEntity> getProductsEntityByUser(@Param("idUser")  Long idUser);
     @Query("SELECT p FROM ProductEntity p WHERE p.category.name Like %:name%")
     List<ProductEntity> getProductsByCategoryName(@Param("name") String name);
 }

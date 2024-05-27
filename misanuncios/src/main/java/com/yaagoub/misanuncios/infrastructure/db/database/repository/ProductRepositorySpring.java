@@ -43,4 +43,26 @@ public class ProductRepositorySpring implements ProductRepository {
                 .map(productEntity -> productEntityMapper.toDomain(productEntity,context))
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public Iterable<Product> getProductsByUser(Long idUser) {
+        return springDataProductRepository.getProductsEntityByUser(idUser).stream()
+                .map(productEntity -> productEntityMapper.toDomain(productEntity,context))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public Product save(Product product) {
+        return productEntityMapper.toDomain(springDataProductRepository.save(productEntityMapper.toEntity(product,context)),context);
+    }
+
+    @Override
+    public void delete(Product product) {
+        springDataProductRepository.delete(productEntityMapper.toEntity(product,context));
+    }
+
+    @Override
+    public Product find(long idProduct) {
+        return productEntityMapper.toDomain(springDataProductRepository.getReferenceById(idProduct),context);
+    }
 }

@@ -6,4 +6,6 @@ public interface CategoryRepository {
     Iterable<Category> getAllCategories();
     Iterable<String> getAllCategoriesByName();
 
+    Category findByName(String name);
+
 }

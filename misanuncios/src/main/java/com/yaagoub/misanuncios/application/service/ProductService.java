@@ -24,4 +24,18 @@ public class ProductService {
     public  List<Product> getProductsByCategoryName(String name){
         return (List<Product>) productRepository.getProductsByCategoryName(name);
     }
+    public  List<Product> getProductsByUser(Long idUser){
+        return (List<Product>) productRepository.getProductsByUser(idUser);
+
+    }
+    public Product save(Product product){
+        return productRepository.save(product);
+    }
+    public  void delete(Product product){
+        productRepository.delete(product);
+    }
+
+    public Product find(long idProduct){
+        return productRepository.find(idProduct);
+    }
 }

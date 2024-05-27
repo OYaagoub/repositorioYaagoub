@@ -16,7 +16,10 @@ public class ImageEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
+    
+    //@Column(columnDefinition = "TEXT")
+    @Lob
+    @Column(columnDefinition = "LONGTEXT")
     private String path;
 
     @ManyToOne

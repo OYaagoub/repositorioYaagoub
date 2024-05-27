@@ -17,6 +17,5 @@ import lombok.ToString;
 public class Image {
     private long id;
     private String path;
-
     private Product product;
 }

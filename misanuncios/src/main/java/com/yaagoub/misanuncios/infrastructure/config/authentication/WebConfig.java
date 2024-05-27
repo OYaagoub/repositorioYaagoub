@@ -12,17 +12,17 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.List;
 
-@Configuration
-@EnableWebMvc
-public class WebConfig implements WebMvcConfigurer {
-
-    @Bean
-    public Gson gson() {
-        return new Gson();
-    }
-
-    @Override
-    public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
-        converters.add(new GsonHttpMessageConverter(gson()));
-    }
-}
+//@Configuration
+//@EnableWebMvc
+//public class WebConfig implements WebMvcConfigurer {
+//
+//    @Bean
+//    public Gson gson() {
+//        return new Gson();
+//    }
+//
+//    @Override
+//    public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+//        converters.add(new GsonHttpMessageConverter(gson()));
+//    }
+//}

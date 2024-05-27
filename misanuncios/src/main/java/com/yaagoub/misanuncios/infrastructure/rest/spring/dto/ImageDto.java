@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
-@EqualsAndHashCode(exclude = { "productDto"})
+@EqualsAndHashCode(exclude = { "product"})
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
@@ -14,5 +14,5 @@ public class ImageDto {
     private long id;
     private String path;
 
-    private ProductDto productDto;
+    private ProductDto product;
 }

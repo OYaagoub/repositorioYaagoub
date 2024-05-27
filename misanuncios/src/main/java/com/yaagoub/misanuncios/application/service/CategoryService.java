@@ -18,5 +18,7 @@ public class CategoryService {
     public List<String> getAllCategoriesByName(){
         return (List<String>) categoryRepository.getAllCategoriesByName();
     }
-
+    public Category findByName(String name){
+        return categoryRepository.findByName(name);
+    }
 }

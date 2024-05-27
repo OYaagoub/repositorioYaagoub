@@ -18,5 +18,6 @@ public class ProductDto {
     private String description;
     private String price;
     private UserDto userDto;
+    private CategoryDto categoryDto;
 
 }

@@ -9,4 +9,12 @@ public interface ProductRepository {
     Iterable<Product> getProductsBySearch(String search);
 
     Iterable<Product> getProductsByCategoryName(String name);
+
+    Iterable<Product> getProductsByUser(Long idUser);
+
+    Product save(Product product);
+
+    void delete(Product product);
+
+    Product find(long idProduct);
 }

@@ -20,6 +20,15 @@ export class ProductRepositoryImpl implements ProductRepository {
 
 
  constructor(private productService: ProductService) {}
+  delete(id: number): Observable<void> {
+    return this.productService.delete(id);
+  }
+  save(product: Product): Observable<Product> {
+    return  this.productService.save(product);
+  }
+  getProductByUser(): Observable<Product[]> {
+    return this.productService.getProductsByUser();
+  }
   getAllProductsByCategories(categoriesName: string[]): Observable<Product[]> {
     return this.productService.getAllProductsByCategories(categoriesName);
   }

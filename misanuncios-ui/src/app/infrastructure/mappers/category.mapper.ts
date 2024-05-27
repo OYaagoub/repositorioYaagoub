@@ -8,7 +8,7 @@ export class CategoryMapper {
     return {
       id: dto.id,
       name:dto.name,
-      products: dto.products.map(ProductMapper.toDomain),
+      products: dto.products ? dto.products.map(ProductMapper.toDomain) : null,
 
 
 
@@ -19,7 +19,7 @@ export class CategoryMapper {
     return {
       id: domain.id,
       name:domain.name,
-      products: domain.products.map(ProductMapper.toDto),
+      products: domain.products ? domain.products.map(ProductMapper.toDto) : null,
 
 
 
