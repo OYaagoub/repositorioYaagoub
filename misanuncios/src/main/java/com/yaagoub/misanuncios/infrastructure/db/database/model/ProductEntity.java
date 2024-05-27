@@ -3,16 +3,12 @@ package com.yaagoub.misanuncios.infrastructure.db.database.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.yaagoub.misanuncios.domain.Image;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
-@Getter
-@Setter
 
+@Data
 @RequiredArgsConstructor
 @Entity
 @Table(name = "products")
@@ -35,13 +31,5 @@ public class ProductEntity {
 
     @OneToMany(fetch = FetchType.EAGER ,cascade = CascadeType.ALL,mappedBy = "product",orphanRemoval = true)
     private Set<ImageEntity> images = new LinkedHashSet<>();
-    @Override
-    public String toString() {
-        return "ProductEntity{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", price='" + price + '\'' +
-                '}';
-    }
+
 }

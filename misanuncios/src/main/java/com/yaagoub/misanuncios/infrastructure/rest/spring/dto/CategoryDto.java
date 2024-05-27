@@ -13,8 +13,8 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Data
+@ToString(exclude = {"products"})
 @NoArgsConstructor
-@ToString(exclude = {})
 @EqualsAndHashCode(exclude =  {"products"})
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,

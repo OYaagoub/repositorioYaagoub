@@ -8,7 +8,8 @@ import lombok.EqualsAndHashCode;
 import java.util.LinkedHashSet;
 import java.util.Set;
 @Data
-@EqualsAndHashCode(exclude = { "userDto"})
+@EqualsAndHashCode(exclude = { "user","category"})
+
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
@@ -17,7 +18,7 @@ public class ProductDto {
     private String title;
     private String description;
     private String price;
-    private UserDto userDto;
-    private CategoryDto categoryDto;
+    private UserDto user;
+    private CategoryDto category;
 
 }

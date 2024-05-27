@@ -104,7 +104,7 @@ public ResponseEntity<Object> getProducts(@RequestParam int page, @RequestParam 
         if(this.getAuthentication() instanceof User user){
             Product product= productDtoMapper.toDomain(productDto,context);
             product.setUser(user);
-            product.setCategory(categoryService.findByName(productDto.getCategoryDto().getName()));
+            product.setCategory(categoryService.findByName(productDto.getCategory().getName()));
            return ResponseEntity.ok().body(productDtoMapper.toDto(productService.save(product),context));
 
         }else {
@@ -112,6 +112,12 @@ public ResponseEntity<Object> getProducts(@RequestParam int page, @RequestParam 
         }
     }
 
+    @GetMapping("/products/{id}")
+    public ResponseEntity<Object> getProductById(@PathVariable long id){
+        Product product = productService.find(id);
+        System.out.println(product);
+        return  ResponseEntity.ok().body(productDtoMapper.toDto(product,context));
+    }
     @DeleteMapping("/products/delete/{idProduct}")
     public ResponseEntity<Object> deleteProduct(@PathVariable long idProduct) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();

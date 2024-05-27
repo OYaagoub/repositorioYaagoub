@@ -8,7 +8,7 @@ import lombok.EqualsAndHashCode;
 import java.util.Date;
 
 @Data
-@EqualsAndHashCode(exclude = { "userDto"})
+@EqualsAndHashCode(exclude = { "user"})
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
@@ -16,6 +16,6 @@ public class NotificationDto {
     private long id;
     private String message;
     private Date sendAt;
-    private UserDto userDto;
+    private UserDto user;
 
 }

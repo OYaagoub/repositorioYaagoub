@@ -150,42 +150,49 @@ class MisanunciosApplicationTests {
 		car1.setTitle("Toyota Camry");
 		car1.setDescription("A reliable sedan with great fuel efficiency.");
 		car1.setUser(user);
+		car1.setPrice("4.434");
 		car1.setCategory(category);
 
 		ProductEntity car2 = new ProductEntity();
 		car2.setTitle("Honda Civic");
 		car2.setDescription("A compact car known for its practicality and reliability.");
 		car2.setUser(user);
+		car2.setPrice("3.434");
 		car2.setCategory(category);
 
 		ProductEntity car3 = new ProductEntity();
 		car3.setTitle("Ford Mustang");
 		car3.setDescription("An iconic American muscle car with powerful performance.");
 		car3.setUser(user);
+		car3.setPrice("2.434");
 		car3.setCategory(category);
 
 		ProductEntity car4 = new ProductEntity();
 		car4.setTitle("BMW 3 Series");
 		car4.setDescription("A luxury sports sedan offering a balance of performance and comfort.");
 		car4.setUser(user);
+		car4.setPrice("34.434");
 		car4.setCategory(category);
 
 		ProductEntity car5 = new ProductEntity();
 		car5.setTitle("Tesla Model 3");
 		car5.setDescription("An electric sedan with cutting-edge technology and impressive range.");
 		car5.setUser(user);
+		car5.setPrice("46.434");
 		car5.setCategory(category);
 
 		ProductEntity car6 = new ProductEntity();
 		car6.setTitle("Chevrolet Silverado");
 		car6.setDescription("A rugged and versatile pickup truck suitable for work and play.");
 		car6.setUser(user);
+		car6.setPrice("1.434");
 		car6.setCategory(category);
 
 		ProductEntity car7 = new ProductEntity();
 		car7.setTitle("Mercedes-Benz E-Class");
 		car7.setDescription("A luxurious executive sedan known for its comfort and refinement.");
 		car7.setUser(user);
+		car7.setPrice("434.000");
 		car7.setCategory(category);
 
 	// Add the ProductEntity instances to a list or set

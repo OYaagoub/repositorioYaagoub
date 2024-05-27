@@ -16,5 +16,6 @@ export abstract class ProductRepository {
   abstract getProductByUser(): Observable<Product[]>;
   abstract save(product:Product):Observable<Product>;
   abstract delete(id:number):Observable<void>;
+  abstract getProductById(id:number):Observable<Product>;
 
 }

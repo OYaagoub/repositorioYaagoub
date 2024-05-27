@@ -28,11 +28,10 @@ private final CycleAvoidingMappingContext context= new CycleAvoidingMappingConte
 @GetMapping("/categories")
 public ResponseEntity<Object> getCategories() throws JsonProcessingException {
     var response = categoryService.getAllCategories().stream().map(category -> {
-                System.out.println(category);
+
                 return categoryDtoMapper.toDto(category,context);
             })
             .collect(Collectors.toList());
-        response.forEach(System.out::println);
     return ResponseEntity.ok().body(response);
   }
     @GetMapping("/categories/name")

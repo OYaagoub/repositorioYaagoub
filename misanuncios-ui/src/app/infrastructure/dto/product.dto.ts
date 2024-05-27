@@ -13,7 +13,7 @@ export interface  ProductDto {
   user: UserDto | null; // Assuming User model exists
   //conversations: ConversationDto[]; // Assuming Conversation model exists
   //images: ImageDto[] ; // Assuming Image model exists
-  categoryDto:CategoryDto | null;
+  category:CategoryDto | null;
 
 
 }

@@ -5,7 +5,7 @@ import com.yaagoub.misanuncios.infrastructure.rest.spring.dto.ProductDto;
 import org.mapstruct.Context;
 import org.mapstruct.Mapper;
 
-@Mapper(componentModel = "spring", uses = {UserDtoMapper.class})
+@Mapper(componentModel = "spring", uses = {UserDtoMapper.class,CategoryDtoMapper.class})
 public interface ProductDtoMapper {
     ProductDto toDto(Product source, @Context CycleAvoidingMappingContext context);
     Product toDomain(ProductDto source, @Context CycleAvoidingMappingContext context);

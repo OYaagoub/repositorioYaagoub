@@ -14,7 +14,7 @@ export class ProductMapper{
       description: dto.description,
       user:dto.user ? UserMapper.toDto(dto.user) : null ,
       price: dto.price,
-      category :dto.categoryDto ? CategoryMapper.toDomain(dto.categoryDto) : null,
+      category :dto.category ? CategoryMapper.toDomain(dto.category) : null,
 
 
     };
@@ -27,7 +27,7 @@ export class ProductMapper{
       description: domain.description,
       user: domain.user ? UserMapper.toDto(domain.user) : null ,
       price: domain.price,
-      categoryDto :domain.category ? CategoryMapper.toDto(domain.category) : null,
+      category :domain.category ? CategoryMapper.toDto(domain.category) : null,
 
 
     };

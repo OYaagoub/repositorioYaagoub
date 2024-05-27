@@ -52,4 +52,11 @@ export class ProductService {
     const url = `${config['contentUrl']}/products/delete/${productId}`;
     return this.http.delete<void>(url);
   }
+
+  getProductById(id:number):Observable<Product> {
+    const url = `${config['contentUrl']}/products/${id}`;
+    return this.http.get<ProductDto>(url).pipe(
+      map(productDto => ProductMapper.toDomain(productDto))
+    );
+  }
 }

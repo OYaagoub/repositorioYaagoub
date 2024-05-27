@@ -24,6 +24,10 @@ constructor(private productRepository:ProductRepository) {
     return this.productRepository.delete(id);
   }
 
+  getProductById(id:number):Observable<Product>{
+    return this.productRepository.getProductById(id);
+  }
+
 }
 
 

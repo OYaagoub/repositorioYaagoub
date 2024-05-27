@@ -40,7 +40,9 @@ export class ProductRepositoryImpl implements ProductRepository {
     return this.productService.getProducts(pageIndex,pageSize);
   }
 
-
+  getProductById(id: number):Observable<Product>{
+    return this.productService.getProductById(id);
+  }
 
 
 
