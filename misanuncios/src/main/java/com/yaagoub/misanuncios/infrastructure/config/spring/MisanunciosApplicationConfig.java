@@ -20,6 +20,8 @@ public class MisanunciosApplicationConfig {
      private final ProductRepository productRepository;
      private final NotificationRepository notificationRepository;
      private final ImageRepository imageRepository;
+     private final ConversationRepository conversationRepository;
+     private final  MessageRepository messageRepository;
      @Bean
      RoleService roleService(){
          return new RoleService(roleRepository);
@@ -56,6 +58,15 @@ public class MisanunciosApplicationConfig {
     @Bean
     ImageService imageService(){
          return new ImageService(imageRepository);
+    }
+
+    @Bean
+    ConversationService conversationService(){
+         return new ConversationService(conversationRepository);
+    }
+    @Bean
+    MessageService messageService(){
+         return new MessageService(messageRepository);
     }
 
 }

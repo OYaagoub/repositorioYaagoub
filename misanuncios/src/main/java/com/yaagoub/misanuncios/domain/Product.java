@@ -2,6 +2,7 @@ package com.yaagoub.misanuncios.domain;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.yaagoub.misanuncios.infrastructure.rest.spring.dto.ImageDto;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -11,8 +12,8 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 @Data
 @NoArgsConstructor
-@ToString(exclude = {"user","category"})
-@EqualsAndHashCode(exclude =  {"user","category"})
+@ToString(exclude = {"user","category","images"})
+@EqualsAndHashCode(exclude =  {"user","category","images"})
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
@@ -23,5 +24,7 @@ public class Product {
     private String price;
     private User user;
     private Category category;
+
+    private Set<Image> images=new LinkedHashSet<>();
 
 }

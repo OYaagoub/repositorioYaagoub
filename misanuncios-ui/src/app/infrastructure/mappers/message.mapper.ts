@@ -1,12 +1,16 @@
 import { CategoryDto } from "../dto/category.dto";
 import { ImageDto } from "../dto/image.dto";
 import { MessageDto } from "../dto/message.dto";
+import { UserDto } from "../dto/user.dto";
+
 import { Category } from "../../domain/model/category.model";
 import { Image } from "../../domain/model/image.model";
 import { Message } from "../../domain/model/message.model";
 import { ConversationMapper } from "./conversation.mapper";
 import { ProductMapper } from "./product.mapper";
 import { UserMapper } from "./user.mapper";
+import { User } from "../../domain/model/user.model";
+import { Conversation } from "../../domain/model/conversation.model";
 export class MessageMapper {
   static toDomain(dto: MessageDto): Message {
     return {
@@ -14,8 +18,8 @@ export class MessageMapper {
       isRead:dto.isRead,
       message:dto.message,
       sendAt:dto.sendAt,
-      sender:UserMapper.toDomain(dto.sender),
-      conversation:ConversationMapper.toDomain(dto.conversation)
+      sender: dto.sender ? (dto.sender  instanceof  User ? UserMapper.toDomain(dto.sender) : dto.sender) : null,
+      conversation: dto.conversation ? (dto.conversation instanceof Conversation ? ConversationMapper.toDomain(dto.conversation) : dto.conversation) :null
 
 
     };
@@ -27,8 +31,10 @@ export class MessageMapper {
       isRead:domain.isRead,
       message:domain.message,
       sendAt:domain.sendAt,
-      sender:UserMapper.toDto(domain.sender),
-      conversation:ConversationMapper.toDto(domain.conversation)
+      // sender: domain.sender ? UserMapper.toDto(domain.sender) : null,
+      // conversation: domain.conversation ? ConversationMapper.toDto(domain.conversation) :null
+      sender: domain.sender ? (domain.sender  instanceof  User ? UserMapper.toDomain(domain.sender) : domain.sender) : null,
+      conversation: domain.conversation ? (domain.conversation instanceof Conversation ? ConversationMapper.toDomain(domain.conversation) : domain.conversation) :null
 
 
     };

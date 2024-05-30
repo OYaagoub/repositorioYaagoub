@@ -19,27 +19,13 @@ import { ImageRepositoryImpl } from '../../../../infrastructure/repositories/ima
 })
 export class CardComponent {
   @Input() product!: Product;
-  images!: string[];
-  intervalId: any;
-  image!: string;
+
 
   constructor(private imageService: ImageService) {
 
   }
 
-  ngOnInit() {
-    if (this.product) {
 
-      this.imageService.findByProduct(this.product.id).subscribe(image => {
-        this.images = image.map(img => img.path);
-        this.image = this.images[Math.floor(Math.random() * (this.images ? this.images.length : 1))];
-      })
-
-
-    }
-  }
-  ngOnChanges(){
-  }
 
 
 }

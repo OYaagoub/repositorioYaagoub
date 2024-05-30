@@ -15,6 +15,7 @@ export class ProductMapper{
       user:dto.user ? UserMapper.toDto(dto.user) : null ,
       price: dto.price,
       category :dto.category ? CategoryMapper.toDomain(dto.category) : null,
+      images: dto.images ? dto.images.map(image => ImageMapper.toDomain(image)) : [],
 
 
     };
@@ -28,6 +29,7 @@ export class ProductMapper{
       user: domain.user ? UserMapper.toDto(domain.user) : null ,
       price: domain.price,
       category :domain.category ? CategoryMapper.toDto(domain.category) : null,
+      images: domain.images ? domain.images.map(image => ImageMapper.toDto(image)) : [],
 
 
     };

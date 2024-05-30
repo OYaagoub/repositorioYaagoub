@@ -9,5 +9,6 @@ export const config: Config = {
   contentUrl: "http://localhost:8080/api/v3/content",
   authUrl: "http://localhost:8080/api/v3/auth",
   auth: "token",
+  socketUrl: "//localhost:8080/chat",
 };
 

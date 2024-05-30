@@ -11,7 +11,6 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 @Data
 @NoArgsConstructor
-@ToString(exclude = {"sender","product"})
 @EqualsAndHashCode(exclude =  {"sender","product"})
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,

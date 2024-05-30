@@ -1,0 +1,120 @@
+<!-- This is an example component -->
+<div class="w-full h-[10px] mt-6 bg-black"></div>
+<div class=" mx-auto shadow-lg rounded-lg mb-5 md:h-[80vh]">
+
+  <!-- Chatting -->
+  <div class="flex flex-col md:flex-row justify-between bg-white  md:h-[80vh]">
+    <!-- chat list -->
+    <div class="relative flex flex-col w-[95%] mx-auto md:mx-0 md:w-2/5 border-r-2 overflow-y-auto  hidden md:block ">
+      <!-- search compt -->
+      <div class="sticky top-0 border-b-2 py-4 px-2 z-[888888] bg-white dark:bg-gray-500">
+        <input type="text" placeholder="search chatting"
+          class="py-2 px-2 border-2 border-gray-200 rounded-2xl w-full" />
+      </div>
+      <!-- end search compt -->
+      <!-- user list -->
+
+
+      <div
+          class="relative w-full max-w-sm overflow-y-scroll bg-white border border-gray-100 rounded-lg dark:bg-gray-700 dark:border-gray-600 h-100 ">
+          <ul>
+            <!-- item -->
+            @for(conversation of conversations ; track conversation){
+
+              <li class="border-b border:gray-100 dark:border-gray-600 cursor-pointer" (click)="currentProductConversation(conversation.product.id)">
+                <span
+                  class="flex items-center justify-center w-full px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-800">
+                  <img class="me-3 rounded-full w-11 h-11" src="{{ conversation.product.images ? conversation.product.images[0].path : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFQElEQVR4nO2ab0xVdRjHT2vzVb2pXombJRcu3MQSxXLeCYUpAhdNx1ALvdwL9wIXrdUqSJokDkybbU5XbZnWsrYskj8KCPgnqBf92aJavayJ9M4ybWtN56c9XA/S1XvvOb9znR473+2znec5z5/vc5zonJrmyJEjR44cOXJkVOXcOT1C7YwGvk1r4O8ZDXAzEQ9pEb5JayAs3rQbKc8Wps2sp/P+CNyKzIxwWDzeoPO5Y1Yd76fXQXotf6TXsX5GkHuMds+q5T3pLXkLnv/y+pS8CVIjtUbniodZtWy44gnxKF61VCszTKs7DJlhzrtqmWum11PPXZkhLrhrYWMvNI1cn019IDWZYf5yB7jbzA53iBx3mHPi0R1mq5ZKZYcJekLgCXHJU0OZ6f4aAtJf8Aq0DCcmv3liD9Jjdo8nRFF2DRcn+kPUaanQnCBFOUEuzqmGnBrqlWZUc0r6q9+FtlOJqdkHUis9iruCE16ruTQniE+zovkBZs8NcC43CLlBWhUNPZAb5PKCMGwfgNdPJqZ9EB4JT+y7PC9EusrO3ADbxPPcIOfnB8z9dp3UvBD3zfczllcFeVXqP1jy/LwqMyq2we7jxqhondiJ9KrsFK/iWWbIDXKL6REL/byx0A+3BRvYZfoDeNfzq3c93A4squQX0x8gv5JLBZVQbvFvVzJDOHjMHHqfld3iXWbILaabC58CwYqBqXMO9Rvn475oTyr3m25ctg4EPS5aS/HStYzp+Vjk3RPrWB5vTlevcTqPXp1r9QMozylZA8JkXMGYnotH8RpOx5vTd9Q4vUeuzrT6AZTnlFWAEC9OVh+bP95jnKHuaE+ifap3GNaqchDixcnqY/Mj3cYZ7or2JNqneodhla8GIV6crD42/3Wncb7qjPYk2qd6h2GtXQVCvDhZfWx+9PB/6dgDzRujyPPUd999Fu1JtE/1DsN6eiUI8eJk9bH5nzuijOyHlkg0N5XmOji1L1rzU8fVvGnjBn0llX8FCPHiZPWx+R8Pwp4XoerJaOxfwe8bVvCsv4xn5FlyVSth70vww4eTNZY/gPKcoA8EPQ74GNNzcSm99o/BgI+z8i6yOloT8HEx4GNP5Uru1WvkWXLyLqb2rLXzr73DsMKlIOhxTSnLQyWc1vOxyLtQMUXXmbN5sqaUvmofD8bdWYZHaqbMfNm08SR3GFakGAQtBapfimtTCRlm6jcWqf1bQMru2LQcBM3mUr7juWUgaDaX8h0vLAVBs7mU72haAoJVA1vKmda4hNcaC/lNn5mUQsabCtkuvVb3K9/RXAiCVQObC9muzzLN47Rb3a98R8tjIFg10FLAuMzZ38X3BwbACPu6GZ3YX8C45f2qd7QWgGDVQGs+4zLn2KeMnugBI/R/wqj0bM3njOX9qne0LwbBqoG2xbTrsxRos7pf+Y6dXhCsGtjiYdpOL+07vYzrM5Oxw8uZHV7apNfqfuU7di0CQbO5lO/YvRAEzeZSvmPvoyBoNpfyHW8vAEGzuZTveCcPBM3mUr7jwDwQNJtL+Y4PckHQblHp/uIRW2d6wUcPg6DdotL9xSO2zvSCQw+BkKr4ZknZR0cOCKmKb5aUfXTNBiFVsVXp84xi2UdPNheOeOCwm+kSy7OgvzcbW5U+zyjS051Bmjz3ePjT9ML+bI73Z0NfFo2aTdWfRdOVG4ZMNw9kUTrohsFM/hnIpHEwgzTNJhKvA1k0iXe5YSCDEqVBJ1xsO5kBtsal9v8bJ/W5i9JhF0Mj6VwYcYEdGE7nvHj+QvVX3pEjR44cOXKk/R/0L2PhuPYnIQbZAAAAAElFTkSuQmCC'}}"
+                    alt="Jese Leos Avatar">
+                  <div>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">New message from <span
+                        class="font-medium text-gray-900 dark:text-white">{{ conversation.sender.name }}</span>: "Hey, what's up? All set for
+                      the presentation?"</p>
+                    <span class="text-xs text-blue-600 dark:text-blue-500">a few moments ago</span>
+                  </div>
+                </span>
+              </li>
+            }
+            <!-- item -->
+
+          </ul>
+
+        </div>
+      <!-- end user list -->
+    </div>
+    <!-- end chat list -->
+    <!-- message -->
+    <div class="w-full px-5 flex flex-col justify-center items-center overflow-y-auto h-[80vh]">
+      <img class="w-[100px] h-[100px] " src="data:image/png;base64,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">
+      <p class="mt-4 text-center font-bold">Pulsa una Conversacion  </p>
+    </div>
+    <!-- end message -->
+    <div class=" w-[96%] md:w-2/5 border-l-2 px-5 order-1 flex flex-col justify-center items-center">
+      <!-- parte del producto -->
+      <img class="w-[100px] " src="/assets/icons/product.png" alt="">
+      <p class="mt-4 text-center font-bold">Pulsa una Conversacion  </p>
+    </div>
+  </div>
+</div>
+
+<div  class="fixed bottom-10 end-10 group">
+<button (click)="onOpen()" type="button"
+  class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+    <path fill-rule="evenodd" d="M4.848 2.771A49.144 49.144 0 0 1 12 2.25c2.43 0 4.817.178 7.152.52 1.978.292 3.348 2.024 3.348 3.97v6.02c0 1.946-1.37 3.678-3.348 3.97a48.901 48.901 0 0 1-3.476.383.39.39 0 0 0-.297.17l-2.755 4.133a.75.75 0 0 1-1.248 0l-2.755-4.133a.39.39 0 0 0-.297-.17 48.9 48.9 0 0 1-3.476-.384c-1.978-.29-3.348-2.024-3.348-3.97V6.741c0-1.946 1.37-3.68 3.348-3.97ZM6.75 8.25a.75.75 0 0 1 .75-.75h9a.75.75 0 0 1 0 1.5h-9a.75.75 0 0 1-.75-.75Zm.75 2.25a.75.75 0 0 0 0 1.5H12a.75.75 0 0 0 0-1.5H7.5Z" clip-rule="evenodd" />
+  </svg>
+</button>
+</div>
+
+<!-- Main modal -->
+<div
+  class=" overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full {{ isOpen ? 'flex' : 'hidden' }}">
+  <div class="relative p-4 w-full max-w-md max-h-full">
+    <!-- Modal content -->
+    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+      <!-- Modal header -->
+      <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+          Conversaciones
+        </h3>
+        <button (click)="onOpen()" type="button"
+          class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm h-8 w-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+          data-modal-toggle="crypto-modal">
+          <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+          </svg>
+          <span class="sr-only">Close modal</span>
+        </button>
+      </div>
+      <!-- Modal body -->
+      <div class="p-4 md:p-5">
+
+
+        <div
+          class="relative w-full max-w-sm overflow-y-scroll bg-white border border-gray-100 rounded-lg dark:bg-gray-700 dark:border-gray-600 h-96">
+          <ul>
+            @for(conversation of conversations ; track conversation){
+
+              <li class="border-b border:gray-100 dark:border-gray-600 cursor-pointer" (click)="currentProductConversation(conversation.product.id)">
+                <span
+                  class="flex items-center justify-center w-full px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-800">
+                  <img class="me-3 rounded-full w-11 h-11" src="{{ conversation.product.images ? conversation.product.images[0].path : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFQElEQVR4nO2ab0xVdRjHT2vzVb2pXombJRcu3MQSxXLeCYUpAhdNx1ALvdwL9wIXrdUqSJokDkybbU5XbZnWsrYskj8KCPgnqBf92aJavayJ9M4ybWtN56c9XA/S1XvvOb9znR473+2znec5z5/vc5zonJrmyJEjR44cOXJkVOXcOT1C7YwGvk1r4O8ZDXAzEQ9pEb5JayAs3rQbKc8Wps2sp/P+CNyKzIxwWDzeoPO5Y1Yd76fXQXotf6TXsX5GkHuMds+q5T3pLXkLnv/y+pS8CVIjtUbniodZtWy44gnxKF61VCszTKs7DJlhzrtqmWum11PPXZkhLrhrYWMvNI1cn019IDWZYf5yB7jbzA53iBx3mHPi0R1mq5ZKZYcJekLgCXHJU0OZ6f4aAtJf8Aq0DCcmv3liD9Jjdo8nRFF2DRcn+kPUaanQnCBFOUEuzqmGnBrqlWZUc0r6q9+FtlOJqdkHUis9iruCE16ruTQniE+zovkBZs8NcC43CLlBWhUNPZAb5PKCMGwfgNdPJqZ9EB4JT+y7PC9EusrO3ADbxPPcIOfnB8z9dp3UvBD3zfczllcFeVXqP1jy/LwqMyq2we7jxqhondiJ9KrsFK/iWWbIDXKL6REL/byx0A+3BRvYZfoDeNfzq3c93A4squQX0x8gv5JLBZVQbvFvVzJDOHjMHHqfld3iXWbILaabC58CwYqBqXMO9Rvn475oTyr3m25ctg4EPS5aS/HStYzp+Vjk3RPrWB5vTlevcTqPXp1r9QMozylZA8JkXMGYnotH8RpOx5vTd9Q4vUeuzrT6AZTnlFWAEC9OVh+bP95jnKHuaE+ifap3GNaqchDixcnqY/Mj3cYZ7or2JNqneodhla8GIV6crD42/3Wncb7qjPYk2qd6h2GtXQVCvDhZfWx+9PB/6dgDzRujyPPUd999Fu1JtE/1DsN6eiUI8eJk9bH5nzuijOyHlkg0N5XmOji1L1rzU8fVvGnjBn0llX8FCPHiZPWx+R8Pwp4XoerJaOxfwe8bVvCsv4xn5FlyVSth70vww4eTNZY/gPKcoA8EPQ74GNNzcSm99o/BgI+z8i6yOloT8HEx4GNP5Uru1WvkWXLyLqb2rLXzr73DsMKlIOhxTSnLQyWc1vOxyLtQMUXXmbN5sqaUvmofD8bdWYZHaqbMfNm08SR3GFakGAQtBapfimtTCRlm6jcWqf1bQMru2LQcBM3mUr7juWUgaDaX8h0vLAVBs7mU72haAoJVA1vKmda4hNcaC/lNn5mUQsabCtkuvVb3K9/RXAiCVQObC9muzzLN47Rb3a98R8tjIFg10FLAuMzZ38X3BwbACPu6GZ3YX8C45f2qd7QWgGDVQGs+4zLn2KeMnugBI/R/wqj0bM3njOX9qne0LwbBqoG2xbTrsxRos7pf+Y6dXhCsGtjiYdpOL+07vYzrM5Oxw8uZHV7apNfqfuU7di0CQbO5lO/YvRAEzeZSvmPvoyBoNpfyHW8vAEGzuZTveCcPBM3mUr7jwDwQNJtL+Y4PckHQblHp/uIRW2d6wUcPg6DdotL9xSO2zvSCQw+BkKr4ZknZR0cOCKmKb5aUfXTNBiFVsVXp84xi2UdPNheOeOCwm+kSy7OgvzcbW5U+zyjS051Bmjz3ePjT9ML+bI73Z0NfFo2aTdWfRdOVG4ZMNw9kUTrohsFM/hnIpHEwgzTNJhKvA1k0iXe5YSCDEqVBJ1xsO5kBtsal9v8bJ/W5i9JhF0Mj6VwYcYEdGE7nvHj+QvVX3pEjR44cOXKk/R/0L2PhuPYnIQbZAAAAAElFTkSuQmCC'}}"
+                    alt="Jese Leos Avatar">
+                  <div>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">New message from <span
+                        class="font-medium text-gray-900 dark:text-white">{{ conversation.sender.name }}</span>: "Hey, what's up? All set for
+                      the presentation?"</p>
+                    <span class="text-xs text-blue-600 dark:text-blue-500">a few moments ago</span>
+                  </div>
+                </span>
+              </li>
+            }
+          </ul>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

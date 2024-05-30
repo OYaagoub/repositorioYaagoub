@@ -1,10 +1,12 @@
 <!-- This is an example component -->
+<div class="w-full h-[10px] mt-6 bg-black"></div>
 <div class=" mx-auto shadow-lg rounded-lg mb-5 md:h-[80vh]">
 
   <!-- Chatting -->
   <div class="flex flex-col md:flex-row justify-between bg-white  md:h-[80vh]">
     <!-- chat list -->
-    <div class="relative flex flex-col w-[95%] mx-auto md:mx-0 md:w-2/5 border-r-2 overflow-y-auto  hidden md:block ">
+    <button class="z-[999999999999] absolute top-[50%] -left-[20px] m-2 hidden md:block  animate-bounce" (click)="isConversationsListOpen()"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB50lEQVR4nO3ZvWtTURiA8d8gCCKKCK12ER1cVHRx8mMWlAo6aCepu462g/hXOIiLQUHwA9G0g4uTCkIVnBUHt9bgYNEhVawcuIFQYm+S5p5zKeeBd7ovyfvkfL3nhkwmk8lk4jGOaTSwgBba+IkveIu7uIhdasgpNPEbq33GHzzCMTXgAOYHKL5X/MVz7E0lMYXlDUp0xzdMxpaYGaHA2tG5HkviVkUSUWWmKpboljlX5cJejiQSYgljVYjMR5ToxJMqzonVBBGm2OGS2l7jA/b0I9JMJBLiQUlt74q8T9hX1nYMcmKPOlawY536dhftUMj9ioP/S7yaUKIT50tGZTteFbmLONorqVEDkdvK2YaXRf53HF+b0Bm2QSN0vTcwIR5b8az4/h843f2wNaRIaGNSsKXYIEINv3Cm86A9pMhE1/aYclq2i/vP5hFpDfkBs3WbWgsb+CVm67TYG4mnxsi23+kaiEyO4kAc3ywtSuBFQpH71ud9v01j4GTCNv5QSW0fB2njA3MJRB6rgP2Rr7qLVV11A5eL4Y4xpc6qmJsRJK6JxExFIxP1BV2HSyNeM0tVvsvqZwNojmAUnhYHb3JOFIfmygACoVt4iCNqyBiu4F6PP3o+4w3u4AJ2pi42k8lkMhl98g8a8XoIQIRrzgAAAABJRU5ErkJggg=="></button>
+    <div class="relative flex flex-col w-[95%] mx-auto md:mx-0 md:w-2/5 border-r-2 overflow-y-auto  hidden md:block {{ isConversationsListOpened ? 'md:hidden' : '' }}">
       <!-- search compt -->
       <div class="sticky top-0 border-b-2 py-4 px-2 z-[888888] bg-white dark:bg-gray-500">
         <input type="text" placeholder="search chatting"
@@ -15,325 +17,157 @@
 
 
       <div
-          class="relative w-full max-w-sm overflow-y-scroll bg-white border border-gray-100 rounded-lg dark:bg-gray-700 dark:border-gray-600 h-100 ">
-          <ul>
-            <li class="border-b border:gray-100 dark:border-gray-600">
-              <a href="#"
-                class="flex items-center justify-center w-full px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-800">
-                <img class="me-3 rounded-full w-11 h-11" src="https://source.unsplash.com/L2cxSuKWbpo/600x600"
-                  alt="Jese Leos Avatar">
-                <div>
-                  <p class="text-sm text-gray-500 dark:text-gray-400">New message from <span
-                      class="font-medium text-gray-900 dark:text-white">Jese Leos</span>: "Hey, what's up? All set for
-                    the presentation?"</p>
-                  <span class="text-xs text-blue-600 dark:text-blue-500">a few moments ago</span>
-                </div>
-              </a>
-            </li>
-            <li class="border-b border:gray-100 dark:border-gray-600">
-              <a href="#"
-                class="flex items-center justify-center w-full px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-800">
-                <img class="me-3 rounded-full w-11 h-11" src="https://source.unsplash.com/L2cxSuKWbpo/600x600"
-                  alt="Jese Leos Avatar">
-                <div>
-                  <p class="text-sm text-gray-500 dark:text-gray-400">New message from <span
-                      class="font-medium text-gray-900 dark:text-white">Jese Leos</span>: "Hey, what's up? All set for
-                    the presentation?"</p>
-                  <span class="text-xs text-blue-600 dark:text-blue-500">a few moments ago</span>
-                </div>
-              </a>
-            </li>
-            <li class="border-b border:gray-100 dark:border-gray-600">
-              <a href="#"
-                class="flex items-center justify-center w-full px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-800">
-                <img class="me-3 rounded-full w-11 h-11" src="https://source.unsplash.com/L2cxSuKWbpo/600x600"
-                  alt="Jese Leos Avatar">
-                <div>
-                  <p class="text-sm text-gray-500 dark:text-gray-400">New message from <span
-                      class="font-medium text-gray-900 dark:text-white">Jese Leos</span>: "Hey, what's up? All set for
-                    the presentation?"</p>
-                  <span class="text-xs text-blue-600 dark:text-blue-500">a few moments ago</span>
-                </div>
-              </a>
-            </li>
-            <li class="border-b border:gray-100 dark:border-gray-600">
-              <a href="#"
-                class="flex items-center justify-center w-full px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-800">
-                <img class="me-3 rounded-full w-11 h-11" src="https://source.unsplash.com/L2cxSuKWbpo/600x600"
-                  alt="Jese Leos Avatar">
-                <div>
-                  <p class="text-sm text-gray-500 dark:text-gray-400">New message from <span
-                      class="font-medium text-gray-900 dark:text-white">Jese Leos</span>: "Hey, what's up? All set for
-                    the presentation?"</p>
-                  <span class="text-xs text-blue-600 dark:text-blue-500">a few moments ago</span>
-                </div>
-              </a>
-            </li>
-            <li class="border-b border:gray-100 dark:border-gray-600">
-              <a href="#"
-                class="flex items-center justify-center w-full px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-800">
-                <img class="me-3 rounded-full w-11 h-11" src="https://source.unsplash.com/L2cxSuKWbpo/600x600"
-                  alt="Joseph McFall Avatar">
-                <div>
-                  <p class="text-sm text-gray-500 dark:text-gray-400"><span
-                      class="font-medium text-gray-900 dark:text-white">Joseph McFall</span> and <span
-                      class="font-medium text-gray-900 dark:text-white">5 others</span> started following you.</p>
-                  <span class="text-xs text-blue-600 dark:text-blue-500">10 minutes ago</span>
-                </div>
-              </a>
-            </li>
-            <li class="border-b border:gray-100 dark:border-gray-600">
-              <a href="#"
-                class="flex items-center justify-center w-full px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-800">
-                <img class="me-3 rounded-full w-11 h-11" src="https://source.unsplash.com/L2cxSuKWbpo/600x600"
-                  alt="Bonnie Green Avatar">
-                <div>
-                  <p class="text-sm text-gray-500 dark:text-gray-400"><span
-                      class="font-medium text-gray-900 dark:text-white">Bonnie Green</span> and <span
-                      class="font-medium text-gray-900 dark:text-white">141 others</span> love your story. See it and
-                    view more stories.</p>
-                  <span class="text-xs text-blue-600 dark:text-blue-500">23 minutes ago</span>
-                </div>
-              </a>
-            </li>
-            <li class="border-b border:gray-100 dark:border-gray-600">
-              <a href="#"
-                class="flex items-center justify-center w-full px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-800">
-                <img class="me-3 rounded-full w-11 h-11" src="https://source.unsplash.com/L2cxSuKWbpo/600x600"
-                  alt="Leslie Livingston Avatar">
-                <div>
-                  <p class="text-sm text-gray-500 dark:text-gray-400"><span
-                      class="font-medium text-gray-900 dark:text-white">Leslie Livingston</span> mentioned you in a
-                    comment: <span
-                      class="font-medium text-blue-600 dark:text-blue-500 hover:underline">bonnie.green</span> what do
-                    you say?</p>
-                  <span class="text-xs text-blue-600 dark:text-blue-500">23 minutes ago</span>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="#"
-                class="flex items-center justify-center w-full px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-800">
-                <img class="me-3 rounded-full w-11 h-11" src="https://source.unsplash.com/L2cxSuKWbpo/600x600"
-                  alt="Robert Brown Avatar">
-                <div>
-                  <p class="text-sm text-gray-500 dark:text-gray-400"><span
-                      class="font-medium text-gray-900 dark:text-white">Robert Brown</span> posted a new video:
-                    Glassmorphism - learn how to implement the new design trend. </p>
-                  <span class="text-xs text-blue-600 dark:text-blue-500">23 minutes ago</span>
-                </div>
-              </a>
-            </li>
-          </ul>
+        class="relative w-full max-w-sm overflow-y-scroll bg-white border border-gray-100 rounded-lg dark:bg-gray-700 dark:border-gray-600 h-100  ">
+        <ul>
+          <!-- item -->
+          @for(conversation of conversations ; track conversation){
+          <li (click)="routeredToLink(conversation)"
+            class="border-b border:gray-100 dark:border-gray-600 cursor-pointer">
+            <span class="flex items-center justify-center w-full px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-800">
+              <img class="me-3 rounded-full w-11 h-11"
+                src="{{ conversation.product.images ? conversation.product.images[0].path : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFQElEQVR4nO2ab0xVdRjHT2vzVb2pXombJRcu3MQSxXLeCYUpAhdNx1ALvdwL9wIXrdUqSJokDkybbU5XbZnWsrYskj8KCPgnqBf92aJavayJ9M4ybWtN56c9XA/S1XvvOb9znR473+2znec5z5/vc5zonJrmyJEjR44cOXJkVOXcOT1C7YwGvk1r4O8ZDXAzEQ9pEb5JayAs3rQbKc8Wps2sp/P+CNyKzIxwWDzeoPO5Y1Yd76fXQXotf6TXsX5GkHuMds+q5T3pLXkLnv/y+pS8CVIjtUbniodZtWy44gnxKF61VCszTKs7DJlhzrtqmWum11PPXZkhLrhrYWMvNI1cn019IDWZYf5yB7jbzA53iBx3mHPi0R1mq5ZKZYcJekLgCXHJU0OZ6f4aAtJf8Aq0DCcmv3liD9Jjdo8nRFF2DRcn+kPUaanQnCBFOUEuzqmGnBrqlWZUc0r6q9+FtlOJqdkHUis9iruCE16ruTQniE+zovkBZs8NcC43CLlBWhUNPZAb5PKCMGwfgNdPJqZ9EB4JT+y7PC9EusrO3ADbxPPcIOfnB8z9dp3UvBD3zfczllcFeVXqP1jy/LwqMyq2we7jxqhondiJ9KrsFK/iWWbIDXKL6REL/byx0A+3BRvYZfoDeNfzq3c93A4squQX0x8gv5JLBZVQbvFvVzJDOHjMHHqfld3iXWbILaabC58CwYqBqXMO9Rvn475oTyr3m25ctg4EPS5aS/HStYzp+Vjk3RPrWB5vTlevcTqPXp1r9QMozylZA8JkXMGYnotH8RpOx5vTd9Q4vUeuzrT6AZTnlFWAEC9OVh+bP95jnKHuaE+ifap3GNaqchDixcnqY/Mj3cYZ7or2JNqneodhla8GIV6crD42/3Wncb7qjPYk2qd6h2GtXQVCvDhZfWx+9PB/6dgDzRujyPPUd999Fu1JtE/1DsN6eiUI8eJk9bH5nzuijOyHlkg0N5XmOji1L1rzU8fVvGnjBn0llX8FCPHiZPWx+R8Pwp4XoerJaOxfwe8bVvCsv4xn5FlyVSth70vww4eTNZY/gPKcoA8EPQ74GNNzcSm99o/BgI+z8i6yOloT8HEx4GNP5Uru1WvkWXLyLqb2rLXzr73DsMKlIOhxTSnLQyWc1vOxyLtQMUXXmbN5sqaUvmofD8bdWYZHaqbMfNm08SR3GFakGAQtBapfimtTCRlm6jcWqf1bQMru2LQcBM3mUr7juWUgaDaX8h0vLAVBs7mU72haAoJVA1vKmda4hNcaC/lNn5mUQsabCtkuvVb3K9/RXAiCVQObC9muzzLN47Rb3a98R8tjIFg10FLAuMzZ38X3BwbACPu6GZ3YX8C45f2qd7QWgGDVQGs+4zLn2KeMnugBI/R/wqj0bM3njOX9qne0LwbBqoG2xbTrsxRos7pf+Y6dXhCsGtjiYdpOL+07vYzrM5Oxw8uZHV7apNfqfuU7di0CQbO5lO/YvRAEzeZSvmPvoyBoNpfyHW8vAEGzuZTveCcPBM3mUr7jwDwQNJtL+Y4PckHQblHp/uIRW2d6wUcPg6DdotL9xSO2zvSCQw+BkKr4ZknZR0cOCKmKb5aUfXTNBiFVsVXp84xi2UdPNheOeOCwm+kSy7OgvzcbW5U+zyjS051Bmjz3ePjT9ML+bI73Z0NfFo2aTdWfRdOVG4ZMNw9kUTrohsFM/hnIpHEwgzTNJhKvA1k0iXe5YSCDEqVBJ1xsO5kBtsal9v8bJ/W5i9JhF0Mj6VwYcYEdGE7nvHj+QvVX3pEjR44cOXKk/R/0L2PhuPYnIQbZAAAAAElFTkSuQmCC'}}"
+                alt="Jese Leos Avatar">
+              <div>
+                <p class="text-sm text-gray-500 dark:text-gray-400">New message from <span
+                    class="font-medium text-gray-900 dark:text-white">{{ conversation.sender.name }}</span>: "Hey,
+                  what's up? All set for
+                  the presentation?"</p>
+                <span class="text-xs text-blue-600 dark:text-blue-500">a few moments ago</span>
+              </div>
+            </span>
+          </li>
+          }
+          <!-- item -->
 
-        </div>
+        </ul>
+
+      </div>
       <!-- end user list -->
     </div>
     <!-- end chat list -->
     <!-- message -->
     <div class="w-full px-5 flex flex-col justify-between overflow-y-auto h-[80vh]">
       <div class="flex flex-col mt-5 ">
+
+        @for(message of messages;track message){
+        @if(user){
+
+
+
+        @if(isSenderNotCurrentUser(message)){
+
+        <!-- right -->
         <div class="flex justify-end mb-4">
           <div class="mr-2 py-3 px-4 bg-blue-400 rounded-bl-3xl rounded-tl-3xl rounded-tr-xl text-white">
-            Welcome to group everyone !
+            {{ message.message }}
           </div>
-          <img src="https://source.unsplash.com/vpOeXr5wmR4/600x600" class="object-cover h-8 w-8 rounded-full" alt="" />
+          <img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAC+ElEQVR4nO2aS2tTQRSAv1ujFvGxEWtFf4CggtbuhC5EDRV1J8YHiouKS9tQXdSdgqCtKa6697lwpT/AnWg1FHShoqtWq4gumiq+amTgBIbxJt7ktjd34vlgyGUyc+ZM5sw5Z+YGFEVRFEVRFEVRlEQIgC7gCHBGinneJt+1LGuBAvAWKFcp5rurQActRAAMArM1Ju6WEpBvBYtoB26FTHBa6oeBEXmeDml3U2R4SRAy+SfAbqAtpL2p2wMUQ34ELy1h0JmIWelFEfplxFfYfQfwjDXAjDUBY+r1Mur4BONEvaHgmH2UlQ+zhKJjQV4QOKHO7PlGyVpypnzxBdstpd9VcXhRMX3fW/JMspR6DlsKmygQlzuWvEN4QN5S+PI8yLviWzQYsBQ2ysdl2JLXjwfk/vct0OWkvHGd4AdL3lY8DIPZGLJ6LTmTvoRB5EhbUbwoSU29mD4TMbPJ1KTChQZkXHNSYe/uCPLOgWY0oiVknMmX5dbIOwI5ypad7ZCtcRzudczelOs+7X2X9pAfoSzp7W054IxIqLO9faXc8PlCpEIgyVGpjiuxGTF7b1c+jA5Z7akaE58Ub2+caMsSSEKTs67Fc1LXUiuuKMpfLAG6gYNAH3BWSp/UdUublmIzcBEYB75HCIGmzWPgArAJT1kMnASe1xH7q5VnwIkGD1RN4SjwpspkfgMvgLvAGHBJypjUvZQ2YX1fy31jalkH3A9RvCT5/D5gVQQ5ps1+SYPDssd7QCcpYxfw2VH0ozi45THkmr7nRJYt+xOwk5RwHPhhKTcnR984E3dZITLnHGd5jCZz2tmzJpfvWcDxemQM26ecoknsBX5ayhiPvyGBcTudd4a/gAMkzBbnHx/jER3cfLESeGSNPyv5RiJk5I1vZXBzvF1P8qwGXll6TEj+seAMWYN+E2toFhuBr5Y+RrcFpQ34Yg14nubT72yFOC9iIlHZew+TMrl/YP588UB0eprEgMuAHfKZFpZKiDT5gqIoiqIoikIE/gBvbkfNOrA+EgAAAABJRU5ErkJggg=="
+            class="object-cover h-8 w-8 rounded-full" alt="" />
         </div>
+        }
+        @if(!isSenderNotCurrentUser(message)){
+        <!-- left -->
         <div class="flex justify-start mb-4">
-          <img src="https://source.unsplash.com/vpOeXr5wmR4/600x600" class="object-cover h-8 w-8 rounded-full" alt="" />
+          <img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEMAAABDCAYAAADHyrhzAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEqElEQVR4nO1bS4gcVRR9I0LU4AdRAzo6Gir97jm3pjrYmwjqKH4QNeBn4wdFEARFjBjBz0IHFYmfhRojCIoiakTFTRACughuBBe6MUHBD0oSUcPEqDj+kpbX06P2pLq7pupVXs3UHDibppqqc+q+T917nzGBkCTJcgU2zKX73dQNqvY8JdoHUe35pm4g5Z5UM4D7Td1A4p00MwhsMXUDiZ2pkUHsMcaMmLpgfDwa7WNEh+PWWlMXqNqrB5lB2ptMXUDK44PMUOB5U3WMi7QAXJrnv9ba0xW4gZTnCPl+YGRA9pLyogI3x3FD8twvFjkLwIWmDIjImYRMzYQxNsdxvGLoA8XxChW5k5CPBkbCUMqnbskledqwe0ZRdIwCzyqxX4lpkpeYsozQ/97elHtzaTO/qp6qwEYSvxUz4aCI+UuBl/tNsACuSFml/BkiKUb0TnbYJiINd+3Y2NgRpDyskD98mpDC/SQ2uShw97XWntxv3+LVEJJnd0Nu0MNNK/Akic9KNmHui9ipwKMkfhp+rVzrITaM6Y7B9sKlvGt8wVp7NCHfhheVi/vcJs/4RCxyWQWEzZ/AraYMKOTV4OLmRfnAGHNYKWY0Go0TlPgxvMhMnJ5d5UoDKXdVQOhQkvJUqUZMTEwcrpSPQwvNyN3NZvO40swg5b4KiMxOYGNp8wUhvwYXOK+hgr9LyY2Q8khocTmj4yWvRli36cqw5a0iCfkzy9duZqjIjaFFFYwOfxl3AluDCyoWHTu8GNFaufLYTh6hAqKK0MtEqioXhxbihTOJqGIg5cHgQjyQlBdM3uQtaa9TyDNK7FoUZkD2uqy7K0N0h8xI6hbbZb0VWEfKK0p8HfrBDxH3KeU9BSZV7drO1l1FbqvAg7WDE9iwZAaXzGgvRQaXhkk785zhVhMASsotndUEsl2JA8EntPK52zXG9KwmaVgdRSeqyuUKPETiqwo8eGG6Ynen+q9yVXPVqlNybcBIuXdRmEFsMkUB4NzFYQavL2zGmtHRIzu11AoIKsAD3hI8CnmrAoKK8EPjC7HIlRUQlJsxcIc3M6IoWqaQ70KLykPXMONWR+MTCty9MM0oobKWuMb3hVNnneXvufcUw+BSZxUQmJ3ApCkRI0p5P7jIbPzc9ZiVaYYh5fYKCB1KUp4o1YjGAuvPKLUHnTM50tAi5xEd2FbKCYVY5KLQ4oLVS/6PVqt1FCFfBBeWJzogU1lauzODlMdCiypkCLHZixGq2hxaa4X84rp63Bg9tENAPnE9ZiR+GHZt3tMQPUgajTMU8k3/MMRWV4HrXj7S3ZiVveL87D4PXMry38wc8NqgoeIKZcYHknRD9ri+jdTrk2Q5ade7PKPXcJ85yTBJ8vi0+7q3P7eT2f3HHQbwYkSaIaS8kSTJSSbD16479qCUN/Met+h03gBbXKYqywFg12U0e96kFCN6DFG71uTMmAE4x51nzZBk3kXKAwAucOLynoYozQif6JxJGTj7y9OmLlBXhhgUGSLXmLpgtZv9By+DY6ZOIPBlv/nC1A0KvN5n3/K2qRsUWJc+edr1pm4QkTVpZrjDuaZuiKJoWbfy30P3e6iH+ged9I9qwPw3agAAAABJRU5ErkJggg=="
+            class="object-cover h-8 w-8 rounded-full" alt="" />
           <div class="ml-2 py-3 px-4 bg-gray-400 rounded-br-3xl rounded-tr-3xl rounded-tl-xl text-white">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat
-            at praesentium, aut ullam delectus odio error sit rem. Architecto
-            nulla doloribus laborum illo rem enim dolor odio saepe,
-            consequatur quas?
+            {{ message.message }}
           </div>
         </div>
-        <div class="flex justify-start mb-4">
-          <img src="https://source.unsplash.com/vpOeXr5wmR4/600x600" class="object-cover h-8 w-8 rounded-full" alt="" />
-          <div class="ml-2 py-3 px-4 bg-gray-400 rounded-br-3xl rounded-tr-3xl rounded-tl-xl text-white">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat
-            at praesentium, aut ullam delectus odio error sit rem. Architecto
-            nulla doloribus laborum illo rem enim dolor odio saepe,
-            consequatur quas?
-          </div>
-        </div>
-        <div class="flex justify-start mb-4">
-          <img src="https://source.unsplash.com/vpOeXr5wmR4/600x600" class="object-cover h-8 w-8 rounded-full" alt="" />
-          <div class="ml-2 py-3 px-4 bg-gray-400 rounded-br-3xl rounded-tr-3xl rounded-tl-xl text-white">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat
-            at praesentium, aut ullam delectus odio error sit rem. Architecto
-            nulla doloribus laborum illo rem enim dolor odio saepe,
-            consequatur quas?
-          </div>
-        </div>
-        <div class="flex justify-end mb-4">
-          <div>
-            <div class="mr-2 py-3 px-4 bg-blue-400 rounded-bl-3xl rounded-tl-3xl rounded-tr-xl text-white">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Magnam, repudiandae.
-            </div>
+        }
+        }
+        }
 
-            <div class="mt-4 mr-2 py-3 px-4 bg-blue-400 rounded-bl-3xl rounded-tl-3xl rounded-tr-xl text-white">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Debitis, reiciendis!
-            </div>
-          </div>
-          <img src="https://source.unsplash.com/vpOeXr5wmR4/600x600" class="object-cover h-8 w-8 rounded-full" alt="" />
-        </div>
-        <div class="flex justify-start mb-4">
-          <img src="https://source.unsplash.com/vpOeXr5wmR4/600x600" class="object-cover h-8 w-8 rounded-full" alt="" />
-          <div class="ml-2 py-3 px-4 bg-gray-400 rounded-br-3xl rounded-tr-3xl rounded-tl-xl text-white">
-            happy holiday guys!
-          </div>
-        </div>
-        <div class="flex justify-start mb-4">
-          <img src="https://source.unsplash.com/vpOeXr5wmR4/600x600" class="object-cover h-8 w-8 rounded-full" alt="" />
-          <div class="ml-2 py-3 px-4 bg-gray-400 rounded-br-3xl rounded-tr-3xl rounded-tl-xl text-white">
-            happy holiday guys!
-          </div>
-        </div>
-        <div class="flex justify-start mb-4">
-          <img src="https://source.unsplash.com/vpOeXr5wmR4/600x600" class="object-cover h-8 w-8 rounded-full" alt="" />
-          <div class="ml-2 py-3 px-4 bg-gray-400 rounded-br-3xl rounded-tr-3xl rounded-tl-xl text-white">
-            happy holiday guys!
-          </div>
-        </div>
-        <div class="flex justify-start mb-4">
-          <img src="https://source.unsplash.com/vpOeXr5wmR4/600x600" class="object-cover h-8 w-8 rounded-full" alt="" />
-          <div class="ml-2 py-3 px-4 bg-gray-400 rounded-br-3xl rounded-tr-3xl rounded-tl-xl text-white">
-            happy holiday guys!
-          </div>
-        </div>
+
+
+
       </div>
       <div class="sticky bottom-0 py-5">
-        <input class="w-full bg-gray-300 py-5 px-3 rounded-xl" type="text" placeholder="type your message here..." />
+        <input class="w-full bg-gray-300 py-5 px-3 rounded-xl" (keydown.enter)="onEnterPress($event)" (change)="setMessage($event)" type="text"
+          placeholder="type your message here..." />
+        <img (click)="sendMessage()" class="absolute bottom-[30px] right-[10px] cursor-pointer"
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAACHUlEQVR4nO2ZPUtcQRSGR4VYGbRJcS8SQlQkaqE7s0lEEFt7/4J/wdLOWAmW4l0SG5ElkCZYREPO+JHYabE2NnqvX+iqe8ZlQROSI1dXN4GsH9l7V0+4L5z+fZiZ886cESJSpEj/vySYN0qbU6lN6iWYRsFNCvCn0ob8khp/KG3GXs3mbMFFKm/+jwI89UFeL2afCJYA+qqyUpvh+NLBY8EUgC4K0wpwoGGaqgVPAJPfWsaVgP19SaoSLAF0/rADrsYB+wRRBUsAVeha3+KQ6WELoAo1E9OZDs4ApAB/SW2SZQ9DFRRAAeS7nyHtCzmLJ0ChY+X8DOmaxzqeAPqyY5ljH6RzIV0TrHOiCivhDde/26RnkzvU9H6PWj6mqf3TUUgrgvuBhWHD6Fq17biTdsKjv1XIUBslheHTt+u1luNCMfPlgpKAqfMwvIvqHdeyHHflrubDhJIav8q54+4bzdvj672W42JQ5otCTWzR86ldav6wR23TBxT7nLkliEnF4KitKIA17m2Hbb7UlZIa14oDJNytewOYuN2qXAtwvoUSXuYhbyH55bD1xkNsO+7yfZtV/3KIS26jAZhVpbbRS71Iph5dG2QBm1VBBtmVBqnScryRkM1SKFeJ3xWK2bJc5vIKzTxwvU6zfdAA7yflDMtHveQ6VpFsB1vAdrSIbIe7WZ7jdeD0wQHcv5jmzJDS5iQGyPOTL1KkSOLB6gx9+yOAmSSGhQAAAABJRU5ErkJggg==">
       </div>
     </div>
     <!-- end message -->
     <div class=" w-[96%] md:w-2/5 border-l-2 px-5 order-1">
+      @if(product){
       <div class="flex flex-col">
-        <div class="font-semibold text-xl py-4">Mern Stack Group</div>
-        <img src="https://source.unsplash.com/L2cxSuKWbpo/600x600" class="object-cover rounded-xl h-64" alt="" />
-        <div class="font-semibold py-4">Created 22 Sep 2021</div>
+        <div class="font-semibold text-xl py-4">{{product.title }}</div>
+        <img src="{{ product.images ? product.images[0].path : '' }}" class="object-cover rounded-xl h-64" alt="" />
+        <div class="font-semibold py-4">€{{ product.price }}</div>
         <div class="font-light">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt,
-          perspiciatis!
+          {{ product.description }}
         </div>
       </div>
+      }
+      @if(!product){
+      <div class="font-semibold text-xl py-4">Product not found</div>
+      }
     </div>
   </div>
 </div>
 
 <div  class="fixed bottom-10 end-10 group">
-<button type="button" data-modal-target="crypto-modal" data-modal-toggle="crypto-modal"
-  class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-    <path fill-rule="evenodd" d="M4.848 2.771A49.144 49.144 0 0 1 12 2.25c2.43 0 4.817.178 7.152.52 1.978.292 3.348 2.024 3.348 3.97v6.02c0 1.946-1.37 3.678-3.348 3.97a48.901 48.901 0 0 1-3.476.383.39.39 0 0 0-.297.17l-2.755 4.133a.75.75 0 0 1-1.248 0l-2.755-4.133a.39.39 0 0 0-.297-.17 48.9 48.9 0 0 1-3.476-.384c-1.978-.29-3.348-2.024-3.348-3.97V6.741c0-1.946 1.37-3.68 3.348-3.97ZM6.75 8.25a.75.75 0 0 1 .75-.75h9a.75.75 0 0 1 0 1.5h-9a.75.75 0 0 1-.75-.75Zm.75 2.25a.75.75 0 0 0 0 1.5H12a.75.75 0 0 0 0-1.5H7.5Z" clip-rule="evenodd" />
-  </svg>
-</button>
-</div>
+  <button (click)="onOpen()" type="button"
+    class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+      <path fill-rule="evenodd" d="M4.848 2.771A49.144 49.144 0 0 1 12 2.25c2.43 0 4.817.178 7.152.52 1.978.292 3.348 2.024 3.348 3.97v6.02c0 1.946-1.37 3.678-3.348 3.97a48.901 48.901 0 0 1-3.476.383.39.39 0 0 0-.297.17l-2.755 4.133a.75.75 0 0 1-1.248 0l-2.755-4.133a.39.39 0 0 0-.297-.17 48.9 48.9 0 0 1-3.476-.384c-1.978-.29-3.348-2.024-3.348-3.97V6.741c0-1.946 1.37-3.68 3.348-3.97ZM6.75 8.25a.75.75 0 0 1 .75-.75h9a.75.75 0 0 1 0 1.5h-9a.75.75 0 0 1-.75-.75Zm.75 2.25a.75.75 0 0 0 0 1.5H12a.75.75 0 0 0 0-1.5H7.5Z" clip-rule="evenodd" />
+    </svg>
+  </button>
+  </div>
 
-<!-- Main modal -->
-<div id="crypto-modal" tabindex="-1" aria-hidden="true"
-  class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-  <div class="relative p-4 w-full max-w-md max-h-full">
-    <!-- Modal content -->
-    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-      <!-- Modal header -->
-      <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-          Conversaciones
-        </h3>
-        <button type="button"
-          class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm h-8 w-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-          data-modal-toggle="crypto-modal">
-          <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-          </svg>
-          <span class="sr-only">Close modal</span>
-        </button>
-      </div>
-      <!-- Modal body -->
-      <div class="p-4 md:p-5">
+  <!-- Main modal -->
+  <div
+    class=" overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full {{ isOpen ? 'flex' : 'hidden' }}">
+    <div class="relative p-4 w-full max-w-md max-h-full">
+      <!-- Modal content -->
+      <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+        <!-- Modal header -->
+        <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+            Conversaciones
+          </h3>
+          <button (click)="onOpen()" type="button"
+            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm h-8 w-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+            data-modal-toggle="crypto-modal">
+            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+            </svg>
+            <span class="sr-only">Close modal</span>
+          </button>
+        </div>
+        <!-- Modal body -->
+        <div class="p-4 md:p-5">
 
 
-        <div
-          class="relative w-full max-w-sm overflow-y-scroll bg-white border border-gray-100 rounded-lg dark:bg-gray-700 dark:border-gray-600 h-96">
-          <ul>
-            <li class="border-b border:gray-100 dark:border-gray-600">
-              <a href="#"
-                class="flex items-center justify-center w-full px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-800">
-                <img class="me-3 rounded-full w-11 h-11" src="https://source.unsplash.com/L2cxSuKWbpo/600x600"
-                  alt="Jese Leos Avatar">
-                <div>
-                  <p class="text-sm text-gray-500 dark:text-gray-400">New message from <span
-                      class="font-medium text-gray-900 dark:text-white">Jese Leos</span>: "Hey, what's up? All set for
-                    the presentation?"</p>
-                  <span class="text-xs text-blue-600 dark:text-blue-500">a few moments ago</span>
-                </div>
-              </a>
-            </li>
-            <li class="border-b border:gray-100 dark:border-gray-600">
-              <a href="#"
-                class="flex items-center justify-center w-full px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-800">
-                <img class="me-3 rounded-full w-11 h-11" src="https://source.unsplash.com/L2cxSuKWbpo/600x600"
-                  alt="Joseph McFall Avatar">
-                <div>
-                  <p class="text-sm text-gray-500 dark:text-gray-400"><span
-                      class="font-medium text-gray-900 dark:text-white">Joseph McFall</span> and <span
-                      class="font-medium text-gray-900 dark:text-white">5 others</span> started following you.</p>
-                  <span class="text-xs text-blue-600 dark:text-blue-500">10 minutes ago</span>
-                </div>
-              </a>
-            </li>
-            <li class="border-b border:gray-100 dark:border-gray-600">
-              <a href="#"
-                class="flex items-center justify-center w-full px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-800">
-                <img class="me-3 rounded-full w-11 h-11" src="https://source.unsplash.com/L2cxSuKWbpo/600x600"
-                  alt="Bonnie Green Avatar">
-                <div>
-                  <p class="text-sm text-gray-500 dark:text-gray-400"><span
-                      class="font-medium text-gray-900 dark:text-white">Bonnie Green</span> and <span
-                      class="font-medium text-gray-900 dark:text-white">141 others</span> love your story. See it and
-                    view more stories.</p>
-                  <span class="text-xs text-blue-600 dark:text-blue-500">23 minutes ago</span>
-                </div>
-              </a>
-            </li>
-            <li class="border-b border:gray-100 dark:border-gray-600">
-              <a href="#"
-                class="flex items-center justify-center w-full px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-800">
-                <img class="me-3 rounded-full w-11 h-11" src="https://source.unsplash.com/L2cxSuKWbpo/600x600"
-                  alt="Leslie Livingston Avatar">
-                <div>
-                  <p class="text-sm text-gray-500 dark:text-gray-400"><span
-                      class="font-medium text-gray-900 dark:text-white">Leslie Livingston</span> mentioned you in a
-                    comment: <span
-                      class="font-medium text-blue-600 dark:text-blue-500 hover:underline">bonnie.green</span> what do
-                    you say?</p>
-                  <span class="text-xs text-blue-600 dark:text-blue-500">23 minutes ago</span>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="#"
-                class="flex items-center justify-center w-full px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-800">
-                <img class="me-3 rounded-full w-11 h-11" src="https://source.unsplash.com/L2cxSuKWbpo/600x600"
-                  alt="Robert Brown Avatar">
-                <div>
-                  <p class="text-sm text-gray-500 dark:text-gray-400"><span
-                      class="font-medium text-gray-900 dark:text-white">Robert Brown</span> posted a new video:
-                    Glassmorphism - learn how to implement the new design trend. </p>
-                  <span class="text-xs text-blue-600 dark:text-blue-500">23 minutes ago</span>
-                </div>
-              </a>
-            </li>
-          </ul>
+          <div
+            class="relative w-full max-w-sm overflow-y-scroll bg-white border border-gray-100 rounded-lg dark:bg-gray-700 dark:border-gray-600 h-96">
+            <ul>
+              @for(conversation of conversations ; track conversation){
+
+                <li class="border-b border:gray-100 dark:border-gray-600 cursor-pointer" (click)="routeredToLink(conversation)">
+                  <span
+                    class="flex items-center justify-center w-full px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-800">
+                    <img class="me-3 rounded-full w-11 h-11" src="{{ conversation.product.images ? conversation.product.images[0].path : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFQElEQVR4nO2ab0xVdRjHT2vzVb2pXombJRcu3MQSxXLeCYUpAhdNx1ALvdwL9wIXrdUqSJokDkybbU5XbZnWsrYskj8KCPgnqBf92aJavayJ9M4ybWtN56c9XA/S1XvvOb9znR473+2znec5z5/vc5zonJrmyJEjR44cOXJkVOXcOT1C7YwGvk1r4O8ZDXAzEQ9pEb5JayAs3rQbKc8Wps2sp/P+CNyKzIxwWDzeoPO5Y1Yd76fXQXotf6TXsX5GkHuMds+q5T3pLXkLnv/y+pS8CVIjtUbniodZtWy44gnxKF61VCszTKs7DJlhzrtqmWum11PPXZkhLrhrYWMvNI1cn019IDWZYf5yB7jbzA53iBx3mHPi0R1mq5ZKZYcJekLgCXHJU0OZ6f4aAtJf8Aq0DCcmv3liD9Jjdo8nRFF2DRcn+kPUaanQnCBFOUEuzqmGnBrqlWZUc0r6q9+FtlOJqdkHUis9iruCE16ruTQniE+zovkBZs8NcC43CLlBWhUNPZAb5PKCMGwfgNdPJqZ9EB4JT+y7PC9EusrO3ADbxPPcIOfnB8z9dp3UvBD3zfczllcFeVXqP1jy/LwqMyq2we7jxqhondiJ9KrsFK/iWWbIDXKL6REL/byx0A+3BRvYZfoDeNfzq3c93A4squQX0x8gv5JLBZVQbvFvVzJDOHjMHHqfld3iXWbILaabC58CwYqBqXMO9Rvn475oTyr3m25ctg4EPS5aS/HStYzp+Vjk3RPrWB5vTlevcTqPXp1r9QMozylZA8JkXMGYnotH8RpOx5vTd9Q4vUeuzrT6AZTnlFWAEC9OVh+bP95jnKHuaE+ifap3GNaqchDixcnqY/Mj3cYZ7or2JNqneodhla8GIV6crD42/3Wncb7qjPYk2qd6h2GtXQVCvDhZfWx+9PB/6dgDzRujyPPUd999Fu1JtE/1DsN6eiUI8eJk9bH5nzuijOyHlkg0N5XmOji1L1rzU8fVvGnjBn0llX8FCPHiZPWx+R8Pwp4XoerJaOxfwe8bVvCsv4xn5FlyVSth70vww4eTNZY/gPKcoA8EPQ74GNNzcSm99o/BgI+z8i6yOloT8HEx4GNP5Uru1WvkWXLyLqb2rLXzr73DsMKlIOhxTSnLQyWc1vOxyLtQMUXXmbN5sqaUvmofD8bdWYZHaqbMfNm08SR3GFakGAQtBapfimtTCRlm6jcWqf1bQMru2LQcBM3mUr7juWUgaDaX8h0vLAVBs7mU72haAoJVA1vKmda4hNcaC/lNn5mUQsabCtkuvVb3K9/RXAiCVQObC9muzzLN47Rb3a98R8tjIFg10FLAuMzZ38X3BwbACPu6GZ3YX8C45f2qd7QWgGDVQGs+4zLn2KeMnugBI/R/wqj0bM3njOX9qne0LwbBqoG2xbTrsxRos7pf+Y6dXhCsGtjiYdpOL+07vYzrM5Oxw8uZHV7apNfqfuU7di0CQbO5lO/YvRAEzeZSvmPvoyBoNpfyHW8vAEGzuZTveCcPBM3mUr7jwDwQNJtL+Y4PckHQblHp/uIRW2d6wUcPg6DdotL9xSO2zvSCQw+BkKr4ZknZR0cOCKmKb5aUfXTNBiFVsVXp84xi2UdPNheOeOCwm+kSy7OgvzcbW5U+zyjS051Bmjz3ePjT9ML+bI73Z0NfFo2aTdWfRdOVG4ZMNw9kUTrohsFM/hnIpHEwgzTNJhKvA1k0iXe5YSCDEqVBJ1xsO5kBtsal9v8bJ/W5i9JhF0Mj6VwYcYEdGE7nvHj+QvVX3pEjR44cOXKk/R/0L2PhuPYnIQbZAAAAAElFTkSuQmCC'}}"
+                      alt="Jese Leos Avatar">
+                    <div>
+                      <p class="text-sm text-gray-500 dark:text-gray-400">New message from <span
+                          class="font-medium text-gray-900 dark:text-white">{{ conversation.sender.name }}</span>: "Hey, what's up? All set for
+                        the presentation?"</p>
+                      <span class="text-xs text-blue-600 dark:text-blue-500">a few moments ago</span>
+                    </div>
+                  </span>
+                </li>
+              }
+            </ul>
+
+          </div>
 
         </div>
-
       </div>
     </div>
   </div>
-</div>

@@ -17,14 +17,12 @@ public class MessageEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
     @ManyToOne
     @JoinColumn(name = "sender_id")
     private UserEntity sender;
     private String message;
     private Date sendAt;
     private boolean isRead;
-
     @ManyToOne
     @JoinColumn(name = "conversation_id")
     private ConversationEntity conversation;

@@ -36,15 +36,13 @@ public class ImageController {
 
     @PostMapping("images/new")
     public ResponseEntity<Object> saveImage(@RequestBody ImageDto imageDto) throws JsonProcessingException {
-        System.out.println(imageDto);
         ObjectMapper mapper = new ObjectMapper();
         Map<String,Object>  data = new HashMap<>();
         if(this.getAuthentication() instanceof User user){
             Image image = imageDtoMapper.toDomain(imageDto,context);
-
             return ResponseEntity.ok().body(imageDtoMapper.toDto(imageService.save(image),context));
         }else {
-            data.put("description","Authentication request");
+            data.put("description","Authentication required");
             data.put("status",false);
             return ResponseEntity.ok().body(mapper.writeValueAsString(data));
         }
