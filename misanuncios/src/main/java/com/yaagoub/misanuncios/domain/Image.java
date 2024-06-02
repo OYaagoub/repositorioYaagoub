@@ -9,11 +9,7 @@ import lombok.ToString;
 
 @Data
 @NoArgsConstructor
-@ToString(exclude = {"product"})
-@EqualsAndHashCode(exclude =  {"product"})
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
+@EqualsAndHashCode(exclude ={"product"} )
 public class Image {
     private long id;
     private String path;

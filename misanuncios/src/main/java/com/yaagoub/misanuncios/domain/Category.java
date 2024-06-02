@@ -13,11 +13,8 @@ import java.util.Set;
 
 @Data
 @NoArgsConstructor
-@ToString(exclude = {})
-@EqualsAndHashCode(exclude =  {})
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
+@ToString(exclude = {"products"})
+@EqualsAndHashCode(exclude =  {"products"})
 public class Category {
     private long id;
 

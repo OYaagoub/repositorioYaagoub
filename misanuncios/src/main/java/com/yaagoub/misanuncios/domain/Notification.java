@@ -11,11 +11,7 @@ import java.util.Date;
 
 @Data
 @NoArgsConstructor
-@ToString(exclude = {"user"})
 @EqualsAndHashCode(exclude =  {"user"})
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
 public class Notification {
     private long id;
     private String message;

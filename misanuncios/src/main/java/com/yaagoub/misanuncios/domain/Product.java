@@ -12,11 +12,8 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 @Data
 @NoArgsConstructor
-@ToString(exclude = {"user","category","images"})
+@ToString(exclude = {"images"})
 @EqualsAndHashCode(exclude =  {"user","category","images"})
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
 public class Product {
     private long id;
     private String title;
@@ -26,5 +23,7 @@ public class Product {
     private Category category;
 
     private Set<Image> images=new LinkedHashSet<>();
+
+
 
 }

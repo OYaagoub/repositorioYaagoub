@@ -2,6 +2,7 @@ package com.yaagoub.misanuncios.domain;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.yaagoub.misanuncios.infrastructure.db.database.model.ProductEntity;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,9 +11,9 @@ import java.util.*;
 
 @Data
 @NoArgsConstructor
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
+@ToString(exclude = {"products"})
+@EqualsAndHashCode
+
 public class User implements UserDetails {
     private  long id;
     private  String name;
@@ -27,7 +28,7 @@ public class User implements UserDetails {
     private String password;
     private  String remember_token;
     private  String email_verified_at;
-
+    Set<Product> products = new LinkedHashSet<>();
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

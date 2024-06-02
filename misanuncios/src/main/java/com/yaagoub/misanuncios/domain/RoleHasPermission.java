@@ -9,11 +9,7 @@ import lombok.ToString;
 
 @Data
 @NoArgsConstructor
-@ToString(exclude = {"id","role","permission"})
 @EqualsAndHashCode(exclude =  {"id","role","permission"})
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
 public class RoleHasPermission {
 
     private RoleHasPermissionKey id;

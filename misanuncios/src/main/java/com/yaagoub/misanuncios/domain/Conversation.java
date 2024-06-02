@@ -12,9 +12,6 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(exclude =  {"sender","product"})
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
 public class Conversation {
     private long id;
 
