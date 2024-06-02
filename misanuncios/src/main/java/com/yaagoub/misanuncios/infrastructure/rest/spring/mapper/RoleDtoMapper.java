@@ -7,7 +7,7 @@ import com.yaagoub.misanuncios.infrastructure.rest.spring.dto.UserHasRoleDto;
 import org.mapstruct.Context;
 import org.mapstruct.Mapper;
 
-@Mapper(componentModel = "spring", uses = {UserHasRoleDtoMapper.class, RoleHasPermissionDtoMapper.class})
+@Mapper(componentModel = "spring", uses = {})
 public interface RoleDtoMapper {
     RoleDto toDto(Role source, @Context CycleAvoidingMappingContext context);
     Role toDomain(RoleDto source, @Context CycleAvoidingMappingContext context);
