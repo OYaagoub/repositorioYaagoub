@@ -30,5 +30,10 @@ public class RoleRepositorySpring implements RoleRepository {
                 ).collect(Collectors.toList());
     }
 
+    @Override
+    public Role findByName(String name) {
+        return roleEntityMapper.toDomain(springDataRoleRepository.findByName(name),context);
+    }
+
 
 }

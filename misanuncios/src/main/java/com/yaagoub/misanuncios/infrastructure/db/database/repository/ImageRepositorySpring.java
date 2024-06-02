@@ -33,7 +33,7 @@ public class ImageRepositorySpring implements ImageRepository {
 
     @Override
     public void delete(Image image) {
-        springDataImageRepository.delete(imageEntityMapper.toEntity(image,context));
+        springDataImageRepository.deleteById(image.getId());
     }
 
     @Override

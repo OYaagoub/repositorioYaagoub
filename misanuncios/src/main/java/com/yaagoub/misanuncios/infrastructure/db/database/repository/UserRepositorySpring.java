@@ -31,4 +31,10 @@ public class UserRepositorySpring implements UserRepository {
         User userIn=userEntityMapper.toDomain(springDataUserRepository.save(userEntity),context);
         return userIn;
     }
+
+    @Override
+    public User findById(long id) {
+        System.out.println(springDataUserRepository.getReferenceById(id).getProducts());
+        return userEntityMapper.toDomain(springDataUserRepository.getReferenceById(id),context);
+    }
 }

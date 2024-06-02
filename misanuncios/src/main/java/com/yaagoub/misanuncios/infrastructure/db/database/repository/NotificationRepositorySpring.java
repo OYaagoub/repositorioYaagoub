@@ -23,4 +23,9 @@ public class NotificationRepositorySpring implements NotificationRepository {
                 .stream().map(notificationEntity -> notificationEntityMapper.toDomain(notificationEntity,context))
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public Notification save(Notification notification) {
+        return notificationEntityMapper.toDomain(springDataNotificationRepository.save(notificationEntityMapper.toEntity(notification,context)),context);
+    }
 }

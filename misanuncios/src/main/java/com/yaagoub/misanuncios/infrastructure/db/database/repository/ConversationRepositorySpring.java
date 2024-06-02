@@ -34,4 +34,9 @@ public class ConversationRepositorySpring implements ConversationRepository {
     public Conversation findByUserProduct(long idProduct , long idUser){
         return conversationEntityMapper.toDomain(springDataConversationRepository.findByUserProduct(idProduct,idUser),context);
     }
+
+    @Override
+    public Conversation findById(long id) {
+        return conversationEntityMapper.toDomain(springDataConversationRepository.findById(id),context);
+    }
 }
