@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface SpringDataNotificationRepository extends JpaRepository<NotificationEntity, Long> {
 
-    @Query("SELECT c FROM NotificationEntity c WHERE c.user.id=:idUser ORDER BY c.sendAt DESC ")
+    @Query("SELECT c FROM NotificationEntity c WHERE c.user.id=:idUser ORDER BY c.sendAt desc ")
     List<NotificationEntity> getNotificationsByUser(@Param("idUser") Long idUser);
 }

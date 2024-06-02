@@ -15,4 +15,6 @@ public interface SpringDataConversationRepository extends JpaRepository<Conversa
 
     @Query("SELECT c FROM ConversationEntity c WHERE c.product.id=:idProduct and c.sender.id=:idUser")
     ConversationEntity findByUserProduct(long idProduct,long idUser);
+    @Query("SELECT c FROM  ConversationEntity c WHERE c.id=:id")
+    ConversationEntity findById(@Param("id") long id);
 }
