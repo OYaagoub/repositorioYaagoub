@@ -1,0 +1,18 @@
+.masonry {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 5 columns */
+  grid-auto-rows:max-content; /* Base height for rows */
+  gap: 16px; /* Gap between items */
+}
+
+.masonry-item {
+  grid-column: span 1;
+  /* This is to ensure that the items span the correct number of columns */
+  grid-row: span 1;
+}
+
+.masonry-item app-card {
+  display: block;
+  margin-bottom: 16px; /* Margin to separate items */
+  /* Ensure the height of each item varies based on content */
+}
