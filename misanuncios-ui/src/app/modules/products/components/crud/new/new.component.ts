@@ -12,7 +12,8 @@ import { ImageService } from '../../../../../application/services/image.service'
 import { ImageRepository } from '../../../../../application/repositories/image.repository';
 import { ImageRepositoryImpl } from '../../../../../infrastructure/repositories/image.repository.impl';
 import { Router } from '@angular/router';
-
+import { NgxSpinnerService } from 'ngx-spinner';
+import { AlertsService } from '../../../../../infrastructure/services/alerts.service';
 @Component({
   selector: 'app-new',
   standalone: true,
@@ -33,22 +34,30 @@ export class NewComponent {
   base64Images: string[]=[];
   categories!: string[];
   fromProduct!:FormGroup;
-constructor(private router : Router,private categoryRepository: CategoryRepository,private formBulder:FormBuilder,private productService:ProductService,private imageService:ImageService){}
+
+constructor(private alerts:AlertsService,private spinner: NgxSpinnerService,private router : Router,private categoryRepository: CategoryRepository,private formBulder:FormBuilder,private productService:ProductService,private imageService:ImageService){}
+
+
+
+
+
 
   emitEvent() {
     this.childEvent.emit();
   }
 
   ngOnInit(): void {
+
     this.fromProduct = this.formBulder.group({
       title: [null,[Validators.required, Validators.minLength(20),Validators.maxLength(120)]],
       description: [null,[Validators.required,Validators.maxLength(5000),Validators.minLength(20)]],
-      price: [0,[Validators.required,Validators.min(1),Validators.max(1000000000)]],
+      price: [null,[Validators.required]],
       category: [null,Validators.required],
       image: [null,[Validators.required]],
     })
     this.categoryRepository.getAllCategoriesByName().subscribe(categories => {
       this.categories = categories;
+
     })
   }
 
@@ -62,6 +71,7 @@ constructor(private router : Router,private categoryRepository: CategoryReposito
   }
   addNewProduct(){
     if(this.fromProduct.valid){
+      this.spinner.show();
       const product = new Product({
         title:this.fromProduct.value.title,
         description:this.fromProduct.value.description,
@@ -69,26 +79,32 @@ constructor(private router : Router,private categoryRepository: CategoryReposito
         category:new Category({name:this.fromProduct.value.category}),
         });
       this.productService.save(product).subscribe(product => {
-
+        this.alerts.showSuccess('Producto creado exitosamente');
         this.base64Images.map(image => {
-          const imageToSave = new Image({
-            path:image,
-            product:product
 
-          })
-          this.imageService.save(imageToSave).subscribe(image => {
-              // console.log(image);
+
+          this.imageService.save(image,product.id).subscribe(image => {
+            // console.log(image);
+            this.alerts.showSuccess('Imagen creada exitosamente');
           })
         })
         this.emitEvent();
         this.fromProduct.reset();
-        this.router.navigate(['/workspace/myProducts']);
+        this.base64Images=[];
+
+        this.spinner.hide();
+        this.navigateToMyProducts()
+        //this.router.navigate(['/workspace/myProducts']);
       })
     }
 
   }
+  navigateToMyProducts() {
+    const uniqueId = new Date().getTime();
+    this.router.navigate([`/workspace/myProducts`, uniqueId]);
+  }
   convertToBase64(file: File): void {
-    
+
     const reader = new FileReader();
     reader.onload = () => {
       this.base64Images.push(reader.result as string);

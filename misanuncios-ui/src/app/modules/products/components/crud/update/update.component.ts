@@ -12,6 +12,9 @@ import { ImageService } from '../../../../../application/services/image.service'
 import { ImageRepository } from '../../../../../application/repositories/image.repository';
 import { ImageRepositoryImpl } from '../../../../../infrastructure/repositories/image.repository.impl';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { MyProductsComponent } from '../../../../workspace/components/my-products/my-products.component';
+import { AlertsService } from '../../../../../infrastructure/services/alerts.service';
 
 @Component({
   selector: 'app-update',
@@ -34,7 +37,7 @@ export class UpdateComponent {
   base64ImagesUpdate: Image[]=[];
   categories!: string[];
   fromProduct!:FormGroup;
-constructor(private router : Router,private categoryRepository: CategoryRepository,private formBulder:FormBuilder,private productService:ProductService,private imageService:ImageService){
+constructor(private alerts:AlertsService,private spinner: NgxSpinnerService,private router : Router,private categoryRepository: CategoryRepository,private formBulder:FormBuilder,private productService:ProductService,private imageService:ImageService){
 
 }
 
@@ -43,17 +46,22 @@ constructor(private router : Router,private categoryRepository: CategoryReposito
   }
 
   ngOnInit(): void {
+
     this.categoryRepository.getAllCategoriesByName().subscribe(categories => {
       this.categories = categories;
+
     })
   }
   ngOnChanges(): void {
     this.initializeForm();
     if(this.productToUpdate?.id){
-
-      this.imageService.findByProduct(this.productToUpdate.id).subscribe(images => {
-        this.base64ImagesUpdate = images; // Assuming the images are already converted to base64
+      this.base64ImagesUpdate = [];
+      this.productToUpdate.images?.forEach(image => {
+        this.base64ImagesUpdate.push(image);
       })
+      // this.imageService.findByProduct(this.productToUpdate.id).subscribe(images => {
+      //   this.base64ImagesUpdate = images; // Assuming the images are already converted to base64
+      // })
     }
   }
 
@@ -77,6 +85,7 @@ constructor(private router : Router,private categoryRepository: CategoryReposito
   }
   updateProduct(){
     if(this.fromProduct.valid){
+      this.spinner.show();
       const product = new Product({
         id:this.productToUpdate.id,
         title:this.fromProduct.value.title,
@@ -85,30 +94,34 @@ constructor(private router : Router,private categoryRepository: CategoryReposito
         category:new Category({name:this.fromProduct.value.category}),
         });
       this.productService.save(product).subscribe(product => {
-
-        this.base64ImagesUpdate.map(image => {
-          const imageToSave = new Image({
-            path:image.path,
-            product:product
-
-          })
-          this.imageService.save(imageToSave).subscribe(image => {
-              // console.log(image);
-          })
-        })
+        this.alerts.showSuccess("Producto actualizado con éxito")
         this.emitEvent();
         this.fromProduct.reset();
-        this.router.navigate(['/workspace/myProducts']);
+        this.spinner.hide();
+        this.navigateToMyProducts();
       })
     }
 
+  }
+
+  navigateToMyProducts() {
+    const uniqueId = new Date().getTime();
+    this.router.navigate([`/workspace/myProducts`, uniqueId]);
   }
   convertToBase64U(file: File): void {
 
     const readerU = new FileReader();
     readerU.onload = () => {
       console.log(readerU.result as string)
-      this.base64ImagesUpdate.push({id:0,path:(readerU.result as string),product:this.productToUpdate});
+
+      this.spinner.show();
+        this.imageService.save(readerU.result as string,this.productToUpdate.id).subscribe(image => {
+            // console.log(image);
+            this.alerts.showSuccess("Imagen agregada con éxito")
+            this.base64ImagesUpdate.push(image);
+            this.spinner.hide();
+        })
+
 
     };
     readerU.readAsDataURL(file);
@@ -116,9 +129,17 @@ constructor(private router : Router,private categoryRepository: CategoryReposito
 
   deleteImageU(image: Image){
     const index = this.base64ImagesUpdate.indexOf(image);
-    this.imageService.delete(image.id.toString());
-    if (index > -1) {
-      this.base64ImagesUpdate.splice(index, 1);
-    }
+    this.spinner.show();
+    this.imageService.delete(image.id).subscribe
+    (status => {
+      if(status){
+        this.alerts.showSuccess("Imagen eliminada con éxito")
+        if (index > -1) {
+          this.base64ImagesUpdate.splice(index, 1);
+        }
+
+      }
+      this.spinner.hide();
+    })
   }
 }

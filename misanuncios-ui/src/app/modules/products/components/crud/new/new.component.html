@@ -34,7 +34,7 @@
           </div>
           <div class="col-span-2 sm:col-span-1">
             <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Precio</label>
-            <input type="number" name="price" id="price" formControlName="price"
+            <input type="text" name="price" id="price" formControlName="price"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
               placeholder="$2999" required="">
               @if(fromProduct.get("price")?.invalid && fromProduct.get("price")?.touched){
@@ -44,7 +44,7 @@
               }
           </div>
           <div class="col-span-2 sm:col-span-1">
-            <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
+            <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Categoria</label>
             <select id="category" formControlName="category" name="category"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
               <!-- <option selected="">Select category</option> -->
@@ -66,15 +66,15 @@
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-gray-700 mx-auto mb-4">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
                 </svg>
-                <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-700">Upload picture</h5>
-                <p class="font-normal text-sm text-gray-400 md:px-6">Choose photo size should be less than <b class="text-gray-600">2mb</b></p>
-                <p class="font-normal text-sm text-gray-400 md:px-6">and should be in <b class="text-gray-600">JPG, PNG, or GIF</b> format.</p>
+                <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-700">Cargar Imagen</h5>
+                <p class="font-normal text-sm text-gray-400 md:px-6">La Imagen selectionada debe ser de estos tipos de formatos <b class="text-gray-600"></b></p>
+                <p class="font-normal text-sm text-gray-400 md:px-6"> <b class="text-gray-600">JPG, PNG, or GIF</b> .</p>
                 <span id="filename" class="text-gray-500 bg-gray-200 z-50"></span>
               </label>
             </div>
 
           </div>
-          <div class="col-span-2 sm:col-span-1 flex flex-wrap">
+          <div class="col-span-2 sm:col-span-1 flex flex-wrap border rounded-[10px]">
             @for(base64Image of base64Images ;track base64Image){
 
               <img src="{{ base64Image }}" class="image max-h-10 rounded-lg m-[10px] cursor-pointer" (click)="deleteImage(base64Image)"  alt="Image preview" />
@@ -82,7 +82,7 @@
           </div>
           @if(base64Images.length == 0 && fromProduct.get("image")?.invalid && fromProduct.get("image")?.touched){
             <div class="col-span-2 sm:col-span-1">
-              <span class="text-red-500 text-xs">Please upload image</span>
+              <span class="text-red-500 text-xs">Cargar la imagen del producto</span>
             </div>
           }
 
@@ -94,7 +94,7 @@
               placeholder="Write product description here"></textarea>
               @if(fromProduct.get("description")?.invalid && fromProduct.get("description")?.touched){
                 <div class="col-span-2 sm:col-span-1">
-                  <span class="text-red-500 text-xs">Please enter product description</span>
+                  <span class="text-red-500 text-xs">Detalles del producto obligatorios </span>
                 </div>
               }
           </div>
@@ -110,10 +110,10 @@
                 d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
                 clip-rule="evenodd"></path>
             </svg>
-            Add new product
+            Añadir Producto
           </button>
           <button type="button" (click)="emitEvent()"
-            class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Decline</button>
+            class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Rechazar</button>
         </div>
       </form>
     </div>
