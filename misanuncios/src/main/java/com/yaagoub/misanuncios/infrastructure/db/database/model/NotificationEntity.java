@@ -1,18 +1,14 @@
 package com.yaagoub.misanuncios.infrastructure.db.database.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.Date;
 
-@Getter
-@Setter
-@ToString
+@Data
 @RequiredArgsConstructor
 @Entity
+@EqualsAndHashCode
 @Table(name = "notifications")
 public class NotificationEntity {
     @Id

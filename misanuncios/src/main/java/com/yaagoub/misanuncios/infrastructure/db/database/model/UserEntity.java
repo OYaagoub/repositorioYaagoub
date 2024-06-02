@@ -1,18 +1,15 @@
 package com.yaagoub.misanuncios.infrastructure.db.database.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
-import java.util.Date;
-import java.util.LinkedHashSet;
-import java.util.Set;
-@Getter
-@Setter
+import java.util.*;
+
+@Data
 @RequiredArgsConstructor
 @Entity
+@ToString(exclude = {"products"})
+@EqualsAndHashCode(exclude = {"products"})
 @Table(name = "users")
 public class UserEntity {
     @Id
@@ -30,15 +27,9 @@ public class UserEntity {
     private  String remember_token;
     private  String email_verified_at;
 
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER,
+            cascade = {CascadeType.MERGE, CascadeType.REFRESH}, orphanRemoval = true)
+    List<ProductEntity> products = new ArrayList<>();
 
-    @Override
-    public String toString() {
-        return "UserEntity{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", image='" + image + '\'' +
-                ", email='" + email + '\'' +
-                ", birth=" + birth +
-                '}';
-    }
+
 }

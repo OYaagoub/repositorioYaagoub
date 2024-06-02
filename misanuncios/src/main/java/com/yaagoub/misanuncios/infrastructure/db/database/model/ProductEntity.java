@@ -11,6 +11,8 @@ import java.util.Set;
 @Data
 @RequiredArgsConstructor
 @Entity
+@ToString(exclude = {"images","conversations"})
+@EqualsAndHashCode(exclude = {"images","conversations"})
 @Table(name = "products")
 public class ProductEntity {
 
@@ -18,6 +20,8 @@ public class ProductEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String title;
+    @Lob
+    @Column(columnDefinition = "LONGTEXT")
     private String description;
     private String price;
 
@@ -29,7 +33,12 @@ public class ProductEntity {
     @JoinColumn(name = "category_id")
     private CategoryEntity category;
 
-    @OneToMany(fetch = FetchType.EAGER ,cascade = CascadeType.ALL,mappedBy = "product",orphanRemoval = true)
+    @OneToMany(fetch = FetchType.EAGER ,cascade = CascadeType.REMOVE,mappedBy = "product",orphanRemoval = true)
     private Set<ImageEntity> images = new LinkedHashSet<>();
+
+
+    @OneToMany(mappedBy = "product", fetch = FetchType.EAGER,
+            cascade = {CascadeType.REMOVE}, orphanRemoval = true)
+    private Set<ConversationEntity> conversations =new LinkedHashSet<>();
 
 }

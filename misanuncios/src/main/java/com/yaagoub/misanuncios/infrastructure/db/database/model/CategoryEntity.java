@@ -2,19 +2,16 @@ package com.yaagoub.misanuncios.infrastructure.db.database.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-@Getter
-@Setter
-@ToString
+@Data
 @RequiredArgsConstructor
 @Entity
+@ToString(exclude = {"products"})
+@EqualsAndHashCode(exclude = {"products"})
 @Table(name = "categories")
 public class CategoryEntity {
     @Id
@@ -25,7 +22,7 @@ public class CategoryEntity {
     private String name;
 
     @OneToMany(mappedBy = "category", fetch = FetchType.EAGER,
-            cascade = {CascadeType.MERGE, CascadeType.REFRESH}, orphanRemoval = true)
+            cascade = {CascadeType.REMOVE}, orphanRemoval = true)
     Set<ProductEntity> products = new LinkedHashSet<>();
 
 }

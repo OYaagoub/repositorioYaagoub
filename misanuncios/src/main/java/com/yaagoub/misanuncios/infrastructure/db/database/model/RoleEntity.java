@@ -2,18 +2,14 @@ package com.yaagoub.misanuncios.infrastructure.db.database.model;
 
 import com.yaagoub.misanuncios.domain.RoleHasPermission;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
-@Getter
-@Setter
-@ToString
+@Data
 @RequiredArgsConstructor
 @Entity
+@EqualsAndHashCode
 @Table(name = "roles")
 public class RoleEntity {
 
