@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.yaagoub.misanuncios.application.service.ImageService;
 import com.yaagoub.misanuncios.domain.Image;
+import com.yaagoub.misanuncios.domain.Product;
 import com.yaagoub.misanuncios.domain.User;
 import com.yaagoub.misanuncios.infrastructure.rest.spring.dto.ImageDto;
 import com.yaagoub.misanuncios.infrastructure.rest.spring.mapper.CycleAvoidingMappingContext;
@@ -34,13 +35,18 @@ public class ImageController {
     private final CycleAvoidingMappingContext context=new CycleAvoidingMappingContext();
     private final ImageDtoMapper imageDtoMapper;
 
-    @PostMapping("images/new")
-    public ResponseEntity<Object> saveImage(@RequestBody ImageDto imageDto) throws JsonProcessingException {
+    @PostMapping("images/new/{productId}")
+    public ResponseEntity<Object> saveImage(@RequestBody String image,@PathVariable long productId) throws JsonProcessingException {
+
         ObjectMapper mapper = new ObjectMapper();
         Map<String,Object>  data = new HashMap<>();
         if(this.getAuthentication() instanceof User user){
-            Image image = imageDtoMapper.toDomain(imageDto,context);
-            return ResponseEntity.ok().body(imageDtoMapper.toDto(imageService.save(image),context));
+            Image imageToSave = new Image();
+            Product product =new Product();
+            product.setId(productId);
+            imageToSave.setProduct(product);
+            imageToSave.setPath(image);
+            return ResponseEntity.ok().body(imageDtoMapper.toDto(imageService.save(imageToSave),context));
         }else {
             data.put("description","Authentication required");
             data.put("status",false);
@@ -54,12 +60,14 @@ public class ImageController {
     public ResponseEntity<Object> deleteImage(@PathVariable String id){
         Image image = imageService.findById(Long.parseLong(id));
         if(image!=null){
+            System.out.println("bott");
             imageService.delete(image);
         }
-        return ResponseEntity.ok().body("done");
+        return ResponseEntity.ok().body(true);
     }
     @GetMapping("images/product/{idProduct}")
     public ResponseEntity<Object> imagesByProduct(@PathVariable long idProduct){
+        System.out.println(imageService.getImagesByProduct(idProduct));
         var response =imageService.getImagesByProduct(idProduct).stream().map(
                 image -> imageDtoMapper.toDto(image,context)
         ).collect(Collectors.toList());

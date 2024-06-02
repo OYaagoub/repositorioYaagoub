@@ -1,5 +1,6 @@
 package com.yaagoub.misanuncios.infrastructure.rest.spring.controllers;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.yaagoub.misanuncios.application.service.ConversationService;
 import com.yaagoub.misanuncios.application.service.ProductService;
@@ -7,6 +8,7 @@ import com.yaagoub.misanuncios.domain.Conversation;
 import com.yaagoub.misanuncios.domain.Message;
 import com.yaagoub.misanuncios.domain.Product;
 import com.yaagoub.misanuncios.domain.User;
+import com.yaagoub.misanuncios.infrastructure.rest.spring.dto.views.Views;
 import com.yaagoub.misanuncios.infrastructure.rest.spring.mapper.ConversationDtoMapper;
 import com.yaagoub.misanuncios.infrastructure.rest.spring.mapper.CycleAvoidingMappingContext;
 import lombok.AllArgsConstructor;
@@ -33,7 +35,7 @@ public class ConversationController {
     private final ProductService productService;
 
     private final CycleAvoidingMappingContext context=new CycleAvoidingMappingContext();
-
+    @JsonView({Views.ConversationSample.class})
     @GetMapping("/conversations/mine")
     public ResponseEntity<Object> getConversationsByUser(){
         ObjectMapper mapper = new ObjectMapper();
@@ -54,6 +56,10 @@ public class ConversationController {
         if(getAuthentication() instanceof  User user){
             Product product=productService.find(idProduct);
             if(product!=null){
+                System.out.println("user.product.id: "+product.getUser().getId() +" user.id"+user.getId());
+                if(product.getUser().getId()==user.getId()){
+                    return ResponseEntity.ok().body(false);
+                }
                 Conversation con = conversationService.findByUserProduct(product.getId(),user.getId());
                 if(con==null && product.getUser().getId()!=user.getId()){
                     con= new Conversation();
@@ -61,6 +67,7 @@ public class ConversationController {
                     con.setProduct(product);
                     conversationService.save(con);
                 }
+
                 return ResponseEntity.ok().body(true);
 
             }

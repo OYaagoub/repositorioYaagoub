@@ -1,8 +1,11 @@
 package com.yaagoub.misanuncios.infrastructure.rest.spring.controllers;
 
+import com.yaagoub.misanuncios.application.service.ConversationService;
 import com.yaagoub.misanuncios.application.service.MessageService;
+import com.yaagoub.misanuncios.application.service.NotificationService;
 import com.yaagoub.misanuncios.domain.Conversation;
 import com.yaagoub.misanuncios.domain.Message;
+import com.yaagoub.misanuncios.domain.Notification;
 import com.yaagoub.misanuncios.domain.User;
 
 import com.yaagoub.misanuncios.infrastructure.rest.spring.dto.MessageDto;
@@ -33,20 +36,31 @@ public class MessageController {
     private final CycleAvoidingMappingContext context = new CycleAvoidingMappingContext();
 
     private final MessageDtoMapper messageDtoMapper;
+    private final NotificationService notificationService;
+    private  final ConversationService conversationService;
 
 
     @MessageMapping("/conversation/{id}")
     @SendTo("/topic/{id}")
     public ResponseEntity<Object> sendMessage(@Payload MessageDto messageDto, @DestinationVariable long id) {
-        System.out.println(messageDto);
+
 
          Message message = messageDtoMapper.toDomain(messageDto, context);
-         Conversation cov=new Conversation();
-         cov.setId(id);
-         message.setConversation(cov);
+         Conversation getFromData = conversationService.findById(id);
+         message.setConversation(getFromData);
          message.setSendAt(new Date());
          message.setRead(false);
          Message response =messageService.save(message);
+
+        Notification noti=new Notification();
+        if(getFromData.getSender().getId() == message.getSender().getId()){
+            noti.setUser(getFromData.getProduct().getUser());
+        }else{
+            noti.setUser(getFromData.getSender());
+        }
+        noti.setSendAt(new Date());
+        noti.setMessage(message.getMessage());
+        notificationService.save(noti);
          return ResponseEntity.ok().body(messageDtoMapper.toDto(response, context));
 
         //return ResponseEntity.ok().body("Authentication Required");
