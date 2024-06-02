@@ -9,7 +9,7 @@ import com.yaagoub.misanuncios.infrastructure.db.database.model.ProductEntity;
 import org.mapstruct.Context;
 import org.mapstruct.Mapper;
 
-@Mapper(componentModel = "spring", uses = {UserEntityMapper.class, CategoryEntityMapper.class, ImageEntityMapper.class})
+@Mapper(componentModel = "spring", uses = {CategoryEntityMapper.class, ImageEntityMapper.class, ProductEntityMapper.class})
 public interface ProductEntityMapper {
     ProductEntity toEntity(Product source, @Context CycleAvoidingMappingContext context);
     Product toDomain(ProductEntity source, @Context CycleAvoidingMappingContext context);
