@@ -7,9 +7,6 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(exclude = { "id","role","permission"})
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
 public class RoleHasPermissionDto {
 
     private RoleHasPermissionKeyDto id;

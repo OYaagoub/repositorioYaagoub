@@ -10,9 +10,6 @@ import lombok.EqualsAndHashCode;
 import java.util.LinkedHashSet;
 import java.util.Set;
 @Data
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
 public class RoleDto {
     @JsonView({Views.RoleComplete.class})
     private long id;

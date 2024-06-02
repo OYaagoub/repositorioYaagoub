@@ -2,29 +2,27 @@ package com.yaagoub.misanuncios.infrastructure.rest.spring.dto;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import com.yaagoub.misanuncios.infrastructure.db.database.model.ProductEntity;
+import com.yaagoub.misanuncios.infrastructure.rest.spring.dto.views.Views;
+import lombok.*;
 
-import java.util.Date;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.*;
+
 @Data
-@Getter
-@Setter
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
+@ToString(exclude = {"products"})
+@EqualsAndHashCode(exclude = {"products"})
 public class UserDto {
+    @JsonView({Views.ProductSample.class})
     private  long id;
     private  String name;
 
     private String image;
 
     private String email;
-
+    @JsonIgnore
+    Set<ProductDto> products = new LinkedHashSet<>();
     private Date birth;
     @JsonIgnore
     private String password;
