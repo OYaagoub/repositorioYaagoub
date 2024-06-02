@@ -12,7 +12,7 @@ const routes: Routes = [
     path: '', component: IndexComponent, children: [
 
       {
-        path: 'myProducts',
+        path: 'myProducts/:reload',
         component: MyProductsComponent,
       },
       {

@@ -11,6 +11,10 @@ import { Image } from '../../../../domain/model/image.model';
 import { ConversationService } from '../../../../application/services/conversation.service';
 import { ConversationRepositoryImpl } from '../../../../infrastructure/repositories/conversation.repository.impl';
 import { ConversationRepository } from '../../../../application/repositories/conversation.repository';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { UserService } from '../../../../infrastructure/services/user.service';
+import { User } from '../../../../domain/model/user.model';
+import { AlertsService } from '../../../../infrastructure/services/alerts.service';
 
 
 @Component({
@@ -31,7 +35,8 @@ import { ConversationRepository } from '../../../../application/repositories/con
 export class ProductOverviewsComponent {
     product:Product=new Product({});
     idProduct!:number;
-    constructor(private conversationService:ConversationService,private router:Router,private route:ActivatedRoute,private productService:ProductService,private imageService : ImageService){
+    user!:User | null;
+    constructor(private alerts:AlertsService,private spinner: NgxSpinnerService,private conversationService:ConversationService,private router:Router,private route:ActivatedRoute,private productService:ProductService,private imageService : ImageService,private userService:UserService){
       this.route.params.subscribe(params=>{
         this.idProduct=params['id'];
 
@@ -40,21 +45,34 @@ export class ProductOverviewsComponent {
 
 
     ngOnInit(): void {
+      this.spinner.show();
       this.productService.getProductById(this.idProduct).subscribe(product=>{
         this.product=product;
-
-
+      })
+      this.userService.getUser().subscribe(user=>{
+        this.user=user;
+        this.spinner.hide();
       })
     }
     createConversation(){
+      this.spinner.show();
+
       this.conversationService.save(this.idProduct).subscribe(status=>{
+        this.spinner.hide();
+
         if(status){
           this.router.navigate(['/workspace/chats/ct',this.idProduct])
         }else{
-          alert("error");
+          this.alerts.showDanger('Error al crear la conversación')
+
         }
+
       })
 
+    }
+
+    alConfigurar(){
+      this.router.navigate(['/workspace/myProducts/started'])
     }
 
 

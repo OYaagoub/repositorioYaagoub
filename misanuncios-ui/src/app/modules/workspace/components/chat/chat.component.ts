@@ -17,6 +17,7 @@ import { MessageRepository } from '../../../../application/repositories/message.
 import { UserService } from '../../../../infrastructure/services/user.service';
 import { User } from '../../../../domain/model/user.model';
 import { Subscription } from 'rxjs';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-chat',
@@ -52,15 +53,16 @@ export class ChatComponent implements OnInit, OnDestroy {
     private router: Router,
     private webSocketService: WebSocketService,
     private messageService: MessageService,
-    private userService: UserService
+    private userService: UserService,
+    private spinner: NgxSpinnerService,
   ) {
-    console.log("entra constructor");
+
   }
   onOpen(){
     this.isOpen=!this.isOpen;
   }
   ngOnInit(): void {
-    console.log("entra ngOnInit");
+    this.spinner.show();
     this.routeSub = this.route.params.subscribe(params => {
       this.idProductConversation = +params['id'];
       if (this.idProductConversation == null) {
@@ -74,6 +76,7 @@ export class ChatComponent implements OnInit, OnDestroy {
       .subscribe(res => {
         this.conversations = res;
         this.currentProductConversation();
+        this.spinner.hide();
       });
 
     this.userService.getUser().subscribe(res => {
@@ -98,11 +101,15 @@ export class ChatComponent implements OnInit, OnDestroy {
       sender: this.user,
     } as Message;
 
+
     this.webSocketService.sendMessage(this.conversation.id, message);
+    this.message="";
   }
 
   setMessage(event: Event) {
     this.message = (event.target as HTMLInputElement).value;
+    (event.target as HTMLInputElement).value="";
+
   }
 
   listnerMessage() {
