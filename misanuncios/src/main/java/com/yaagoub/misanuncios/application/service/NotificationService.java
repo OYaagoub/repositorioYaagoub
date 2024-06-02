@@ -15,4 +15,7 @@ public class NotificationService{
     public List<Notification> getNotificationsByUser(Long idUser) {
         return (List<Notification>) notificationRepository.getNotificationsByUser(idUser);
     }
+    public Notification save(Notification notification){
+        return notificationRepository.save(notification);
+    }
 }

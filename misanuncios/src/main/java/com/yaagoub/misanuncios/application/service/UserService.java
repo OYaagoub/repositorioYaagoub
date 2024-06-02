@@ -18,6 +18,8 @@ public class UserService {
         return userRepository.save(user);
 
     }
-
+    public User findById(long id){
+        return userRepository.findById(id);
+    }
 
 }

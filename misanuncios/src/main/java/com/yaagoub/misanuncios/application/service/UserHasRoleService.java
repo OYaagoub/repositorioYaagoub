@@ -4,6 +4,7 @@ import com.yaagoub.misanuncios.application.repository.RoleRepository;
 import com.yaagoub.misanuncios.application.repository.UserHasRoleRepository;
 import com.yaagoub.misanuncios.domain.Role;
 import com.yaagoub.misanuncios.domain.User;
+import com.yaagoub.misanuncios.domain.UserHasRole;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -15,4 +16,7 @@ public class UserHasRoleService {
     public List<Role> getRolesByUser(User user){
         return (List<Role>) repository.getRolesByUser(user);
     };
+    public UserHasRole save(UserHasRole userHasRole){
+        return  repository.save(userHasRole);
+    }
 }

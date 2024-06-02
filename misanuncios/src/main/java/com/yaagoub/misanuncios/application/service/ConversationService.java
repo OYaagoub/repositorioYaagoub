@@ -21,4 +21,7 @@ public class ConversationService {
     public  Conversation findByUserProduct(long idProduct , long idUser){
         return this.conversationRepository.findByUserProduct(idProduct,idUser);
     }
+    public Conversation findById(long id){
+        return conversationRepository.findById(id);
+    }
 }

@@ -7,4 +7,6 @@ public interface ConversationRepository {
 
     Conversation save(Conversation conversation);
     Conversation findByUserProduct(long idProduct , long idUser);
+
+    Conversation findById(long id);
 }

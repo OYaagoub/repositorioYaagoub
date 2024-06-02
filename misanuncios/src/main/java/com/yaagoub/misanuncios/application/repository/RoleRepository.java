@@ -5,6 +5,7 @@ import com.yaagoub.misanuncios.domain.User;
 
 public interface RoleRepository {
     Iterable<Role>  getRoles();
+    Role findByName(String name);
 
 
 }
