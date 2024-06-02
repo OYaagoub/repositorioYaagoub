@@ -6,7 +6,7 @@ export class ImageMapper {
     return {
       id: dto.id,
       path: dto.path,
-      product: ProductMapper.toDomain(dto.product)
+      product: dto.product ? ProductMapper.toDomain(dto.product): null,
 
 
     };
@@ -16,7 +16,7 @@ export class ImageMapper {
     return {
       id: domain.id,
       path: domain.path,
-      product: ProductMapper.toDto(domain.product)
+      product:domain.product ? ProductMapper.toDto(domain.product) : null
 
 
     };
