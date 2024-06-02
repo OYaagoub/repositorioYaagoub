@@ -14,12 +14,12 @@ import { ImageService } from "../services/image.service";
 export class ImageRepositoryImpl implements ImageRepository {
 
   constructor(private imageService: ImageService) { }
-  delete(id: string): void {
-    this.imageService.delete(id);
+  delete(id: number): Observable<boolean> {
+    return this.imageService.delete(id);
   }
 
-  save(image: Image): Observable<Image> {
-    return this.imageService.save(image);
+  save(image:string,product_id:number): Observable<Image> {
+    return this.imageService.save(image,product_id);
   }
 
   findByProduct(idProduct:number): Observable<Image[]>{

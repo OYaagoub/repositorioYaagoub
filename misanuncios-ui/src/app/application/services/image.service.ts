@@ -13,10 +13,10 @@ export class ImageService {
 
   constructor(private imageRepository:ImageRepository) { }
 
-  save(image:Image){
-    return this.imageRepository.save(image);
+  save(image:string,product_id:number){
+    return this.imageRepository.save(image,product_id);
   }
-  delete(id:string):void{
+  delete(id:number):Observable<boolean>{
     return this.imageRepository.delete(id);
   }
   findByProduct(idProduct:number):Observable<Image[]>{

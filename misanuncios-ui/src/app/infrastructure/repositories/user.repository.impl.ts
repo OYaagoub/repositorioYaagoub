@@ -15,7 +15,7 @@ import { UserDto } from '../dto/user.dto';
 export class UserRepositoryImpl implements UserRepository {
 
  constructor(private userService: UserService) {}
-  getUser(): Observable<User> {
+  getUser(): Observable<User | null> {
     return this.userService.getUser();
   }
 

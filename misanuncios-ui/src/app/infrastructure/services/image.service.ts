@@ -17,15 +17,15 @@ import { ImageMapper } from "../mappers/image.mapper";
 export class ImageService {
   constructor(private http: HttpClient) { }
 
-  save(image:Image): Observable<Image> {
-    const url = `${config['contentUrl']}/images/new`;
-    return this.http.post<ImageDto>(url, ImageMapper.toDto(image)).pipe(
+  save(image:string,product_id:number): Observable<Image> {
+    const url = `${config['contentUrl']}/images/new/${product_id}`;
+    return this.http.post<ImageDto>(url,image).pipe(
       map(ImageMapper.toDomain),
     );
   }
-  delete(id: string): void {
+  delete(id: number): Observable<boolean> {
     const url = `${config['contentUrl']}/images/delete/${id}`;
-    this.http.delete<void>(url);
+    return this.http.get<boolean>(url);
   }
 
   findByProduct(idProduct:number): Observable<Image[]>{
