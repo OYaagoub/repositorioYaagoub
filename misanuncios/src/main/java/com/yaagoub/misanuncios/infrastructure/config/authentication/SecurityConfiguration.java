@@ -3,6 +3,7 @@ package com.yaagoub.misanuncios.infrastructure.config.authentication;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -34,7 +35,9 @@ public class SecurityConfiguration {
         http.csrf()
                 .disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/auth/**","/v3/**","/swagger-ui/**")
+                .requestMatchers(HttpMethod.GET).permitAll()
+                .requestMatchers(HttpMethod.OPTIONS).permitAll()
+                .requestMatchers("/auth/**","/api/v3/**","/swagger-ui/**","/app/**","/topic/**^,","/chat/**")
                 .permitAll()
                 .anyRequest()
                 .authenticated()
@@ -52,7 +55,8 @@ public class SecurityConfiguration {
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
 
-        configuration.setAllowedOrigins(List.of("http://localhost:8005"));
+        //configuration.setAllowedOrigins(List.of("http://localhost:4200"));
+        configuration.addAllowedOrigin("*");
         configuration.setAllowedMethods(List.of("GET","POST","PUT","DELETE"));
         configuration.setAllowedHeaders(List.of("Authorization","Content-Type"));
 
@@ -63,3 +67,4 @@ public class SecurityConfiguration {
         return source;
     }
 }
+

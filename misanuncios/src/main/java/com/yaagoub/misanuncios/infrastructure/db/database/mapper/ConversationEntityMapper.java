@@ -7,7 +7,7 @@ import com.yaagoub.misanuncios.infrastructure.db.database.model.MessageEntity;
 import org.mapstruct.Context;
 import org.mapstruct.Mapper;
 
-@Mapper(componentModel = "spring", uses = {UserEntityMapper.class, ProductEntityMapper.class, MessageEntityMapper.class})
+@Mapper(componentModel = "spring", uses = {UserEntityMapper.class, ProductEntityMapper.class})
 public interface ConversationEntityMapper {
     ConversationEntity toEntity(Conversation source, @Context CycleAvoidingMappingContext context);
     Conversation toDomain(ConversationEntity source, @Context CycleAvoidingMappingContext context);

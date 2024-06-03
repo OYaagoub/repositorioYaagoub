@@ -9,7 +9,7 @@ import com.yaagoub.misanuncios.infrastructure.db.database.model.UserHasRoleEntit
 import org.mapstruct.Context;
 import org.mapstruct.Mapper;
 
-@Mapper(componentModel = "spring" , uses = {RoleHasPermissionEntityMapper.class})
+@Mapper(componentModel = "spring")
 public interface RoleEntityMapper {
     RoleEntity toEntity(Role source, @Context CycleAvoidingMappingContext context);
     Role toDomain(RoleEntity source, @Context CycleAvoidingMappingContext context);

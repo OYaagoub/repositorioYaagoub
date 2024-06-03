@@ -4,17 +4,15 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 @Data
-@EqualsAndHashCode(exclude = { "id","roleDto","userDto"})
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
+@EqualsAndHashCode(exclude = { "id","role","user"})
 public class UserHasRoleDto {
     private UserHasRoleKeyDto id;
 
-    private RoleDto roleDto;
+    private RoleDto role;
 
 
-    private UserDto userDto;
+    private UserDto user;
 }

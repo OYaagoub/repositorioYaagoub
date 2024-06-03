@@ -1,4 +1,7 @@
 import { Routes } from '@angular/router';
+import { AuthGuard } from './infrastructure/guards/auth.guard';
+import { ForbiddenComponent } from './modules/includes/forbidden/forbidden.component';
+import { RoleGuard } from './infrastructure/guards/role.guard';
 
 export const routes: Routes = [
   {
@@ -16,6 +19,8 @@ export const routes: Routes = [
   {
     path: 'workspace',
     loadChildren: () => import('./modules/workspace/workspace.module').then(m => m.WorkspaceModule) // lazy load the home module
+    ,canActivate: [ AuthGuard , RoleGuard ],
+    data: { roles: ['user'] }
   },
   {
     path: 'about',
@@ -25,6 +30,11 @@ export const routes: Routes = [
     path: 'auth',
     loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule) // lazy load the home module
   },
+  {
+    path: 'forbidden',
+    component: ForbiddenComponent,
+  }
+  ,
   {
     path: '**',
     redirectTo: ''

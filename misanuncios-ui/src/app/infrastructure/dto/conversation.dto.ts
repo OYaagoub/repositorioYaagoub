@@ -6,6 +6,6 @@ export interface ConversationDto {
   id: number;
   sender: UserDto; // Assuming User model exists
   product: ProductDto; // Assuming Product model exists
-  messages: Set<MessageDto>; // Assuming Message model exists
+  //messages: MessageDto[]; // Assuming Message model exists
 
 }

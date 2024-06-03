@@ -1,17 +1,14 @@
 <section class="bg-white dark:bg-gray-900">
   <div class="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
     <img class="w-full dark:hidden"
-      src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup.svg" alt="dashboard image">
+      src="assets/images/34dc4dx-34dc34sx-4cx3cx3-4c3-4x34c4.jpg" alt="">
     <img class="w-full hidden dark:block"
-      src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup-dark.svg"
-      alt="dashboard image">
+      src="assets/images/34dc4dx-34dc34sx-4cx3cx3-4c3-4x34c4.jpg"
+      alt="">
     <div class="mt-4 md:mt-0">
-      <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Let's create more tools and
-        ideas that brings us together.</h2>
-      <p class="mb-6 font-light text-gray-500 md:text-lg dark:text-gray-400">Flowbite helps you connect with friends and
-        communities of people who share your interests. Connecting with your friends and family as well as discovering
-        new ones is easy with features like Groups.</p>
-      <a href="#"
+      <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Anunciar tus productos en nuestro mundo sin meter prisa.</h2>
+      <p class="mb-6 font-light text-gray-500 md:text-lg dark:text-gray-400">Proporcionamos una plataforma para que pueda anunciar libremente sus productos como desee respetando a los usuarios de nuestra plataforma.  .</p>
+      <a routerLink="/auth/register"
         class="inline-flex items-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:focus:ring-primary-900">
         Get started
         <svg class="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -24,70 +21,68 @@
   </div>
 </section>
 
-<section class="bg-white dark:bg-gray-900">
-  <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
-    <div class="mx-auto max-w-screen-sm text-center">
-      <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Explore our tools</h2>
-      <p class="mb-8 font-light text-gray-500 lg:mb-16 sm:text-xl dark:text-gray-400">Start working with Tailwind CSS
-        that can provide everything you need to generate awareness, drive traffic, connect.</p>
-    </div>
-    <div class="grid gap-8 row-gap-5 sm:grid-cols-2 lg:grid-cols-3">
+@for(categoryProducts of categoriesWithProducts; track categoryProducts ){
 
-      <app-card></app-card>
-      <app-card></app-card>
-      <app-card></app-card>
-      <app-card></app-card>
-      <app-card></app-card>
-      <app-card></app-card>
-    </div>
+  <section class="bg-white dark:bg-gray-900">
+    <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+      <div class="mx-auto max-w-screen-sm text-center">
+        <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">{{ categoryProducts.name }}</h2>
+        <p class="mb-8 font-light text-gray-500 lg:mb-16 sm:text-xl dark:text-gray-400">
+          @if(categoryProducts.name=="Coches"){
+            Furgonetas,Diesel,Coches eléctricos,Audi A5,BMW X5,Chevrolet,Citroen Xsara,Fiat Coupe,
+Ford,Ford Fiesta,Hyundai Getz,Jeep,Lada Niva,Mazda,Mercedes Vito,
+Mitsubishi Montero,Nissan,Nissan Qashqai,Opel Corsa,Peugeot 3008,Porsche,Renault Clio,Renault Scenic,Renault Trafic,SEAT,SEAT Cordoba,Smart,Suzuki Samurai,Suzuki Vitara,Toyota,Volkswagen,Volkswagen Passat,Volvo,Camión
+          }
+          @if(categoryProducts.name=="Motos"){
+               Derbi Senda,     Ducati Monster,     Gas Gas,     Harley Davidson,     Moto Honda,     Moto Honda CBR,     Kawasaki,     Kymco,     Montesa Cota,     Ossa,     Piaggio Zip,     Rieju,     Suzuki,     Vespa,     Yamaha T-MAX,     Yamaha Jog,     Yamaha Aerox
+          }
 
-  </div>
+          @if(categoryProducts.name=="Motor y Accesorios"){
+            Moto de agua,     Baúl moto,     Supermotard,     Pit bike,     Llantas,     Llantas Audi,     Buggies,     Asiento Tractor,     Rampas Para Coches,     Motor 2Jz,     Jaulas Ganaderas De Aluminio,     Caravana Eriba
+          }
+          @if(categoryProducts.name=="Moda y Accesorios"){
+            Zapatillas,     Anillo,     Camisetas,     Vestido,     Vestido de fiesta,     Vestido de novia,     Mochila,     Ropa,     Pantalones,     Zapatos,     Sandalias
+          }
+          @if(categoryProducts.name=="Inmobiliaria"){
+            Casa,     Chalet,     Piso,     Apartamento,     Local,     Oficina,     Terreno,     Garaje,     Garaje en zona residencial,     Garaje en zona comercial,     Garaje en zona industrial
+          }
+          @if(categoryProducts.name=="Tecnología y Electrónica"){
+            Samsung Gear,     Altavoces,     Cámara de fotos,     Cámara de fotos reflex,     Equipo de música,     Proyector
+          }
+          @if(categoryProducts.name=="Deporte y Ocio"){
+            Caña de pescar,
+            Botas de fútbol,
+            Piragua
+          }
+          @if(categoryProducts.name=="Hogar y Jardín"){
+            Mueble Ikea,     Mueble de cocina,     Caseta prefabricada,     Acuario,     Cuadro,     Armario,     Cómoda,     Cama,     Cama nido,     Zapatero,     Jacuzzi exterior,     Espejo,     Canape,     Mesa,     Mesa comedor,     Mesa extensible,     Butaca,     Colchones,     Lámparas
+
+          }
+          @if(categoryProducts.name=="Otros"){
+            Máquina de coser,
+            Playmobil,
+            Maleta,
+            Mesa de billar
+          }
 
 
-</section>
+        </p>
+      </div>
+      <div class="grid gap-8 row-gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        @for(product of getTopProducts(categoryProducts.products ? categoryProducts.products : []); track product ){
 
+          <app-card [product]="product"></app-card>
+        }
 
-<section class="bg-white dark:bg-gray-900">
-  <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
-    <div class="mx-auto max-w-screen-sm text-center">
-      <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Explore our tools</h2>
-      <p class="mb-8 font-light text-gray-500 lg:mb-16 sm:text-xl dark:text-gray-400">Start working with Tailwind CSS
-        that can provide everything you need to generate awareness, drive traffic, connect.</p>
-    </div>
-    <div class="grid gap-8 row-gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      </div>
 
-      <app-card></app-card>
-      <app-card></app-card>
-      <app-card></app-card>
-      <app-card></app-card>
-      <app-card></app-card>
-      <app-card></app-card>
-    </div>
-
-  </div>
-
-
-</section>
-
-
-<section class="bg-white dark:bg-gray-900">
-  <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
-    <div class="mx-auto max-w-screen-sm text-center">
-      <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Explore our tools</h2>
-      <p class="mb-8 font-light text-gray-500 lg:mb-16 sm:text-xl dark:text-gray-400">Start working with Tailwind CSS
-        that can provide everything you need to generate awareness, drive traffic, connect.</p>
-    </div>
-    <div class="grid gap-8 row-gap-5 sm:grid-cols-2 lg:grid-cols-3">
-
-      <app-card></app-card>
-      <app-card></app-card>
-      <app-card></app-card>
-      <app-card></app-card>
-      <app-card></app-card>
-      <app-card></app-card>
     </div>
 
-  </div>
+
+  </section>
+}
 
 
-</section>
+
+
+

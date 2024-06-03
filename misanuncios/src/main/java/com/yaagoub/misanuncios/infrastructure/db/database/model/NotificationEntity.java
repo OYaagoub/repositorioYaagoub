@@ -1,16 +1,14 @@
 package com.yaagoub.misanuncios.infrastructure.db.database.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
-@Getter
-@Setter
-@ToString
+import java.util.Date;
+
+@Data
 @RequiredArgsConstructor
 @Entity
+@EqualsAndHashCode
 @Table(name = "notifications")
 public class NotificationEntity {
     @Id
@@ -19,6 +17,9 @@ public class NotificationEntity {
 
 
     private String message;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date sendAt;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

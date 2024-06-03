@@ -1,0 +1,121 @@
+<!-- Extra Large Modal -->
+<div
+  class="fixed top-0 left-0 right-0 z-50  w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full {{ isOpen ? '' : 'hidden' }}">
+  <div class="relative w-full max-w-7xl max-h-full mx-auto top-20">
+    <!-- Modal content -->
+    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+      <!-- Modal header -->
+      <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+        <h3 class="text-xl font-medium text-gray-900 dark:text-white">
+          Neuvo Producto
+        </h3>
+        <button (click)="emitEvent()" type="button"
+          class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white">
+          <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+          </svg>
+          <span class="sr-only">Close modal</span>
+        </button>
+      </div>
+      <!-- Modal body -->
+      <form class="p-4 md:p-5" [formGroup]="fromProduct" (ngSubmit)="addNewProduct()">
+        <div class="grid gap-4 mb-4 grid-cols-2">
+          <div class="col-span-2">
+            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Titulo</label>
+            <input type="text" name="title" id="name" formControlName="title"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+              placeholder="Type product name" required="">
+              @if(fromProduct.get('title')?.invalid &&  fromProduct.get('title')?.touched){
+                <div  class="text-red-500">
+                  Titulo es requerido o es invalido min : 20 and max 120 caracteres
+                </div>
+              }
+          </div>
+          <div class="col-span-2 sm:col-span-1">
+            <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Precio</label>
+            <input type="text" name="price" id="price" formControlName="price"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+              placeholder="$2999" required="">
+              @if(fromProduct.get("price")?.invalid && fromProduct.get("price")?.touched){
+                <div  class="text-red-500">
+                  Precio es requerido o es invalido
+                </div>
+              }
+          </div>
+          <div class="col-span-2 sm:col-span-1">
+            <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Categoria</label>
+            <select id="category" formControlName="category" name="category"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+              <!-- <option selected="">Select category</option> -->
+              @for(categorie of categories ; track categorie){
+                <option value="{{ categorie }}">{{ categorie }}</option>
+              }
+
+            </select>
+            @if(fromProduct.get("category")?.invalid && fromProduct.get("category")?.touched){
+              <div  class="text-red-500">
+                Categoria es requerido
+              </div>
+            }
+          </div>
+          <div class="col-span-2 sm:col-span-1">
+            <div id="image-preview" class="max-w-sm p-6 mb-4 bg-gray-100 border-dashed border-2 border-gray-400 rounded-lg items-center mx-auto text-center cursor-pointer">
+              <input (change)="onFileSelected($event)" formControlName="image" name="image" id="upload" type="file" class="hidden" accept="image/*" />
+              <label for="upload" class="cursor-pointer">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-gray-700 mx-auto mb-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
+                </svg>
+                <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-700">Cargar Imagen</h5>
+                <p class="font-normal text-sm text-gray-400 md:px-6">La Imagen selectionada debe ser de estos tipos de formatos <b class="text-gray-600"></b></p>
+                <p class="font-normal text-sm text-gray-400 md:px-6"> <b class="text-gray-600">JPG, PNG, or GIF</b> .</p>
+                <span id="filename" class="text-gray-500 bg-gray-200 z-50"></span>
+              </label>
+            </div>
+
+          </div>
+          <div class="col-span-2 sm:col-span-1 flex flex-wrap border rounded-[10px]">
+            @for(base64Image of base64Images ;track base64Image){
+
+              <img src="{{ base64Image }}" class="image max-h-10 rounded-lg m-[10px] cursor-pointer" (click)="deleteImage(base64Image)"  alt="Image preview" />
+            }
+          </div>
+          @if(base64Images.length == 0 && fromProduct.get("image")?.invalid && fromProduct.get("image")?.touched){
+            <div class="col-span-2 sm:col-span-1">
+              <span class="text-red-500 text-xs">Cargar la imagen del producto</span>
+            </div>
+          }
+
+          <div class="col-span-2">
+            <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Product
+              Description</label>
+            <textarea id="description" rows="4" formControlName="description" name="description"
+              class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Write product description here"></textarea>
+              @if(fromProduct.get("description")?.invalid && fromProduct.get("description")?.touched){
+                <div class="col-span-2 sm:col-span-1">
+                  <span class="text-red-500 text-xs">Detalles del producto obligatorios </span>
+                </div>
+              }
+          </div>
+        </div>
+
+        <!-- Modal footer -->
+        <div
+          class="flex items-center p-4 md:p-5 space-x-3 rtl:space-x-reverse border-t border-gray-200 rounded-b dark:border-gray-600">
+          <button type="submit"
+            class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                clip-rule="evenodd"></path>
+            </svg>
+            Añadir Producto
+          </button>
+          <button type="button" (click)="emitEvent()"
+            class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Rechazar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

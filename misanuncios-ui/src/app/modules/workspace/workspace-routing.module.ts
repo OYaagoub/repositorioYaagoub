@@ -4,6 +4,7 @@ import { IndexComponent } from './components/index/index.component';
 import { MyProductsComponent } from './components/my-products/my-products.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
+import { ChatListComponent } from './components/chat-list/chat-list.component';
 
 const routes: Routes = [
   // Add your routes here
@@ -11,12 +12,16 @@ const routes: Routes = [
     path: '', component: IndexComponent, children: [
 
       {
-        path: 'myProducts',
+        path: 'myProducts/:reload',
         component: MyProductsComponent,
       },
       {
         path: 'chats',
-        component:ChatComponent,
+        component:ChatListComponent,
+      },
+      {
+        path: 'chats/ct/:id',
+        component:ChatComponent
       },
       {
         path: 'notifications',

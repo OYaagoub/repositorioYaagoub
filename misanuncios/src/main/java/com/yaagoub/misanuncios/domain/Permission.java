@@ -11,12 +11,8 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 @Data
 @NoArgsConstructor
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
 public class Permission {
     private long id;
-
     private String name;
 
 

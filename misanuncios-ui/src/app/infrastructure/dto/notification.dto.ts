@@ -1,9 +1,9 @@
 import { UserDto } from "./user.dto";
 
 export interface NotificationDto {
-
   id: number;
   message: string;
-  user: UserDto; // Assuming User model exists
+  sendAt:Date;
+  user: UserDto | null; // Assuming User model exists
 
 }

@@ -8,7 +8,7 @@ import org.mapstruct.Context;
 import org.mapstruct.Mapper;
 
 
-@Mapper(componentModel = "spring", uses = {})
+@Mapper(componentModel = "spring")
 public interface UserHasRoleKeyEntityMapper  {
     UserHasRoleKeyEntity toEntity(UserHasRoleKey source, @Context CycleAvoidingMappingContext context);
     UserHasRoleKey toDomain(UserHasRoleKeyEntity source, @Context CycleAvoidingMappingContext context);

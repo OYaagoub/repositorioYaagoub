@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Role } from '../../../../domain/model/role.model';
-import { RoleRepository } from '../../../../domain/repositories/role.repository';
+import { RoleRepository } from '../../../../application/repositories/role.repository';
 import { RoleRepositoryImpl } from '../../../../infrastructure/repositories/role.repository.impl';
 
 @Component({
@@ -21,7 +21,7 @@ export class ListRolesComponent implements OnInit {
     this.loadRoles();
   }
   loadRoles(): void {
-    this.roleRepository.getRoles().subscribe({
+    this.roleRepository.getRolesByUser().subscribe({
       next: (roles: Role[]) => {
         this.roles = roles;
       },

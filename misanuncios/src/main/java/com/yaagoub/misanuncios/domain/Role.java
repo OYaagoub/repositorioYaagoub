@@ -7,16 +7,11 @@ import lombok.*;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-@Getter
-@Setter
+
 @Data
 @NoArgsConstructor
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
 public class Role {
     private long id;
     private String name;
 
-    private Set<RoleHasPermission> permissions = new LinkedHashSet<>();
 }

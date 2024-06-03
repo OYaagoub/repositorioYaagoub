@@ -6,11 +6,10 @@ import lombok.*;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
-@Getter
-@Setter
-@ToString
+@Data
 @RequiredArgsConstructor
 @Entity
+@EqualsAndHashCode
 @Table(name = "permissions")
 public class PermissionEntity {
     @Id
