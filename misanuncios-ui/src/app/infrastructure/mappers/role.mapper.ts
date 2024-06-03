@@ -1,5 +1,5 @@
-import { RoleDto } from "../../infrastructure/dto/role.dto";
-import { Role } from "../model/role.model";
+import { RoleDto } from "../dto/role.dto";
+import { Role } from "../../domain/model/role.model";
 
 
 export class RoleMapper {

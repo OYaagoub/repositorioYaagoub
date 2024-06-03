@@ -11,11 +11,7 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 @Data
 @NoArgsConstructor
-@ToString(exclude = {"sender","product"})
 @EqualsAndHashCode(exclude =  {"sender","product"})
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
 public class Conversation {
     private long id;
 
@@ -23,5 +19,5 @@ public class Conversation {
 
     private Product product;
 
-    private Set<Message> messages=new LinkedHashSet<>();
+
 }

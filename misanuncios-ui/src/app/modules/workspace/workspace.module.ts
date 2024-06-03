@@ -8,7 +8,9 @@ import { WorkspaceRoutingModule } from './workspace-routing.module';
   declarations: [],
   imports: [
     CommonModule,
-    WorkspaceRoutingModule
+    WorkspaceRoutingModule,
+    
+
   ]
 })
 export class WorkspaceModule { }

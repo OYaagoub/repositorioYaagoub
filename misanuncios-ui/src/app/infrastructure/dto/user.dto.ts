@@ -11,14 +11,12 @@ export interface UserDto {
   image: string | null;
   email: string;
   birth: Date | null;
-  password: string;
+  password: string | null;
   remember_token: string | null;
   email_verified_at: Date | null;
-  products: Set<ProductDto> ; // Assuming Product model exists
-  notifications: Set<NotificationDto> ; // Assuming Notification model exists
-  roles: Set<UserHasRoleDto> ; // Assuming UserHasRole model exists
-  permissions: Set<UserHasPermissionDto> ; // Assuming UserHasPermission model exists
-  conversations: Set<ConversationDto> ; // Assuming Conversation model exists
+  //roles: UserHasRoleDto[] ; // Assuming UserHasRole model exists
+  //permissions:UserHasPermissionDto[] ; // Assuming UserHasPermission model exists
+
 
 
 

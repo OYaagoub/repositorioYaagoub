@@ -7,17 +7,16 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.util.Date;
+
 @Data
 @NoArgsConstructor
-@ToString(exclude = {"user"})
 @EqualsAndHashCode(exclude =  {"user"})
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
 public class Notification {
     private long id;
     private String message;
 
     private User user;
+    private Date sendAt;
 
 }

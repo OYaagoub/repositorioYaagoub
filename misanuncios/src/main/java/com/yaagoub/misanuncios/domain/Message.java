@@ -11,11 +11,8 @@ import lombok.ToString;
 import java.util.Date;
 @Data
 @NoArgsConstructor
-@ToString(exclude = {"conversation"})
-@EqualsAndHashCode(exclude =  {"conversation"})
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
+@EqualsAndHashCode(exclude =  {"sender","conversation"})
+
 public class Message {
 
     private long id;

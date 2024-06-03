@@ -1,11 +1,12 @@
 import { Observable } from "rxjs";
-import { Role } from "../model/role.model";
+import { Role } from "../../domain/model/role.model";
+import { RoleDto } from "../../infrastructure/dto/role.dto";
 
 
 
 export abstract class RoleRepository {
 
-  abstract getRoles(): Observable<Role[]>;
+  abstract getRolesByUser(): Observable<Role[]>;
   abstract getRole(id: number): Observable<Role>;
   abstract addRole(role: Role): Observable<Role>;
   abstract updateRole(role: Role): Observable<Role>;

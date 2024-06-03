@@ -1,14 +1,10 @@
 package com.yaagoub.misanuncios.infrastructure.db.database.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
-@Getter
-@Setter
-@ToString
+@Data
+@EqualsAndHashCode
 @RequiredArgsConstructor
 @Entity
 @Table(name = "UserHasPermissions")

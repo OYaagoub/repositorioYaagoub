@@ -2,18 +2,15 @@ package com.yaagoub.misanuncios.infrastructure.db.database.model;
 
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
-@Getter
-@Setter
-@ToString
+@Data
 @RequiredArgsConstructor
 @Entity
+@ToString(exclude = {"messages"})
+@EqualsAndHashCode(exclude = {"messages"})
 @Table(name = "conversations")
 public class ConversationEntity {
 
@@ -29,5 +26,7 @@ public class ConversationEntity {
     @JoinColumn(name = "product_id")
     private ProductEntity product;
 
-
+    @OneToMany(mappedBy = "conversation", fetch = FetchType.EAGER,
+            cascade = {CascadeType.REMOVE}, orphanRemoval = true)
+    private Set<MessageEntity> messages =new LinkedHashSet<>();
 }

@@ -1,0 +1,17 @@
+.image {
+  position: relative;
+  display: inline-block; /* Adjust as needed for your layout */
+}
+
+.image::after {
+  content: "";
+  display: block;
+  width: 24px; /* Desired width */
+  height: 24px; /* Desired height */
+  background-image: url('/assets/icons/delete.png');
+  background-size: contain; /* Resize the image to fit the element */
+  background-repeat: no-repeat; /* Prevent the background from repeating */
+  position: absolute;
+  top: -10;
+  right: -10; /* Adjust position as needed */
+}
