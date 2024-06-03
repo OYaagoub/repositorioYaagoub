@@ -26,13 +26,20 @@ export class AuthService {
   isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   currentUser: BehaviorSubject<String | null> = new BehaviorSubject<String | null>(null);
   token!:string;
+  userCookies!:string;
   isAuthenticatedRoled:boolean=false;
+  userNameLoggIn:BehaviorSubject<string | null> = new BehaviorSubject<string | null>(null);
 
 
-  constructor(private http: HttpClient,private cookieService: CookieService,private userServie:UserService,private roleService:RoleService) {
+  constructor(private http: HttpClient,private cookieService: CookieService,private userServie:UserService,private roleService:RoleService,private userService:UserService) {
     this.token = this.cookieService.get('token');
+    this.userCookies = this.cookieService.get('user.email');
+    //console.log(`constructor  - data is ${this.userCookies}`);
     this.isLoggedIn = new BehaviorSubject<boolean>(this.token ? true : false);
     this.currentUser = new BehaviorSubject<String | null>(this.token || null);
+    this.userNameLoggIn = new BehaviorSubject<string | null>(this.userCookies);
+
+
   }
   ngOnInit(){
     console.log(`ngOnInit  - data is ${this.token}`);
@@ -47,10 +54,16 @@ export class AuthService {
         this.cookieService.set('token', response.token, expiresAt);
         this.currentUser.next(response.token);
         this.isLoggedIn.next(true);
+        this.userServie.getUser().subscribe(user=>{
+          //console.log(`user is ${user?.email}`);
+          this.cookieService.set('user.email', user?.email ? user?.email : '', expiresAt);
+          this.userNameLoggIn.next(user?.email ? user?.email : '');
+        })
       }),
       map((response) => response.token),
       catchError(this.handleError)
     );
+
   }
 
 
@@ -86,6 +99,9 @@ export class AuthService {
   logout(): void {
     // Clear the token cookie
     this.cookieService.delete('token');
+    // Clear the currentUser BehaviorSubject
+    this.cookieService.delete("user.email");
+    this.userNameLoggIn.next('');
     this.isLoggedIn.next(false);
     this.currentUser.next('');
   }
@@ -93,6 +109,9 @@ export class AuthService {
 
   get user(): Observable<String | null> {
     return this.currentUser.asObservable();
+  }
+  get getUser(): Observable<string | null> {
+    return this.userNameLoggIn.asObservable();
   }
 
   get userIsLoggedIn(): Observable<boolean> {

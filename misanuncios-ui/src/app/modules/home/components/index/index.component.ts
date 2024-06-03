@@ -5,11 +5,12 @@ import { CategoryRepositoryImpl } from '../../../../infrastructure/repositories/
 import { Category } from '../../../../domain/model/category.model';
 import { Product } from '../../../../domain/model/product.model';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-index',
   standalone: true,
-  imports: [CardComponent],
+  imports: [CardComponent,RouterLink],
   templateUrl: './index.component.html',
   styleUrl: './index.component.scss',
   providers:[
