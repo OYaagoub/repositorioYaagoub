@@ -14,6 +14,7 @@ import com.yaagoub.misanuncios.infrastructure.rest.spring.dto.views.Views;
 import com.yaagoub.misanuncios.infrastructure.rest.spring.mapper.CycleAvoidingMappingContext;
 import com.yaagoub.misanuncios.infrastructure.rest.spring.mapper.ProductDtoMapper;
 import com.yaagoub.misanuncios.infrastructure.rest.spring.mapper.UserDtoMapper;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.configurationprocessor.json.JSONException;
@@ -33,6 +34,7 @@ import java.util.stream.Collectors;
 @RequestMapping("/api/v3/content")
 @CrossOrigin("*")
 @AllArgsConstructor
+@Tag(name = "Product Controller", description = "CRUD operations for Product ")
 public class ProductController {
 private final ProductService productService;
 private final ProductDtoMapper productDtoMapper;

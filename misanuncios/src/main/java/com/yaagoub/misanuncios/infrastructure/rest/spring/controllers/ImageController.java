@@ -9,6 +9,7 @@ import com.yaagoub.misanuncios.domain.User;
 import com.yaagoub.misanuncios.infrastructure.rest.spring.dto.ImageDto;
 import com.yaagoub.misanuncios.infrastructure.rest.spring.mapper.CycleAvoidingMappingContext;
 import com.yaagoub.misanuncios.infrastructure.rest.spring.mapper.ImageDtoMapper;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -30,6 +31,7 @@ import java.util.stream.Collectors;
 @Slf4j
 @CrossOrigin("*")
 @RequestMapping("/api/v3/content")
+@Tag(name = "Image Controller", description = "CRUD operations for Image ")
 public class ImageController {
     private  final ImageService imageService;
     private final CycleAvoidingMappingContext context=new CycleAvoidingMappingContext();

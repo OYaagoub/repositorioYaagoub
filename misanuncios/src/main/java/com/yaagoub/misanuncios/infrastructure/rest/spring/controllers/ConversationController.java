@@ -11,6 +11,8 @@ import com.yaagoub.misanuncios.domain.User;
 import com.yaagoub.misanuncios.infrastructure.rest.spring.dto.views.Views;
 import com.yaagoub.misanuncios.infrastructure.rest.spring.mapper.ConversationDtoMapper;
 import com.yaagoub.misanuncios.infrastructure.rest.spring.mapper.CycleAvoidingMappingContext;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -28,6 +30,7 @@ import java.util.stream.Collectors;
 @RestController
 @CrossOrigin("*")
 @AllArgsConstructor
+@Tag(name = "Conversation Controller", description = "CRUD operations for Conversation ")
 @RequestMapping("/api/v3/content")
 public class ConversationController {
     private final ConversationService conversationService;
@@ -35,6 +38,8 @@ public class ConversationController {
     private final ProductService productService;
 
     private final CycleAvoidingMappingContext context=new CycleAvoidingMappingContext();
+
+    @Operation(summary = "Get all authentication user conversations  ", description = "Retrieve a list of all authentication user conversations.")
     @JsonView({Views.ConversationSample.class})
     @GetMapping("/conversations/mine")
     public ResponseEntity<Object> getConversationsByUser(){

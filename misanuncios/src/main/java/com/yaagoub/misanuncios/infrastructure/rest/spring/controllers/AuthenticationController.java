@@ -13,12 +13,15 @@ import com.yaagoub.misanuncios.infrastructure.config.authentication.LoginRespons
 import com.yaagoub.misanuncios.infrastructure.rest.spring.dto.UserDto;
 import com.yaagoub.misanuncios.infrastructure.rest.spring.mapper.CycleAvoidingMappingContext;
 import com.yaagoub.misanuncios.infrastructure.rest.spring.mapper.UserDtoMapper;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin("*")
 @RequestMapping("/api/v3/auth")
 @RestController
+@Tag(name = "Authentication Controller", description = "CRUD operations for Authentication ")
 public class AuthenticationController {
     private final JwtService jwtService;
     private final UserDtoMapper userDtoMapper;
@@ -36,6 +39,7 @@ public class AuthenticationController {
         this.userDtoMapper=userDtoMapper;
     }
 
+    @Operation(summary = "Sign Up ", description = "Get authentication a new user.")
     @PostMapping("/signup")
     public ResponseEntity<UserDto> register(@RequestBody String registerUserDto) {
         Gson gson = new Gson();
@@ -55,7 +59,7 @@ public class AuthenticationController {
     }
 
 
-
+    @Operation(summary = "Login", description = "Get authentication a existed user.")
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> authenticate(@RequestBody String plainText) {
 
