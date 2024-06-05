@@ -102,14 +102,25 @@
     </div>
     <div class="mx-auto">
 
-      <ngx-masonry [ordered]="true" [options]="{ gutter: 40}"
+      <!-- <ngx-masonry [ordered]="true" [options]="{ gutter: 40}"
         class=" w-[max-h-full] mx-auto flex justify-center flex-wrap items-center ">
         @for(product of products; track parseInts(product.price)) {
         <div ngxMasonryItem class="masonry-item mx-auto">
           <app-card [product]="product"></app-card>
         </div>
         }
-      </ngx-masonry>
+      </ngx-masonry> -->
+      <div class="w-[max-h-full] mx-auto flex justify-center flex-wrap items-center">
+        @for(product of products; track parseInts){
+
+          <ng-container >
+            <div class="masonry-item mx-auto">
+              <app-card [product]="product"></app-card>
+            </div>
+          </ng-container>
+        }
+      </div>
+
     </div>
 
   </div>

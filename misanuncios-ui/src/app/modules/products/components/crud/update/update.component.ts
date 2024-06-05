@@ -13,7 +13,6 @@ import { ImageRepository } from '../../../../../application/repositories/image.r
 import { ImageRepositoryImpl } from '../../../../../infrastructure/repositories/image.repository.impl';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { MyProductsComponent } from '../../../../workspace/components/my-products/my-products.component';
 import { AlertsService } from '../../../../../infrastructure/services/alerts.service';
 
 @Component({

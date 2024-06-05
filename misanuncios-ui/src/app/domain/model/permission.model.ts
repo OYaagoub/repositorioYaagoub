@@ -1,6 +1,3 @@
-import { RoleHasPermission } from "./roleHasPermission.model";
-import { UserHasPermission } from "./userHasPermission.model";
-
 export class Permission {
 
   id!: number;

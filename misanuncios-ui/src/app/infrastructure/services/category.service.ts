@@ -1,9 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, map, of } from 'rxjs';
-import { User } from '../../domain/model/user.model';
-import { UserDto } from '../dto/user.dto';
-import { UserMapper } from '../mappers/user.mapper';
+import { Observable, map } from 'rxjs';
 import { config } from '../config/config';
 import { Category } from '../../domain/model/category.model';
 import { CategoryDto } from '../dto/category.dto';
