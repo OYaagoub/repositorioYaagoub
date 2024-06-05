@@ -1,10 +1,5 @@
-import { CategoryDto } from "../dto/category.dto";
-import { ImageDto } from "../dto/image.dto";
 import { UserHasRoleDto } from "../dto/userHasRole.dto";
-import { Category } from "../../domain/model/category.model";
-import { Image } from "../../domain/model/image.model";
 import { UserHasRole } from "../../domain/model/userHasRole.model";
-import { ProductMapper } from "./product.mapper";
 import { RoleMapper } from "./role.mapper";
 import { UserMapper } from "./user.mapper";
 export class UserHasRoleMapper {

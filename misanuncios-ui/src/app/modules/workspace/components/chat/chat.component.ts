@@ -6,7 +6,6 @@ import { Conversation } from '../../../../domain/model/conversation.model';
 import { ImageService } from '../../../../application/services/image.service';
 import { ImageRepository } from '../../../../application/repositories/image.repository';
 import { ImageRepositoryImpl } from '../../../../infrastructure/repositories/image.repository.impl';
-import { Image } from '../../../../domain/model/image.model';
 import { Product } from '../../../../domain/model/product.model';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { WebSocketService } from '../../../../infrastructure/services/webSocket.service';

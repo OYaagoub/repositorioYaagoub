@@ -9,10 +9,6 @@ export const routes: Routes = [
     loadChildren: () => import('./modules/home/index.module').then(m => m.IndexModule) // lazy load the home module
   },
   {
-    path: 'roles',
-    loadChildren: () => import('./modules/roles/add-roles.module').then(m => m.AddRolesModule) // lazy load the home module
-  },
-  {
     path: 'products',
     loadChildren: () => import('./modules/products/products.module').then(m => m.ProductsModule) // lazy load the home module
   },

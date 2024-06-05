@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-
 import { Observable } from 'rxjs';
 import { RoleRepository } from '../../application/repositories/role.repository';
 import { Role } from '../../domain/model/role.model';
 import { RoleService } from '../services/role.service';
-import { RoleDto } from '../dto/role.dto';
+
 
 @Injectable({
  providedIn: 'root',

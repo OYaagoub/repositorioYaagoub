@@ -6,6 +6,7 @@ import com.yaagoub.misanuncios.application.service.RoleService;
 import com.yaagoub.misanuncios.infrastructure.rest.spring.mapper.CycleAvoidingMappingContext;
 import com.yaagoub.misanuncios.infrastructure.rest.spring.mapper.PermissionDtoMapper;
 import com.yaagoub.misanuncios.infrastructure.rest.spring.mapper.RoleDtoMapper;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +22,7 @@ import java.util.stream.Collectors;
 @RequestMapping("api/v1/permissions")
 @CrossOrigin("*")
 @AllArgsConstructor
+@Tag(name = "Permission Controller", description = "CRUD operations for Permission ")
 public class PermissionController {
 private PermissionService permissionService;
 private PermissionDtoMapper permissionDtoMapper;

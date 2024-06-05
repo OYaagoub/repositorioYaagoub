@@ -7,7 +7,6 @@ import { ProductService } from '../../../../../application/services/product.serv
 import { ProductRepository } from '../../../../../application/repositories/product.repository';
 import { ProductRepositoryImpl } from '../../../../../infrastructure/repositories/product.repository.impl';
 import { Category } from '../../../../../domain/model/category.model';
-import { Image } from '../../../../../domain/model/image.model';
 import { ImageService } from '../../../../../application/services/image.service';
 import { ImageRepository } from '../../../../../application/repositories/image.repository';
 import { ImageRepositoryImpl } from '../../../../../infrastructure/repositories/image.repository.impl';

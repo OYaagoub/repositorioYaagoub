@@ -7,7 +7,6 @@ import { ProductRepositoryImpl } from '../../../../infrastructure/repositories/p
 import { ImageService } from '../../../../application/services/image.service';
 import { ImageRepository } from '../../../../application/repositories/image.repository';
 import { ImageRepositoryImpl } from '../../../../infrastructure/repositories/image.repository.impl';
-import { Image } from '../../../../domain/model/image.model';
 import { ConversationService } from '../../../../application/services/conversation.service';
 import { ConversationRepositoryImpl } from '../../../../infrastructure/repositories/conversation.repository.impl';
 import { ConversationRepository } from '../../../../application/repositories/conversation.repository';

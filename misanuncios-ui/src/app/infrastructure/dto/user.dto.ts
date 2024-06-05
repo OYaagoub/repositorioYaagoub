@@ -1,9 +1,3 @@
-import { ConversationDto } from "./conversation.dto";
-import { UserHasRoleDto } from "./userHasRole.dto";
-import { ProductDto } from "./product.dto";
-import { UserHasPermissionDto } from "./userHasPermission.dto";
-import { NotificationDto } from "./notification.dto";
-
 export interface UserDto {
 
   id: number;

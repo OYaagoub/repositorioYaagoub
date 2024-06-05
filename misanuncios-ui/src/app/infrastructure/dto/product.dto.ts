@@ -1,6 +1,5 @@
 
 import { CategoryDto } from "./category.dto";
-import { ConversationDto } from "./conversation.dto";
 import { ImageDto } from "./image.dto";
 import { UserDto } from "./user.dto";
 

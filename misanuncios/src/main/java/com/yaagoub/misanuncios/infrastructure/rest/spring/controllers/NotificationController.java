@@ -8,6 +8,7 @@ import com.yaagoub.misanuncios.infrastructure.db.database.mapper.NotificationEnt
 import com.yaagoub.misanuncios.infrastructure.db.database.model.NotificationEntity;
 import com.yaagoub.misanuncios.infrastructure.rest.spring.mapper.CycleAvoidingMappingContext;
 import com.yaagoub.misanuncios.infrastructure.rest.spring.mapper.NotificationDtoMapper;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +24,7 @@ import java.util.stream.Collectors;
 @RequestMapping("/api/v3/content")
 @CrossOrigin("*")
 @AllArgsConstructor
+@Tag(name = "Notification Controller", description = "CRUD operations for Notification ")
 public class NotificationController {
     private final NotificationService notificationService;
     private final NotificationDtoMapper notificationDtoMapper;

@@ -11,6 +11,7 @@ import com.yaagoub.misanuncios.domain.User;
 import com.yaagoub.misanuncios.infrastructure.rest.spring.dto.MessageDto;
 import com.yaagoub.misanuncios.infrastructure.rest.spring.mapper.CycleAvoidingMappingContext;
 import com.yaagoub.misanuncios.infrastructure.rest.spring.mapper.MessageDtoMapper;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -30,6 +31,7 @@ import java.util.stream.Collectors;
 @CrossOrigin("*")
 @RestController
 @RequiredArgsConstructor
+@Tag(name = "Message Controller", description = "CRUD operations for Message ")
 public class MessageController {
 
     private  final MessageService messageService;
