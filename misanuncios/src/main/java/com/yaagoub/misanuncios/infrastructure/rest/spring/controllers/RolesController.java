@@ -5,6 +5,7 @@ import com.yaagoub.misanuncios.application.service.RoleService;
 import com.yaagoub.misanuncios.domain.User;
 import com.yaagoub.misanuncios.infrastructure.rest.spring.mapper.CycleAvoidingMappingContext;
 import com.yaagoub.misanuncios.infrastructure.rest.spring.mapper.RoleDtoMapper;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -23,6 +24,7 @@ import java.util.stream.Collectors;
 @RequestMapping("/roles")
 @CrossOrigin("*")
 @AllArgsConstructor
+@Tag(name = "Role Controller", description = "CRUD operations for Role ")
 public class RolesController {
 private RoleService roleService;
 private RoleDtoMapper roleDtoMapper;

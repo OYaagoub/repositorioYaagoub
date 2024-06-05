@@ -1,12 +1,11 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { Inject, Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, catchError, map, of, shareReplay, tap, throwError } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable, catchError, map, tap, throwError } from 'rxjs';
 import { User } from '../../domain/model/user.model';
 import { UserDto } from '../dto/user.dto';
 import { LoginResponse } from '../dto/loginResponse.dto';
 import { UserMapper } from '../mappers/user.mapper';
 import { config } from '../config/config';
-import moment from "moment";
 import { CookieService } from 'ngx-cookie-service';
 import { UserService } from './user.service';
 import { RoleService } from './role.service';
@@ -50,7 +49,10 @@ export class AuthService {
     raw.password = user.password;
     return this.http.post<LoginResponse>(`${config['authUrl']}/login`, JSON.stringify(raw)).pipe(
       tap((response: LoginResponse) => {
-        const expiresAt = moment().add(response.expiresIn, 'milliseconds').toDate();
+        //const expiresAt = moment().add(response.expiresIn, 'milliseconds').toDate();
+        const expiresInMilliseconds = response.expiresIn;
+        const currentDate = new Date();
+        const expiresAt = new Date(currentDate.getTime() + expiresInMilliseconds);
         this.cookieService.set('token', response.token, expiresAt);
         this.currentUser.next(response.token);
         this.isLoggedIn.next(true);

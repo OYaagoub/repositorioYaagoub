@@ -7,6 +7,7 @@ import com.yaagoub.misanuncios.infrastructure.rest.spring.dto.UserDto;
 import com.yaagoub.misanuncios.infrastructure.rest.spring.mapper.CycleAvoidingMappingContext;
 import com.yaagoub.misanuncios.infrastructure.rest.spring.mapper.RoleDtoMapper;
 import com.yaagoub.misanuncios.infrastructure.rest.spring.mapper.UserDtoMapper;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -26,6 +27,7 @@ import java.util.stream.Collectors;
 @RequestMapping("/api/v3/auth")
 @AllArgsConstructor
 @RestController
+@Tag(name = "User Controller", description = "CRUD operations for User ")
 public class UserController {
     private final UserService userService;
     private final UserDtoMapper userDtoMapper;

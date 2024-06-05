@@ -1,10 +1,3 @@
-import { Conversation } from "./conversation.model";
-import { Notification } from "./notification.model";
-
-import { Product } from "./product.model";
-import { UserHasPermission } from "./userHasPermission.model";
-import { UserHasRole } from "./userHasRole.model";
-
 export class User {
 
   id!: number;

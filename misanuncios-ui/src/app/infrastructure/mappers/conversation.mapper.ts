@@ -1,10 +1,5 @@
-import { CategoryDto } from "../dto/category.dto";
 import { ConversationDto } from "../dto/conversation.dto";
-import { ImageDto } from "../dto/image.dto";
-import { Category } from "../../domain/model/category.model";
 import { Conversation } from "../../domain/model/conversation.model";
-import { Image } from "../../domain/model/image.model";
-import { MessageMapper } from "./message.mapper";
 import { ProductMapper } from "./product.mapper";
 import { UserMapper } from "./user.mapper";
 export class ConversationMapper {

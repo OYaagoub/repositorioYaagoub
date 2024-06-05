@@ -1,4 +1,3 @@
-import { Message } from "./message.model";
 import { Product } from "./product.model";
 import { User } from "./user.model";
 

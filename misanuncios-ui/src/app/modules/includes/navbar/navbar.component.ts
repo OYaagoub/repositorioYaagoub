@@ -3,7 +3,6 @@ import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../infrastructure/services/auth.service';
 import { NewComponent } from '../../products/components/crud/new/new.component';
 import { UserService } from '../../../infrastructure/services/user.service';
-import { User } from '../../../domain/model/user.model';
 
 @Component({
   selector: 'app-navbar',

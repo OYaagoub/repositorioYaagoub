@@ -1,7 +1,5 @@
 import { Category } from "./category.model";
-import { Conversation } from "./conversation.model";
 import { Image } from "./image.model";
-
 import { User } from "./user.model";
 
 export class  Product {

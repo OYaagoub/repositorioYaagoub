@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Route, Router, RouterStateSnapshot, UrlSegment, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { UserService } from '../services/user.service';
-import { User } from '../../domain/model/user.model';
 import { AuthService } from '../services/auth.service';
 
 @Injectable({
@@ -27,7 +26,7 @@ export class unAuthGuard implements CanActivate {
       }
     })
     return this.isAuthenticated;
-    
+
   }
 
 }

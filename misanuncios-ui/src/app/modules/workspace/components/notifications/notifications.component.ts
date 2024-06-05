@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { NotificationRepository } from '../../../../application/repositories/notification.repository';
 import { NotificationRepositoryImpl } from '../../../../infrastructure/repositories/notification.repository.impl';
 import { NotificationService } from '../../../../application/services/notification.service';
