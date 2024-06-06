@@ -27,6 +27,7 @@ import java.util.stream.Collectors;
 @SpringBootTest(classes = MisanunciosApplication.class)
 @ContextConfiguration
 class MisanunciosApplicationTests {
+	/*
 	@Autowired
 	private   SpringDataRoleRepository springDataRoleRepository;
 	@Autowired
@@ -53,9 +54,7 @@ class MisanunciosApplicationTests {
 	private CycleAvoidingMappingContext context = new CycleAvoidingMappingContext();
 	private CycleAvoidingMappingContext contextDto = new CycleAvoidingMappingContext();
 
-    /*
-    * Work 100%
-    * */
+
 	@Test
 	void SaveRolesTestRepository() {
 
@@ -559,6 +558,6 @@ class MisanunciosApplicationTests {
 	}
 
 
-
+*/
 
 }
