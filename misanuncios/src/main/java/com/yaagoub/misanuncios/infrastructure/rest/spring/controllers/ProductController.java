@@ -17,7 +17,6 @@ import com.yaagoub.misanuncios.infrastructure.rest.spring.mapper.UserDtoMapper;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -44,7 +43,7 @@ private final UserDtoMapper userDtoMapper;
 private final CycleAvoidingMappingContext context= new CycleAvoidingMappingContext();
 @JsonView({Views.ProductSample.class})
 @GetMapping("/products")
-public ResponseEntity<Object> getProducts(@RequestParam int page, @RequestParam int size) throws JsonProcessingException, JSONException {
+public ResponseEntity<Object> getProducts(@RequestParam int page, @RequestParam int size) throws JsonProcessingException {
     Pageable pageable = PageRequest.of(page, size);
     //Page<Product> productPage = (Page<Product>) productService.getAllProducts(pageable);
     //int totalPages = productPage.getTotalPages();
@@ -59,7 +58,7 @@ public ResponseEntity<Object> getProducts(@RequestParam int page, @RequestParam 
   }
     @JsonView({Views.ProductSample.class})
     @GetMapping("/products/search")
-    public ResponseEntity<Object> getProductsBySearch(@RequestParam String query) throws JsonProcessingException, JSONException {
+    public ResponseEntity<Object> getProductsBySearch(@RequestParam String query) throws JsonProcessingException {
         //Pageable pageable = PageRequest.of(page, size);
         //Page<Product> productPage = (Page<Product>) productService.getAllProducts(pageable);
         //int totalPages = productPage.getTotalPages();

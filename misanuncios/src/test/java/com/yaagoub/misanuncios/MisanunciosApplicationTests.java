@@ -27,7 +27,7 @@ import java.util.stream.Collectors;
 @SpringBootTest(classes = MisanunciosApplication.class)
 @ContextConfiguration
 class MisanunciosApplicationTests {
-	/*
+	
 	@Autowired
 	private   SpringDataRoleRepository springDataRoleRepository;
 	@Autowired
@@ -58,7 +58,7 @@ class MisanunciosApplicationTests {
 	@Test
 	void SaveRolesTestRepository() {
 
-		String[] roles = {"admin","user","super-admin"};
+		String[] roles = {"admin","user"};
 		Arrays.asList(roles).forEach(role -> {
 			RoleEntity rolled=new RoleEntity();
 			rolled.setName(role);
@@ -68,6 +68,19 @@ class MisanunciosApplicationTests {
 
 
 	}
+	@Test
+	void SaveCategories(){
+		String[] categories = {
+				"Coches", "Motos", "Motor y Accesorios", "Moda y Accesorios", "Inmobiliaria",
+				"Tecnología y Electrónica",  "Deporte y Ocio", "Hogar y Jardín", "Otros"
+		};
+		for (String category : categories) {
+			CategoryEntity categoryEntity = new CategoryEntity();
+			categoryEntity.setName(category);
+			springDataCategoryRepository.save(categoryEntity);
+		}
+	}
+	/*
 	@Test
 	void setDateToNotification(){
 		AtomicInteger id= new AtomicInteger(50);
