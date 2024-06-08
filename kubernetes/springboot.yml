@@ -1,0 +1,51 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: springboot
+
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: misanuncios
+  namespace: springboot
+  labels:
+    app: misanuncios
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: misanuncios
+  template:
+    metadata:
+      labels:
+        app: misanuncios
+    spec:
+      containers:
+        - name: misanuncios
+          image: yaagoub/misanuncios:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: "jdbc:mysql://10.97.11.232:3306/misanuncios"
+            - name: SPRING_DATASOURCE_USERNAME
+              value: "root"
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: "1234"
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: springboot
+  name: misanuncios
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: misanuncios

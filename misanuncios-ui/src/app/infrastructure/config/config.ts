@@ -22,9 +22,9 @@ export const config: Config = {
 };
 */
 export const config: Config = {
-  apiUrl: "http://192.168.1.133:8080/api",
-  contentUrl: "http://192.168.1.133:8080/api/v3/content",
-  authUrl: "http://192.168.1.133:8080/api/v3/auth",
+  apiUrl: "http://localhost:8080/api",
+  contentUrl: "http://localhost:8080/api/v3/content",
+  authUrl: "http://localhost:8080/api/v3/auth",
   auth: "token",
-  socketUrl: "//192.168.1.133:8080/chat",
+  socketUrl: "//localhost:8080/chat",
 };
