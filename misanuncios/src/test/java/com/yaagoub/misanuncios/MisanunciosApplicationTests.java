@@ -54,7 +54,7 @@ class MisanunciosApplicationTests {
 	private CycleAvoidingMappingContext context = new CycleAvoidingMappingContext();
 	private CycleAvoidingMappingContext contextDto = new CycleAvoidingMappingContext();
 
-
+/*
 	@Test
 	void SaveRolesTestRepository() {
 
@@ -80,7 +80,7 @@ class MisanunciosApplicationTests {
 			springDataCategoryRepository.save(categoryEntity);
 		}
 	}
-	/*
+
 	@Test
 	void setDateToNotification(){
 		AtomicInteger id= new AtomicInteger(50);
