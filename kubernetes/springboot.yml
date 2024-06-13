@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: misanuncios
-          image: yaagoub/misanuncios:latest
+          image: yaagoub/misanuncios:v1.0
           ports:
             - containerPort: 8080
           env:
